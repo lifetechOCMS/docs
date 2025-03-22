@@ -2,7 +2,7 @@
 _A modern PHP backend framework for secure and modular applications._
 
 ## 📖 Table of Contents  
-1. [Introduction](#introduction)  
+1. [Introduction](#-introduction)  
 2. [Core Features](#core-features)  
 3. [Installation](#installation)  
 4. [Project Structure](#project-structure)  
