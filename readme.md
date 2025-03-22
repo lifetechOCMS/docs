@@ -12,6 +12,7 @@ _A modern PHP backend framework for secure and modular applications._
 8. [Dependency Injection & PSR-11](#dependency-injection--psr-11)  
 9. [Security Features](#security-features)  
 10. [Best Practices](#best-practices)  
+11. [Contributing Guides](contributing.md)  
 
 ---
 
@@ -34,6 +35,11 @@ Lifetech OCMS is a PHP framework designed with security, modularity, and perform
 ---
 
 ## ⚡ Installation  
+1. **Download via GitHub**  
+   ```sh
+   git clone https://github.com/lifetechOCMS/lifetechocms.git
+
+## ⚡ contributing  
 1. **Download via GitHub**  
    ```sh
    git clone https://github.com/lifetechOCMS/lifetechocms.git
