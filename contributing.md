@@ -6,7 +6,7 @@ _A modern PHP backend framework for secure and modular applications._
 2. [Code Style & Naming Conventions:](#code-style-naming-conventions)
 3. [Class Conventions:](#-class-conventions)
 
-## Code Style & Naming Conventions:
+## Code Style & Naming Conventions
 1. **Indentation**: 4 spaces per level (no tabs).
 2. **Line length**: 120 characters max.
 3. **No trailing spaces**.
@@ -39,4 +39,5 @@ while ($condition) {
 }
 
 
-## Class Conventions:
+## Class Conventions
+using lt as class name
