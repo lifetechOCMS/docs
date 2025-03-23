@@ -3,8 +3,8 @@ _A modern PHP backend framework for secure and modular applications._
 
 ## 📖 Table of Contents  
 1. [Go back](readme.md) 
-2. [Code Style & Naming Conventions](#code-style--naming-conventions)
-3. [Class Conventions](#class-conventions)
+2. [Code Style & Naming Conventions](#-code-style--naming-conventions)
+3. [Class Conventions](#-class-conventions)
 
 ## Code Style & Naming Conventions
 1. **Indentation**: 4 spaces per level (no tabs).
