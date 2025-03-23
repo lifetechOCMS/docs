@@ -10,6 +10,7 @@ _A modern PHP backend framework for secure and modular applications._
 3. [Module Conventions](#module-conventions)
 3. [Theme Conventions](#theme-conventions)
 3. [Plugin Conventions](#plugin-conventions)
+3. [Plugin Conventions](#varriable-conventions)
 
 ## Code Style & Naming Conventions
 1. **Indentation**: 4 spaces per level (no tabs).
@@ -18,6 +19,13 @@ _A modern PHP backend framework for secure and modular applications._
 4. **Control structures** (if, while, for, etc.) must have a space before the opening parenthesis.
 5. **Opening braces `{`** must be on the same line as the statement.
 6. **Consideration** Please conside `lt` as a general abbreviation for lifetechocms
+
+
+## Variable Conventions
+
+1. **Variable names** should use **camelCase** (e.g., `userName`, `itemQty`).
+2. **Constant variables** must be in uppercase with underscores (e.g., `define('APP_VERSION', '1.0.0');`).
+3. **Boolean variables** should have a prefix of `is`, `has`, or `can` (e.g., `$isActive = true;`).
 
 ## Database Conventions
 
@@ -44,3 +52,4 @@ _A modern PHP backend framework for secure and modular applications._
 4. **Class methods** should use **camelCase** and should **not** start with `Lt`.  
    - Example: `getUser()`, `findId()`.  
    - A full example: `TbUsers->findId()`.
+5. **private/protected properties** should be prefix with an underscore **private $_apikey**
