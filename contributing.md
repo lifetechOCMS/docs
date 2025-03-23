@@ -19,4 +19,6 @@ _A modern PHP backend framework for secure and modular applications._
 1. **Class names** should use **Pascal Case** (e.g., `MyClass`, `TbUsers`).
 2. **Class names must start with `Lt`**, except if the class corresponds to a specific package (e.g., a database name). For example, the class name for the session should be `LtSession`. This is to avoid conflicts in the future, as another vendor might also use a `Session` class, and our `Lt` prefix will help prevent class name collisions.
 3. You **do not need to use `Lt` as a prefix** if the class connects to a specific package, such as a database name or a module name. For example, `TbUsers` indicates that the class corresponds to an existing database table, and `MdBook` indicates a class related to an existing module.
-4. **Class Method** is going to use **Camel Case** and is not starting with `Lt` e.g getUser(), findId(). full example will be TbUsers->findId().
+4. **Class methods** should use **camelCase** and should **not** start with `Lt`.  
+   - Example: `getUser()`, `findId()`.  
+   - A full example: `TbUsers->findId()`.
