@@ -33,8 +33,9 @@ _A modern PHP backend framework for secure and modular applications._
 10. **Use Prepared Statements** in PHP when interacting with the database, e.g.,
    ```php
    $stmt = $pdo->prepare("SELECT * FROM TbUsers WHERE emailAddress = :email");
-   $stmt->execute(['email' => $email]);
-   
+   $stmt->execute(['email' => $email]); 
+   ```
+
 ## Class Conventions
 
 1. **Class names** should use **Pascal Case** (e.g., `MyClass`, `TbUsers`).
