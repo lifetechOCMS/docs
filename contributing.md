@@ -19,6 +19,22 @@ _A modern PHP backend framework for secure and modular applications._
 5. **Opening braces `{`** must be on the same line as the statement.
 6. **Consideration** Please conside `lt` as a general abbreviation for lifetechocms
 
+## Database Conventions
+
+1. **Table Naming** should use **PascalCase** and must be in plural form, e.g., `TbUsers`, `TbOrders`.
+2. **Column Naming** should use **camelCase**, e.g., `firstName`, `lastName`, `emailAddress`.  
+3. **Primary Key Naming** should always be `lifetech_general_id` for consistency.  
+4. **Foreign Key Naming** should follow `{tableName}Id`, e.g., `userId`, `productId`.  
+5. **Pivot Table Naming** should use both table names in PascalCase, e.g., `UserRole`, `OrderProduct`.  
+6. **Timestamps** should always have `createdAt` and `updatedAt`.  
+7. **Indexes** should be added to frequently searched columns for optimization.  
+8. **Use Normalization** (3rd Normal Form) to avoid redundant data storage.  
+9. **NULL Values** should be avoided when possible, use sensible default values.  
+10. **Use Prepared Statements** in PHP when interacting with the database, e.g.,
+   ```php
+   $stmt = $pdo->prepare("SELECT * FROM TbUsers WHERE emailAddress = :email");
+   $stmt->execute(['email' => $email]);
+   
 ## Class Conventions
 
 1. **Class names** should use **Pascal Case** (e.g., `MyClass`, `TbUsers`).
