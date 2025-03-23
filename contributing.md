@@ -5,7 +5,7 @@ _A modern PHP backend framework for secure and modular applications._
 1. [Go back](readme.md) 
 2. [Code Style & Naming Conventions](#-code-style--naming-conventions)
 3. [Class Conventions](#class-conventions)
-3. [Function Conventions](#function-conventions)
+3. [Function Conventions](#-function-conventions)
 3. [Database Conventions](#database-conventions)
 3. [Module Conventions](#module-conventions)
 3. [Theme Conventions](#theme-conventions)
@@ -53,3 +53,13 @@ _A modern PHP backend framework for secure and modular applications._
    - Example: `getUser()`, `findId()`.  
    - A full example: `TbUsers->findId()`.
 5. **private/protected properties** should be prefix with an underscore **private $_apikey**
+
+## 1️⃣ Function Conventions  
+
+1. **Use camelCase for Function Names**  e.g 
+  ```php
+  function ltGetUserData() { /* ... */ }
+  ```
+2. **lt** must start all function names e.g **ltCalculator**
+3. **Opening Brace {** Must Be on the Same Line of the function e.g function processPayment($amount) {**
+4. No Space Between **Function Name** and **Parentheses** e.g **function ltCalculateTax($price) { /* ... */ }**
