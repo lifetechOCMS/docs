@@ -4,7 +4,7 @@ _A modern PHP backend framework for secure and modular applications._
 ## 📖 Table of Contents  
 1. [Go back](readme.md) 
 2. [Code Style & Naming Conventions](#-code-style--naming-conventions)
-3. [Class Conventions](#-class-conventions)
+3. [Class Conventions](#class)
 
 ## Code Style & Naming Conventions
 1. **Indentation**: 4 spaces per level (no tabs).
@@ -14,7 +14,7 @@ _A modern PHP backend framework for secure and modular applications._
 5. **Opening braces `{`** must be on the same line as the statement.
 6. **Consideration** Please conside `lt` as a general abbreviation for lifetechocms
 
-## Class Conventions
+## Class
 
 1. **Class names** should use **Pascal Case** (e.g., `MyClass`, `TbUsers`).
 2. **Class names must start with `Lt`**, except if the class corresponds to a specific package (e.g., a database name). For example, the class name for the session should be `LtSession`. This is to avoid conflicts in the future, as another vendor might also use a `Session` class, and our `Lt` prefix will help prevent class name collisions.
