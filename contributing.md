@@ -84,7 +84,7 @@ class UserController {
         // Logic to update a user
     }
 }
-
+```
 ## Class Conventions
 
 1. **Class names** should use **Pascal Case** (e.g., `MyClass`, `TbUsers`).
