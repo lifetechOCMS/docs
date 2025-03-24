@@ -46,8 +46,8 @@ _A modern PHP backend framework for secure and modular applications._
 ## Model Conventions
 
 1. **Model File Names** must use Pascal Case (e.g., `TbUsers.php`, `TbLmsProduct.php`).
-2. **Model Name** must be the same as the table name.
-3. **Model File** should be associated with a single database table.
+2. **Model File Name** must be the same as the table name.
+3. **Model File Class** should be associated with a single Class of database table.
 
 ### Example 
 For a database table named `TbUsers`, the corresponding model class should be:
@@ -59,12 +59,39 @@ class TbUsers extends Model {
 }
 ```
 
-## Controller Conventions  
+# Controller Conventions
 
-1. **Use camelCase for plugin Names**  e.g  plgEmail, plgExcel
-2. **plg** must start all Plugin names e.g **plgBarcode**
-3. **plugin** name must correspond to your plugins
+## 1. File Naming
+- Use **PascalCase** and end with `Controller`.
+  - Example: `UserController.php`
 
+## 2. Controller Name
+- Should be **descriptive** and represent the related functionality.
+  - Example: `UserController` for user-related actions.
+
+## 3. Method Naming
+- Use **camelCase** for method names, describing the action.
+  - Example: `createUser()`, `updateUser()`
+
+## 4. Single Responsibility
+- Each controller should handle **specific actions** for its functionality.
+  - Example: `UserController` should manage user actions, not product actions.
+
+---
+
+### Example
+
+**File Name**: `UserController.php`
+```php
+class UserController {
+    public function createUser() {
+        // Logic to create a user
+    }
+
+    public function updateUser() {
+        // Logic to update a user
+    }
+}
 
 ## Class Conventions
 
