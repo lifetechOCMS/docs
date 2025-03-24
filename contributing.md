@@ -43,6 +43,43 @@ _A modern PHP backend framework for secure and modular applications._
    $stmt = $pdo->prepare("SELECT * FROM TbUsers WHERE emailAddress = :email");
    $stmt->execute(['email' => $email]); 
    ```
+# Model Conventions
+
+## 1. Model File Naming Convention
+- Model file names must use **PascalCase**.
+  - Examples:
+    - `TbUsers.php`
+    - `TbLmsProduct.php`
+
+## 2. Model Name and Table Name Consistency
+- The **model name** should exactly match the **table name** (in the database).
+  - Example:
+    - For the table `tb_users`, the model class should be named `TbUsers`.
+
+## 3. Single Table Association
+- Each **model file** should be associated with **only one database table**.
+  - Example:
+    - The `TbUsers.php` model file should interact solely with the `tb_users` table.
+
+---
+
+### Example
+
+For a database table named `tb_users`, the corresponding model class should be:
+
+**File Name**: `TbUsers.php`
+```php
+class TbUsers extends Model {
+    // Logic for interacting with the tb_users table
+}
+
+
+## Controller Conventions  
+
+1. **Use camelCase for plugin Names**  e.g  plgEmail, plgExcel
+2. **plg** must start all Plugin names e.g **plgBarcode**
+3. **plugin** name must correspond to your plugins
+
 
 ## Class Conventions
 
