@@ -48,8 +48,8 @@ _A modern PHP backend framework for secure and modular applications._
 1. **Model File Names** must use Pascal Case (e.g., `TbUsers.php`, `TbLmsProduct.php`).
 2. **Model Name** must be the same as the table name.
 3. **Model File** should be associated with a single database table.
-### Example
 
+### Example 
 For a database table named `TbUsers`, the corresponding model class should be:
 
 **File Name**: `TbUsers.php`
