@@ -61,21 +61,17 @@ class TbUsers extends Model {
 
 # Controller Conventions
 
-## 1. File Naming
-- Use **PascalCase** and end with `Controller`.
-  - Example: `UserController.php`
+1. File Naming
+- Use **PascalCase** and end with `Controller`.  Example: `UserController.php`
 
-## 2. Controller Name
-- Should be **descriptive** and represent the related functionality.
-  - Example: `UserController` for user-related actions.
+2. Controller Name
+- Should be **descriptive** and represent the related functionality. Example: `UserController` for user-related actions.
 
-## 3. Method Naming
-- Use **camelCase** for method names, describing the action.
-  - Example: `createUser()`, `updateUser()`
+3. Method Naming
+- Use **camelCase** for method names, describing the action. Example: `createUser()`, `updateUser()`
 
-## 4. Single Responsibility
-- Each controller should handle **specific actions** for its functionality.
-  - Example: `UserController` should manage user actions, not product actions.
+4. Single Responsibility
+- Each controller should handle **specific actions** for its functionality. Example: `UserController` should manage user actions, not product actions.
 
 ---
 
