@@ -109,19 +109,23 @@ class UserController {
 
 1. **Use camelCase for Module Names**  e.g  mdForum, mdLmsCourse
 2. **md** must start all Module names e.g **mdLogin**
-3. **Module** name must correspond to your project 
+3. **Module** name must correspond to your project
+4. **Readme.md** file must be included with the documentation
+
 
 ## Theme Conventions  
 
 1. **Use camelCase for theme Names**  e.g  themeEducation, themeCommerce
 2. **theme** must start all Theme names e.g **themeProduct**
 3. **Theme** name must correspond to your designs
+4. **Readme.md** file must be included with the documentation
 
 ## Plugin Conventions  
 
 1. **Use camelCase for plugin Names**  e.g  plgEmail, plgExcel
 2. **plg** must start all Plugin names e.g **plgBarcode**
 3. **plugin** name must correspond to your plugins
+4. **Readme.md** file must be included with the documentation
 
 
 
