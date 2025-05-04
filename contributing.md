@@ -267,7 +267,7 @@ echo $navigate->getUrl();  // Outputs the constructed URL
 
 #### **2. `ltNavigateData($key = "")`**
 
-This function retrieves data stored in the session using a specified key.
+This function retrieves data stored in the session using a specified key
 
 ##### **Parameters**
 - **`$key`** (string, required): The key under which the data is stored in the session.
