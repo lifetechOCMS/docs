@@ -4,7 +4,7 @@ _A modern PHP backend framework for secure and modular applications._
 ## 📖 Table of Contents  
 1. [Introduction ](#-introduction)  
 2. [Core Features](#-core-features)  
-3. [Installation](#-installation)  
+3. [Installation](#-installation-running)  
 4. [Project Structure](#-project-structure)  
 5. [Working with Models](#-working-with-models)  
 6. [Controllers](#-controllers)  
@@ -34,10 +34,20 @@ Lifetech OCMS is a PHP framework designed with security, modularity, and perform
 
 ---
 
-## ⚡ Installation  
+## ⚡ Installation & Running 
 1. **Download via GitHub**  
    ```sh
    git clone https://github.com/lifetechOCMS/lifetechocms.git
+2. **Installing via Composer**  
+   ```sh
+   composer create-project lifetechocms/lifetechocms "your-project-name"
+## Running the application locally
+1. locate your folder terminal
+   ```sh
+   php lt start
+   if you want specific port number then 
+    ```sh
+   php lt start "your-port-number"
 
 ## ⚡ contributing  
 1. **Download via GitHub**  
