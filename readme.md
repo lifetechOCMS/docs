@@ -8,7 +8,7 @@ _A modern PHP backend framework for secure and modular applications._
 4. [Project Structure](#-project-structure)  
 5. [Working with Models](#-working-with-models)  
 6. [Controllers](#-controllers)  
-7. [Views & Routing](#-views--routing)  
+7. [Routin & Navigation](navigation.md)  
 8. [Dependency Injection & PSR-11](#dependency-injection--psr-11)  
 9. [Security Features](#security-features)  
 10. [Best Practices](#best-practices)  
@@ -47,7 +47,7 @@ Lifetech OCMS is a PHP framework designed with security, modularity, and perform
    php lt start
 if you want specific port number then 
     ```sh
-   php lt start "your-port-number"
+      php lt start "your-port-number"
 
 ## ⚡ contributing  
 1. **Download via GitHub**  
