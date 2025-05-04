@@ -61,21 +61,21 @@ class TbUser extends LtModel {
 
 # Controller Conventions
 
-1. **File Naming** - Use **PascalCase** and end with `Controller`.  Example: `UserController.php`
+1. **File Naming** - Use **PascalCase** and end with `Controller`.  Example of TbUser table: `TbUserController.php`
 
-2. **Controller Name** - Should be **descriptive** and represent the related functionality. Example: `UserController` for user-related actions.
+2. **Controller Name** - Should be **descriptive** and represent the related functionality. Example: `TbUserController` for user-related actions.
 
 3. **Method Naming** - Use **camelCase** for method names, describing the action. Example: `createUser()`, `updateUser()`
 
-4. **Single Responsibility** - Each controller should handle **specific actions** for its functionality. Example: `UserController` should manage user actions, not product actions.
+4. **Single Responsibility** - Each Datbase Table or Model should have **specific controller** for its functionality. Example: tb_user table should have its own `TbUserController` as a Controller.
 
 ---
 
 ### Example
 
-**File Name**: `UserController.php`
+**File Name**: `TbUserController.php`
 ```php
-class UserController {
+class TbUserController {
     public function createUser() {
         // Logic to create a user
     }
@@ -87,12 +87,12 @@ class UserController {
 ```
 ## Class Conventions
 
-1. **Class names** should use **Pascal Case** (e.g., `MyClass`, `TbUsers`).
+1. **Class names** should use **Pascal Case** (e.g., `MyClass`, `TbUser`).
 2. **Class names must start with `Lt`**, except if the class corresponds to a specific package (e.g., a database name). For example, the class name for the session should be `LtSession`. This is to avoid conflicts in the future, as another vendor might also use a `Session` class, and our `Lt` prefix will help prevent class name collisions.
-3. You **do not need to use `Lt` as a prefix** if the class connects to a specific package, such as a database name or a module name. For example, `TbUsers` indicates that the class corresponds to an existing database table, and `MdBook` indicates a class related to an existing module.
+3. You **do not need to use `Lt` as a prefix** if the class connects to a specific package, such as a database name or a module name. For example, `TbUser` indicates that the class corresponds to an existing database table, and `MdBook` indicates a class related to an existing module.
 4. **Class methods** should use **camelCase** and should **not** start with `Lt`.  
    - Example: `getUser()`, `findId()`.  
-   - A full example: `TbUsers->findId()`.
+   - A full example: `TbUser->findId()`.
 5. **private/protected properties** should be prefix with an underscore **private $_apikey**
 
 ## Function Conventions  
