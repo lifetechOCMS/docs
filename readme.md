@@ -2,19 +2,19 @@
 _A modern PHP backend framework for secure and modular applications._
 
 ## 📖 Table of Contents  
-1. [Introduction ](#-introduction)  
+1. [Introduction](#-introduction)  
 2. [Core Features](#-core-features)  
-3. [Getting Started ](getting-started.md)
-3. [Installation](#-installation--running)  
-4. [Project Structure](#-project-structure)  
-5. [Working with Models](#-working-with-models)  
-6. [Controllers](#-controllers)  
-7. [Routin & Navigation](navigation.md)  
-8. [Dependency Injection & PSR-11](#dependency-injection--psr-11)  
-9. [Security Features](#security-features)  
-10. [Best Practices](#best-practices)  
-11. [Contributing Guides](contributing.md)  
-
+3. [Getting Started](getting-started.md)  
+4. [Installation](#-installation--running)  
+5. [Publish Your First Content](#-publish-your-first-content)  
+6. [Project Structure](#-project-structure)  
+7. [Working with Modules](#-working-with-modules)  
+8. [Importing](#-importing)  
+9. [Menu, Routing & Navigation](navigation.md)  
+10. [Auth & Classes](#-auth--classes)  
+11. [Security Features](#security-features)  
+12. [Development Conventions](#development-conventions)  
+13. [Contributing Guides](contributing.md)  
 ---
 
 ## 🛠 Introduction  
