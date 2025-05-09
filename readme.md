@@ -46,16 +46,18 @@ Lifetech OCMS is a PHP framework designed with security, modularity, and perform
 1. locate your folder terminal
    ```sh
    php lt start
+   ```
 if you want specific port number then 
     ```sh
       php lt start "your-port-number"
+   ```
 ## 📦 Importing in LifetechOCMS
 
-LifetechOCMS uses a custom import function called ltImport() to load files such as models, helpers, or other PHP resources from a module. This keeps modules self-contained and promotes a clean architecture.
+LifetechOCMS uses a custom import function called ltImport() to load files such as models, controllers, helpers, or other PHP resources from a module. This design promotes modularity, security, and clean architecture by keeping each module self-contained.
 
 🧠 Syntax
 ```
-ltImport('ModuleName', 'FileName.php');
+ltImport('ModuleName', 'FileName.ext');
 ```
 
 🔍 Example
@@ -63,27 +65,29 @@ ltImport('ModuleName', 'FileName.php');
 ltImport('mdPosProduct', 'TbProduct.php');
 ```
 
-This will load the TbProduct.php file from the models/ directory of the mdPosProduct module.
+This loads the TbProduct.php file from the appropriate directory within the mdPosProduct module, depending on its registered type in the database.
 
 📁 Import Target Order
 
-The import system checks the following folders within a module:
+The ltImport() function checks the database for the file's registration and determines its directory by the following MVC type:
 
-models/
+MVC_TYPE : service / controller / Model / View
 
-based/
+The search respects the module structure and includes the file accordingly. 
 
-controllers/
+💡 Why Use ltImport() Over Namespaces?
 
-views/ (for helper PHP files, not templates)
+While ltImport() functions similarly to a namespace-based loader, it provides additional features tailored to LifetechOCMS, such as:
 
-If the file exists in any of these, it will be included.
+✅ Acts like a namespace-based importer for organizing files across modules
 
-💡 Best Practice
+🔐 Handles internal runtime code decryption using the Data Defacing Model (DDM)
 
-Always ensure your filenames match exactly, including case.
+🔎 Ensures secure inclusion based on database-registered module structure
 
-Avoid using the same filename in multiple folders of a module.
+🔄 Works uniformly across controllers, models, services, and view logic
+
+In short, ltImport() combines the organizational benefits of namespaces with enhanced runtime security and modular loading control.
 
 
 ## ⚡ contributing  
