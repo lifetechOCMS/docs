@@ -9,7 +9,7 @@ _A modern PHP backend framework for secure and modular applications._
 5. [Publish Your First Content](#-publish-your-first-content)  
 6. [Project Structure](project_structure.md)  
 7. [Working with Modules](#-working-with-modules)  
-8. [Importing Contents](#-importing)  
+8. [Importing Contents](#-importing-contents)  
 9. [Menu, Routing & Navigation](navigation.md)  
 10. [Auth & Classes](#-auth--classes)  
 11. [Security Features](#security-features)  
@@ -54,7 +54,7 @@ if you want specific port number then
       php lt start "your-port-number"
    ```
 
-## 📦 Importing in LifetechOCMS
+## 📦 Importing Contents
 
 LifetechOCMS uses a custom import function called ltImport() to load files such as models, controllers, helpers, or other PHP resources from a module. This design promotes modularity, security, and clean architecture by keeping each module self-contained.
 
