@@ -8,6 +8,37 @@ _A modern PHP backend framework for secure and modular applications._
 
 The `LtNavigate` class is designed to help with page navigation, building URLs with query parameters, storing session data, and handling redirects. Below is an explanation of the class methods and their usage.
 
+---
+
+### **Summary**
+
+The `LtNavigate` class and its helper functions provide an easy way to build navigation links, pass query parameters, store session data, and handle redirects. The following is a simple example of how to use all these features:
+
+```php
+// Example usage:
+$navigate = new LtNavigate();
+
+// Navigate to a page with query parameters
+$navigate->to('book_regg.html', 'md_library')
+         ->withQuery(['status' => '21', 'id' => '5'])
+         ->withData('user', 'JohnDoe');
+
+// Redirect to the URL
+$navigate->redirect();
+```
+
+Or use the helper function for quick navigation:
+
+```php
+// Using helper function to navigate
+ltNavigateTo('book_regg.html', 'md_library')
+    ->withQuery(['status' => '21', 'id' => '5'])
+    ->redirect();
+```
+
+This class simplifies building URLs, passing data, and handling redirection within the application.
+
+
 ## **Class: `LtNavigate`**
 
 ### **Properties**
