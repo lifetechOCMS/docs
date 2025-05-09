@@ -79,7 +79,7 @@ MVC_TYPE : service / controller / Model / View
 
 The search respects the module structure and includes the file accordingly. 
 
-💡 Why Use ltImport() Over Namespaces?
+## 💡 Why Use ltImport() Over Namespaces?
 
 While ltImport() functions similarly to a namespace-based loader, it provides additional features tailored to LifetechOCMS, such as:
 
