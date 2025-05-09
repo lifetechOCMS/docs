@@ -65,6 +65,7 @@ ltImport('ModuleName', 'FileName.ext');
 ltImport('mdPosProduct', 'TbProduct.php');
 ```
 
+
 This loads the TbProduct.php file from the appropriate directory within the mdPosProduct module, depending on its registered type in the database.
 
 📁 Import Target Order
