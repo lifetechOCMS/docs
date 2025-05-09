@@ -6,6 +6,8 @@ _A modern PHP backend framework for secure and modular applications._
 
 This document outlines the standard folder structure of a LifetechOCMS application. It serves as a reference for developers who want to understand or contribute to the framework.
 
+
+```text
 lifetechocms/
 ├── modules/             # Custom application modules
 │   └── mdPosProduct/    # Example module
@@ -26,6 +28,8 @@ lifetechocms/
 ├── .env                 # Environment configuration file
 ├── composer.json        # Composer package file
 └── README.md            # Project description and overview
+```
+
 
 
 lifetechocms/
