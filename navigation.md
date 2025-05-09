@@ -11,9 +11,16 @@ The `LtNavigate` class is designed to help with page navigation, building URLs w
 
 ## **Class: `LtNavigate`**
 
-### **Properties**
-- **`$url`**: The base URL to which the query parameters will be appended.
-- **`$queryParams`**: An array of query parameters to be added to the URL.
+### **Output**
+---
+
+## 🔁 `redirect()` vs 🌐 `getUrl()`
+
+| Method       | Purpose                                            | Output/Effect                        | Typical Use Case                          |
+|--------------|----------------------------------------------------|--------------------------------------|-------------------------------------------|
+| `getUrl()`   | Returns the constructed URL as a string            | E.g., `/views/md_library/book_regg.html?id=5` | Use it when you need the URL but don't want to navigate yet. |
+| `redirect()` | Immediately redirects the browser to the URL       | Uses `header("Location: ...")` + `exit()` | Use it when you're ready to send the user to the new page. |
+ 
 
 ---
 
@@ -55,15 +62,6 @@ Redirects the user to the constructed URL and exits the script.
 ```php
 $navigate->redirect();
 ```
-
----
-
-## 🔁 `redirect()` vs 🌐 `getUrl()`
-
-| Method       | Purpose                                            | Output/Effect                        | Typical Use Case                          |
-|--------------|----------------------------------------------------|--------------------------------------|-------------------------------------------|
-| `getUrl()`   | Returns the constructed URL as a string            | E.g., `/views/md_library/book_regg.html?id=5` | Use it when you need the URL but don't want to navigate yet. |
-| `redirect()` | Immediately redirects the browser to the URL       | Uses `header("Location: ...")` + `exit()` | Use it when you're ready to send the user to the new page. |
 
 ---
 
