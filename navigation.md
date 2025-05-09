@@ -12,9 +12,7 @@ A smart, modular routing system in LifetechOCMS for mapping user requests to app
 
 📌 Overview
 ltRoute is LifetechOCMS’s internal router system that connects frontend view requests to controller actions within a specific module. Each module has its own routing file (e.g., mdPosProductRoute.php) that maps view requests to controller functions.
-
-🧾 Route File Format
-A routing file uses PHP conditionals to bind a specific action (based on view input or URL) to a controller function.
+ 
 ## 🧱 Routing Syntax
 ```
 if (LtRoute::post('action', 'createBranch')) {
@@ -34,12 +32,12 @@ if (LtRoute::post('action', 'createBranch')) {
 LtRoute::post('action', 'createBranch'):
 Checks if the incoming request is a POST where the action=createBranch.
 
-ltImport('mdPosCore', 'TbPosBranchController.php'):
+`ltImport('mdPosCore', 'TbPosBranchController.php')`:
 Loads the controller securely using Data Defacing Model.
 
 Controller method is executed and its result echoed.
 
-exit() ensures no further code runs after handling the request.
+`exit()` ensures no further code runs after handling the request.
 
 ## 🔀 Available Routing Methods
 Method	Description
