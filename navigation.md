@@ -4,6 +4,14 @@ _A modern PHP backend framework for secure and modular applications._
 
 ## 📖 Table of Contents
 1. [Go back](readme.md)
+2. [ltRoute Documentation](#-ltroute-documentation)
+3. [Go back](readme.md)
+
+## 🚦 ltRoute Documentation
+A smart, modular routing system in LifetechOCMS for mapping user requests to appropriate controllers.
+
+
+
 
 # Documentation for `LtNavigate` Class
 
