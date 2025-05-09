@@ -15,7 +15,7 @@ ltRoute is LifetechOCMS’s internal router system that connects frontend view r
 
 🧾 Route File Format
 A routing file uses PHP conditionals to bind a specific action (based on view input or URL) to a controller function.
-🧱 Routing Syntax
+## 🧱 Routing Syntax
 ```
 if (LtRoute::post('action', 'createBranch')) {
     //call on your controller class or return json value to the front-end
@@ -41,7 +41,7 @@ Controller method is executed and its result echoed.
 
 exit() ensures no further code runs after handling the request.
 
-🔀 Available Routing Methods
+## 🔀 Available Routing Methods
 Method	Description
 LtRoute::post(key, value)	Handles a POST request with a specific key/value pair
 LtRoute::get(key, value)	Handles a GET request with a specific key/value pair
