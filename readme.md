@@ -39,18 +39,21 @@ Lifetech OCMS is a PHP framework designed with security, modularity, and perform
 1. **Download via GitHub**  
    ```sh
    git clone https://github.com/lifetechOCMS/lifetechocms.git
+   ```
 2. **Installing via Composer**  
    ```sh 
    composer create-project lifetechocms/lifetechocms "your-project-name"
+   ```
 ## Running the application locally
 1. locate your folder terminal
    ```sh
    php lt start
    ```
 if you want specific port number then 
-    ```sh
+   ```sh
       php lt start "your-port-number"
    ```
+
 ## 📦 Importing in LifetechOCMS
 
 LifetechOCMS uses a custom import function called ltImport() to load files such as models, controllers, helpers, or other PHP resources from a module. This design promotes modularity, security, and clean architecture by keeping each module self-contained.
