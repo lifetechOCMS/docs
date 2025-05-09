@@ -16,6 +16,7 @@ A smart, modular routing system in LifetechOCMS for mapping user requests to app
 ## `Navigation` Class
 
 The `LtNavigate` class is designed to help with page navigation, building URLs with query parameters, storing session data, and handling redirects.
+Also the helper for function is ltNavigateTO().
 
 ## **Class: `LtNavigate`**
 
@@ -34,20 +35,24 @@ The `LtNavigate` class is designed to help with page navigation, building URLs w
 
 ### **Methods**
 
-#### **1. `to($page_name = "", $module_name = "")`**
+#### **1. `to($contentName = "", $moduleName = "")`**
 This sets the base path for redirection or URL building.
 
 ```php
 $navigate = new LtNavigate();
-$navigate->to('book_regg.html', 'md_library');
+$navigate->to('BookRegg.html', 'mdLibrary');
 echo $navigate->getUrl();
+OR
+echo  ltNavigateTo('BookRegg.html', 'mdLibrary')->getUrl();
+//this will show something like this
+https://www.yourdomain.com/mdLibrary/BookRegister
 ```
 
 #### **2. `withQuery(array $queryParams)`**
 Appends query string parameters.
 
 ```php
-$navigate->to('book_regg.html', 'md_library')->withQuery(['id' => 5]);
+$navigate->to('BookRegg.html', 'mdLibrary')->withQuery(['id' => 5]);
 ```
 
 #### **3. `withData($key, $value)`**
@@ -77,7 +82,7 @@ $navigate->redirect();
 
 ### ✅ Example 1: Use `getUrl()` to Manually Link
 ```php
-$url = ltNavigateTo('book_list.html', 'md_library')
+$url = ltNavigateTo('BookRegg.html', 'mdLibrary')
         ->withQuery(['category' => 'fiction'])
         ->getUrl();
 
@@ -86,7 +91,7 @@ echo "<a href='$url'>View Fiction Books</a>";
 
 ### ✅ Example 2: Use `redirect()` After Form Submission
 ```php
-ltNavigateTo('book_list.html', 'md_library')
+ltNavigateTo('BookRegg.html', 'mdLibrary')
     ->withQuery(['status' => 'success'])
     ->withData('message', 'Book saved successfully!')
     ->redirect();
@@ -100,7 +105,7 @@ ltNavigateTo('book_list.html', 'md_library')
 Returns an instance of `LtNavigate`.
 
 ```php
-ltNavigateTo('book_regg.html', 'md_library')->getUrl();
+ltNavigateTo('BookRegg.html', 'mdLibrary')->getUrl();
 ```
 
 ### `ltNavigateData($key)`
@@ -124,7 +129,7 @@ echo ltNavigateBack();
 The `LtNavigate` class simplifies URL creation, data passing, and redirection in LifetechOCMS.
 
 ```php
-ltNavigateTo('book_regg.html', 'md_library')
+ltNavigateTo('BookRegg.html', 'mdLibrary')
     ->withQuery(['id' => 5])
     ->withData('status', 'success')
     ->redirect();
