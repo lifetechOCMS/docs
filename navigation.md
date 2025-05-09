@@ -16,7 +16,7 @@ A smart, modular routing system in LifetechOCMS for mapping user requests to app
 ## `Navigation` Class
 
 The `LtNavigate` class is designed to help with page navigation, building URLs with query parameters, storing session data, and handling redirects.
-Also the helper for function is ltNavigateTO().
+Also the helper function is ltNavigateTO().
 
 ## **Class: `LtNavigate`**
 
@@ -44,6 +44,7 @@ $navigate->to('BookRegg.html', 'mdLibrary');
 echo $navigate->getUrl();
 OR
 echo  ltNavigateTo('BookRegg.html', 'mdLibrary')->getUrl();
+
 //this will show something like this
 https://www.yourdomain.com/mdLibrary/BookRegister
 ```
@@ -53,6 +54,11 @@ Appends query string parameters.
 
 ```php
 $navigate->to('BookRegg.html', 'mdLibrary')->withQuery(['id' => 5]);
+OR
+echo  ltNavigateTo('BookRegg.html', 'mdLibrary')->->withQuery(['id' => 5])->getUrl();
+
+//this will show something like this
+https://www.yourdomain.com/mdLibrary/BookRegister?id=5
 ```
 
 #### **3. `withData($key, $value)`**
@@ -74,6 +80,8 @@ Redirects the user to the constructed URL and exits the script.
 
 ```php
 $navigate->redirect();
+OR
+ltNavigateTo('BookRegg.html', 'mdLibrary')->->withQuery(['id' => 5])->redirect();
 ```
 
 ---
@@ -99,9 +107,9 @@ ltNavigateTo('BookRegg.html', 'mdLibrary')
 
 ---
 
-## 🔧 Helper Functions
+## 🔧 Additional Helper Functions
 
-### `ltNavigateTo($page_name, $module_name)`
+### `ltNavigateTo($ContentName, $ModuleName)`
 Returns an instance of `LtNavigate`.
 
 ```php
@@ -112,7 +120,7 @@ ltNavigateTo('BookRegg.html', 'mdLibrary')->getUrl();
 Retrieves data from session.
 
 ```php
-echo ltNavigateData('user');
+echo ltNavigateData('message');
 ```
 
 ### `ltNavigateBack()`
