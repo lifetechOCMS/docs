@@ -31,7 +31,7 @@ lifetechocms/
 ```
 
 
-
+```
 lifetechocms/
 ├── admin                # Core LifetechOCMS Administrator files
 ├── lifemodules/         # Custom application modules
@@ -52,6 +52,7 @@ lifetechocms/
 ├── vendor/              # Composer-installed PHP dependencies
 ├── composer.json        # Composer package file
 └── README.md            # Project description and overview
+```
 
 ✅ Notes
 
