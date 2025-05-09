@@ -41,8 +41,12 @@ Controller method is executed and its result echoed.
 
 ## 🔀 Available Routing Methods
 Method	Description
-LtRoute::post(key, value)	Handles a POST request with a specific key/value pair
-LtRoute::get(key, value)	Handles a GET request with a specific key/value pair
+`LtRoute::post(key, value)`	Handles a POST request with a specific key/value pair
+
+`LtRoute::get(key, value)`	Handles a GET request with a specific key/value pair
+
+You can also match with numeric or dynamic values:
+
 
 ## `Navigation` Class
 
