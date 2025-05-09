@@ -9,7 +9,7 @@ _A modern PHP backend framework for secure and modular applications._
 5. [Publish Your First Content](#-publish-your-first-content)  
 6. [Project Structure](project_structure.md)  
 7. [Working with Modules](#-working-with-modules)  
-8. [Importing](#-importing)  
+8. [Importing Contents](#-importing)  
 9. [Menu, Routing & Navigation](navigation.md)  
 10. [Auth & Classes](#-auth--classes)  
 11. [Security Features](#security-features)  
@@ -49,6 +49,42 @@ Lifetech OCMS is a PHP framework designed with security, modularity, and perform
 if you want specific port number then 
     ```sh
       php lt start "your-port-number"
+## 📦 Importing in LifetechOCMS
+
+LifetechOCMS uses a custom import function called ltImport() to load files such as models, helpers, or other PHP resources from a module. This keeps modules self-contained and promotes a clean architecture.
+
+🧠 Syntax
+```
+ltImport('ModuleName', 'FileName.php');
+```
+
+🔍 Example
+```
+ltImport('mdPosProduct', 'TbProduct.php');
+```
+
+This will load the TbProduct.php file from the models/ directory of the mdPosProduct module.
+
+📁 Import Target Order
+
+The import system checks the following folders within a module:
+
+models/
+
+based/
+
+controllers/
+
+views/ (for helper PHP files, not templates)
+
+If the file exists in any of these, it will be included.
+
+💡 Best Practice
+
+Always ensure your filenames match exactly, including case.
+
+Avoid using the same filename in multiple folders of a module.
+
 
 ## ⚡ contributing  
 1. **Download via GitHub**  
