@@ -10,13 +10,47 @@ _A modern PHP backend framework for secure and modular applications._
 ## 🚦 ltRoute Documentation
 A smart, modular routing system in LifetechOCMS for mapping user requests to appropriate controllers.
 
+📌 Overview
+ltRoute is LifetechOCMS’s internal router system that connects frontend view requests to controller actions within a specific module. Each module has its own routing file (e.g., mdPosProductRoute.php) that maps view requests to controller functions.
 
+🧾 Route File Format
+A routing file uses PHP conditionals to bind a specific action (based on view input or URL) to a controller function.
+🧱 Routing Syntax
+```
+if (LtRoute::post('action', 'createBranch')) {
+    //call on your controller class or return json value to the front-end
+}
+```
+Example
+```php
+if (LtRoute::post('action', 'createBranch')) {
+    ob_end_clean();
+    ltImport('mdPosCore', 'TbPosBranchController.php');
+    $branchCtrl = new TbPosBranchController();
+    echo $branchCtrl->create();
+    exit();
+}
+```
+LtRoute::post('action', 'createBranch'):
+Checks if the incoming request is a POST where the action=createBranch.
 
+ltImport('mdPosCore', 'TbPosBranchController.php'):
+Loads the controller securely using Data Defacing Model.
+
+Controller method is executed and its result echoed.
+
+exit() ensures no further code runs after handling the request.
+
+🔀 Available Routing Methods
+Method	Description
+LtRoute::post(key, value)	Handles a POST request with a specific key/value pair
+LtRoute::get(key, value)	Handles a GET request with a specific key/value pair
 
 ## `Navigation` Class
 
 The `LtNavigate` class is designed to help with page navigation, building URLs with query parameters, storing session data, and handling redirects.
-Also the helper function is ltNavigateTO().
+
+Also the helper function is ltNavigateTo().
 
 ## **Class: `LtNavigate`**
 
