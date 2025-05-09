@@ -7,6 +7,28 @@ _A modern PHP backend framework for secure and modular applications._
 This document outlines the standard folder structure of a LifetechOCMS application. It serves as a reference for developers who want to understand or contribute to the framework.
 
 lifetechocms/
+├── modules/             # Custom application modules
+│   └── mdPosProduct/    # Example module
+│       ├── controllers/ # Controller files (PHP)
+│       ├── views/       # View files (HTML, Liferazor)
+│       ├── models/      # Maplite ORM models
+│       └── based/       # Base logic classes or helpers
+│
+├── themes/              # Frontend UI themes
+├── plugins/             # Extendable functionality plugins
+├── public/              # Public root folder (entry: index.php)
+├── system/              # Core LifetechOCMS framework files
+├── config/              # Configuration files (e.g., database, tokens)
+├── storage/             # Cache, logs, session data
+├── routes/              # Routing definitions per module
+├── resources/           # Static assets and language files
+├── vendor/              # Composer-installed PHP dependencies
+├── .env                 # Environment configuration file
+├── composer.json        # Composer package file
+└── README.md            # Project description and overview
+
+
+lifetechocms/
 ├── admin                # Core LifetechOCMS Administrator files
 ├── lifemodules/         # Custom application modules
 │   └── mdPosProduct/    # Example module
