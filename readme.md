@@ -8,7 +8,7 @@ _A modern PHP backend framework for secure and modular applications._
 4. [Installation](#-installation--running)  
 5. [Publish Your First Content](#-publish-your-first-content)  
 6. [Project Structure](project_structure.md)  
-7. [Request & Response](#request_and_response.md)  
+7. [Request & Response](request_and_response.md)  
 8. [Importing Contents](#-importing-contents)  
 9. [Menu, Routing & Navigation](navigation.md)  
 10. [Working with Modules](#-working-with-modules) 
