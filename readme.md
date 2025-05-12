@@ -8,13 +8,14 @@ _A modern PHP backend framework for secure and modular applications._
 4. [Installation](#-installation--running)  
 5. [Publish Your First Content](#-publish-your-first-content)  
 6. [Project Structure](project_structure.md)  
-7. [Working with Modules](#-working-with-modules)  
+7. [Request & Response](#-request-and-response)  
 8. [Importing Contents](#-importing-contents)  
 9. [Menu, Routing & Navigation](navigation.md)  
-10. [Auth & Classes](#-auth--classes)  
-11. [Security Features](#security-features)  
-12. [Development Conventions](#development-conventions)  
-13. [Contributing Guides](contributing.md)  
+10. [Working with Modules](#-working-with-modules) 
+11. [Auth & Classes](#-auth--classes)  
+12. [Security Features](#security-features)  
+13. [Development Conventions](#development-conventions)  
+14. [Contributing Guides](contributing.md)  
 ---
 
 ## 🛠 Introduction  
