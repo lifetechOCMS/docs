@@ -10,7 +10,7 @@ _A modern PHP backend framework for secure and modular applications._
 
 # LtRoute Developer Documentation
 
-`LtRoute` is a lightweight PHP routing system designed to support HTTP method-based routing with optional middleware and controller invocation. It supports method spoofing (for PUT/DELETE in HTML forms or AJAX), parameter-based dispatching, and flexible syntax for defining routes.
+`LtRoute` is a lightweight Lifetechocms routing system designed to support HTTP method-based routing with optional middleware and controller invocation. It supports method spoofing (for PUT/DELETE in HTML forms or AJAX), parameter-based dispatching, and flexible syntax for defining routes.
 
 ---
 
@@ -30,7 +30,7 @@ LtRoute::post('update@save', 'UserController@saveUser');
 LtRoute::put('id@42', 'ModuleName@UserController@updateUser');
 LtRoute::get('showUser', function(){
     echo ltResponse::json('User Showed');
-});
+    });
 ```
 
 ### Route Matching Logic
@@ -41,8 +41,8 @@ LtRoute::get('showUser', function(){
   - **Expected Value**: the part after `@`
 
   ```php
-  LtRoute::put('update@action', 'UserController@updateUser');
-  // $_REQUEST['update'] === 'action' triggers the route
+  LtRoute::put('users@profile', 'UserController@updateUser');
+  // $_REQUEST['users'] === 'profile' triggers the route
   ```
 
 - When the key has **no `@`**, it defaults to:
@@ -83,7 +83,7 @@ To support PUT, DELETE, PATCH in HTML forms or JS requests:
 ```html
 <form method="POST">
   <input type="hidden" name="_method" value="PUT">
-  <input type="hidden" name="update" value="action">
+  <input type="hidden" name="users" value="profile">
   <button type="submit">Update</button>
 </form>
 ```
@@ -94,7 +94,7 @@ axios({
   method: 'put',
   url: '/route',
   data: {
-    update: 'action'
+    users: 'profile'
   }
 });
 ```
