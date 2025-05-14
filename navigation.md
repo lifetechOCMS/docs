@@ -24,7 +24,7 @@ To define routes, simply call the HTTP method statically on `LtRoute`. Supported
 - `delete()`
 - `patch()`
 
-Each method accepts two arguments:
+Each method accepts two arguments: the first parameter defines how the route is matched — either by the HTTP method parameter or directly by the URL — while the second parameter specifies the controller and method (or function) to invoke when the route matches.
 
 ```php
 LtRoute::post('update@save', 'UserController@saveUser');
