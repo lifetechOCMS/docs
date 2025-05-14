@@ -4,11 +4,11 @@ _A modern PHP backend framework for secure and modular applications._
 
 ## 📖 Table of Contents
 1. [Go back](readme.md)
-2. [ltRoute Developer Documentation](#--ltroute-developer-documentation)
+2. [ltRoute Developer Documentation](#ltroute-developer-documentation)
 3. [`LtNavigate` Class](#navigation-class)
  
 
-# 🚦LtRoute Developer Documentation
+# LtRoute Developer Documentation
 
 `LtRoute` is a lightweight PHP routing system designed to support HTTP method-based routing with optional middleware and controller invocation. It supports method spoofing (for PUT/DELETE in HTML forms or AJAX), parameter-based dispatching, and flexible syntax for defining routes.
 
