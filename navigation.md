@@ -8,44 +8,147 @@ _A modern PHP backend framework for secure and modular applications._
 3. [`LtNavigate` Class](#navigation-class)
 
 ## 🚦 ltRoute Documentation
-A smart, modular routing system in LifetechOCMS for mapping user requests to appropriate controllers.
 
-📌 Overview
-ltRoute is LifetechOCMS’s internal router system that connects frontend view requests to controller actions within a specific module. Each module has its own routing file (e.g., mdPosProductRoute.php) that maps view requests to controller functions.
- 
-## 🧱 Routing Syntax
-```
-if (LtRoute::post('action', 'createBranch')) {
-    //call on your controller class or return json value to the front-end
-}
-```
-Example
+# LtRoute Developer Documentation
+
+`LtRoute` is a lightweight PHP routing system designed to support HTTP method-based routing with optional middleware and controller invocation. It supports method spoofing (for PUT/DELETE in HTML forms or AJAX), parameter-based dispatching, and flexible syntax for defining routes.
+
+---
+
+## 📦 Usage Overview
+
+To define routes, simply call the HTTP method statically on `LtRoute`. Supported methods include:
+- `get()`
+- `post()`
+- `put()`
+- `delete()`
+- `patch()`
+
+Each method accepts two arguments:
+
 ```php
-if (LtRoute::post('action', 'createBranch')) {
-    ob_end_clean();
-    ltImport('mdPosCore', 'TbPosBranchController.php');
-    $branchCtrl = new TbPosBranchController();
-    echo $branchCtrl->create();
-    exit();
-}
+LtRoute::post('update@save', 'UserController@saveUser');
+LtRoute::put('id@42', 'UserController@updateUser');
+LtRoute::get('showUser', 'UserController@showUser');
 ```
-LtRoute::post('action', 'createBranch'):
-Checks if the incoming request is a POST where the action=createBranch.
 
-`ltImport('mdPosCore', 'TbPosBranchController.php')`:
-Loads the controller securely using Data Defacing Model.
+### Route Matching Logic
 
-Controller method is executed and its result echoed.
+#### Key Matching (`param@value`)
+- When the key contains an `@`, it is interpreted as:
+  - **Parameter**: the part before `@`
+  - **Expected Value**: the part after `@`
 
-`exit()` ensures no further code runs after handling the request.
+  ```php
+  LtRoute::put('update@action', 'UserController@updateUser');
+  // $_REQUEST['update'] === 'action' triggers the route
+  ```
 
-## 🔀 Available Routing Methods
-Method	Description
-`LtRoute::post(key, value)`	Handles a POST request with a specific key/value pair
+- When the key has **no `@`**, it defaults to:
+  - **Parameter**: `'action'`
+  - **Expected Value**: the key itself
 
-`LtRoute::get(key, value)`	Handles a GET request with a specific key/value pair
+  ```php
+  LtRoute::post('submitForm', 'FormController@handle');
+  // $_REQUEST['action'] === 'submitForm' triggers the route
+  ```
 
-You can also match with numeric or dynamic values:
+#### Direct URL Path Matching
+If the key contains a forward slash (`/`), it will be matched against the current URL path.
+
+```php
+LtRoute::get('/home', 'HomeController@index');
+// $_SERVER['REQUEST_URI'] === '/home' triggers the route
+```
+
+---
+
+## 💡 Example
+```php
+LtRoute::post('submit@form', function() {
+    echo "Form submitted!";
+});
+
+LtRoute::put('edit@user', 'UserController@edit');
+LtRoute::delete('/user/delete', 'UserController@delete');
+```
+
+---
+
+## 🔁 Method Spoofing
+To support PUT, DELETE, PATCH in HTML forms or JS requests:
+
+### HTML Form
+```html
+<form method="POST">
+  <input type="hidden" name="_method" value="PUT">
+  <input type="hidden" name="update" value="action">
+  <button type="submit">Update</button>
+</form>
+```
+
+### Axios Example (JS)
+```js
+axios({
+  method: 'put',
+  url: '/route',
+  data: {
+    update: 'action'
+  }
+});
+```
+
+`LtRoute` will recognize the spoofed `_method` and compare it with the route definition.
+
+---
+
+## 🧰 Controller Invocation
+Supports the format:
+- `'Controller@method'`
+- `'Module@Controller@method'`
+
+Example:
+```php
+LtRoute::get('load@page', 'PageController@load');
+LtRoute::post('submit@module', 'App\Module\Controller@submit');
+```
+
+---
+
+## 🔐 Middleware
+You can chain a middleware to a route:
+```php
+LtRoute::post('save@data', 'DataController@save')
+    ->middleware('AuthMiddleware@handle');
+```
+Middleware can be:
+- A closure
+- A `Class@method` pair
+
+If the middleware returns `false`, the request is halted.
+
+---
+
+## ⚙️ Custom Handlers
+You can pass closures directly for quick testing or simple responses:
+```php
+LtRoute::get('ping@pong', function() {
+    echo "Pong!";
+});
+```
+
+---
+
+## 🧠 Internal Notes
+- JSON payloads (`application/json`) are parsed from `php://input`
+- For PUT, PATCH, DELETE, request data is parsed manually.
+- If the key has no match or the method doesn’t align, the route silently fails.
+
+---
+
+This makes `LtRoute` a compact and flexible router for PHP projects.
+
+
 
 
 ## `Navigation` Class
