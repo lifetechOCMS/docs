@@ -4,7 +4,7 @@ _A modern PHP backend framework for secure and modular applications._
 
 ## 📖 Table of Contents
 1. [Go back](readme.md)
-2. [ltRoute Developer Documentation](#-ltroute-developer-documentation)
+2. [ltRoute Developer Documentation](#--ltroute-developer-documentation)
 3. [`LtNavigate` Class](#navigation-class)
  
 
