@@ -4,12 +4,11 @@ _A modern PHP backend framework for secure and modular applications._
 
 ## 📖 Table of Contents
 1. [Go back](readme.md)
-2. [ltRoute Documentation](#-ltroute-documentation)
+2. [ltRoute Developer Documentation](#-ltroute-developer-documentation)
 3. [`LtNavigate` Class](#navigation-class)
+ 
 
-## 🚦 ltRoute Documentation
-
-# LtRoute Developer Documentation
+# 🚦LtRoute Developer Documentation
 
 `LtRoute` is a lightweight PHP routing system designed to support HTTP method-based routing with optional middleware and controller invocation. It supports method spoofing (for PUT/DELETE in HTML forms or AJAX), parameter-based dispatching, and flexible syntax for defining routes.
 
@@ -24,12 +23,14 @@ To define routes, simply call the HTTP method statically on `LtRoute`. Supported
 - `delete()`
 - `patch()`
 
-Each method accepts two arguments: the first parameter defines how the route is matched — either by the HTTP method parameter or directly by the URL — while the second parameter specifies the controller and method (or function) to invoke when the route matches.
+Each method accepts two arguments: the `first` parameter defines how the route is matched — either by the HTTP method parameter or directly by the URL — while the `second` parameter specifies the controller and method (or function) to invoke when the route matches.
 
 ```php
 LtRoute::post('update@save', 'UserController@saveUser');
-LtRoute::put('id@42', 'UserController@updateUser');
-LtRoute::get('showUser', 'UserController@showUser');
+LtRoute::put('id@42', 'ModuleName@UserController@updateUser');
+LtRoute::get('showUser', function(){
+    echo ltResponse::json('User Showed');
+});
 ```
 
 ### Route Matching Logic
@@ -151,7 +152,7 @@ This makes `LtRoute` a compact and flexible router for PHP projects.
 
 
 
-## `Navigation` Class
+# `Navigation` Class
 
 The `LtNavigate` class is designed to help with page navigation, building URLs with query parameters, storing session data, and handling redirects.
 
