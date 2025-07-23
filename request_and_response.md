@@ -1,4 +1,12 @@
 
+# Request and Response Page 
+_A modern PHP backend framework for secure and modular applications wtih RBAC._
+
+## 📖 Table of Contents  
+1. [Go back](readme.md) 
+1. [Request](#lifetechocms--request-handling-guide)
+1. [Response](#ltresponse--standardized-response)
+
 # LifetechOCMS – Request Handling Guide
 
 This document explains how HTTP requests are handled in **LifetechOCMS**, using its built-in `LtRequest` class.
@@ -42,10 +50,6 @@ if (!filter_var($request->email, FILTER_VALIDATE_EMAIL)) {
 | Feature                 | Method/Usage                     |
 |------------------------|----------------------------------|
 | Get input field        | `$request->fieldName`            |
-| Get request method     | `$request->method()`             |
-| Check if AJAX request  | `$request->isAjax()`             |
-| Get uploaded file      | `$request->file('input_name')`   |
-
 ---
 
 ## 📌 Notes

@@ -55,10 +55,10 @@ if you want specific port number then
       php lt start "your-port-number"
    ```
 ## 📦 Project Structure
-The framework structure can be found on (project_structure.md) 
+The framework structure can be found on [Project struture](project_structure.md) 
 
 ## 📦 Request and Response
-Learn more on LtRequest and LtResponse (request_and_response.md)  
+Learn more on [LtRequest and LtResponse](request_and_response.md)  
 
 ## 📦 Importing Contents
 
