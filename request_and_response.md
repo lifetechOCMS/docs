@@ -81,3 +81,29 @@ if (!filter_var($request->email, FILTER_VALIDATE_EMAIL)) {
 - It's part of LifetechOCMS's secure, MVC-based architecture.
 
 --- 
+
+# LifetechOCMS – Response Handling Guide
+
+This document explains how HTTP response are handled in **LifetechOCMS**, using its built-in `LtResponse` class.
+
+---
+
+## 🚀 Overview
+
+LifetechOCMS uses a class called `LtResponse` to manage and simplify access to HTTP request data. This class encapsulates methods and properties for retrieving query parameters, POST data, uploaded files, request method, and more.
+
+---
+
+## 🧱 Basic Usage
+
+```php
+$response = new LtResponse();
+
+// Accessing input parameters (GET or POST)
+$username = $request->username;
+$password = $request->password;
+```
+
+`LtRequest` automatically maps all request parameters as public properties.
+
+---
