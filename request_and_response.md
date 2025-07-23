@@ -5,7 +5,7 @@ _A modern PHP backend framework for secure and modular applications wtih RBAC._
 ## 📖 Table of Contents  
 1. [Go back](readme.md) 
 1. [Request](#lifetechocms--request-handling-guide)
-1. [Response](#ltresponse--standardized-response)
+1. [Response](#-ltresponse--standardized-response)
 
 # LifetechOCMS – Request Handling Guide
 
