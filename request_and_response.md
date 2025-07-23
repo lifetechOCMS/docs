@@ -104,6 +104,6 @@ $username = $request->username;
 $password = $request->password;
 ```
 
-`LtRequest` automatically maps all request parameters as public properties.
+`Try to worki` automatically maps all request parameters as public properties.
 
 ---
