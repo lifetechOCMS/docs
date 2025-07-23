@@ -60,6 +60,9 @@ The framework structure can be found on [Project struture](project_structure.md)
 ## 📦 Request and Response
 Learn more on [LtRequest and LtResponse](request_and_response.md)  
 
+## 📦 Api resource, Routing, Page Navigation and menus
+Learn more on [LtRouting and LtNavigation](navigation.md) 
+
 ## 📦 Importing Contents
 
 LifetechOCMS uses a custom import function called ltImport() to load files such as models, controllers, helpers, or other PHP resources from a module. This design promotes modularity, security, and clean architecture by keeping each module self-contained.

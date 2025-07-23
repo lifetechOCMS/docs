@@ -16,65 +16,67 @@ _A modern PHP backend framework for secure and modular applications._
 
 ## 📦 Usage Overview
 
-To define routes, simply call the HTTP method statically on `LtRoute`. Supported methods include:
-- `get()`
-- `post()`
-- `put()`
-- `delete()`
-- `patch()`
-
-Each method accepts two arguments: the `first` parameter defines how the route is matched — either by the HTTP method parameter or directly by the URL — while the `second` parameter specifies the controller and method (or function) to invoke when the route matches.
-
-```php
-LtRoute::post('update@save', 'UserController@saveUser');
-LtRoute::put('id@42', 'ModuleName@UserController@updateUser');
-LtRoute::get('showUser', function(){
-    echo ltResponse::json('User Showed');
-    });
-```
-
-### Route Matching Logic
-
-#### Key Matching (`param@value`)
-- When the key contains an `@`, it is interpreted as:
-  - **Parameter**: the part before `@`
-  - **Expected Value**: the part after `@`
-
-  ```php
-  LtRoute::put('users@profile', 'UserController@updateUser');
-  // $_REQUEST['users'] === 'profile' triggers the route
-  ```
-
-- When the key has **no `@`**, it defaults to:
-  - **Parameter**: `'action'`
-  - **Expected Value**: the key itself
-
-  ```php
-  LtRoute::post('submitForm', 'FormController@handle');
-  // $_REQUEST['action'] === 'submitForm' triggers the route
-  ```
-
-#### Direct URL Path Matching
-If the key contains a forward slash (`/`), it will be matched against the current URL path.
-
-```php
-LtRoute::get('/home', 'HomeController@index');
-// $_SERVER['REQUEST_URI'] === '/home' triggers the route
-```
+This guide covers how to define and manage routes using the `LtRoute` class in **LifetechOCMS**. It supports RESTful paths, dynamic placeholders, and inline closures.
 
 ---
 
-## 💡 Example
+## 📌 Basic Syntax
+
 ```php
-LtRoute::post('submit@form', function() {
-    echo "Form submitted!";
+LtRoute::get('/students', 'ModuleName@ControllerName@methodName');
+LtRoute::patch('/students/{id}', 'ModuleName@ControllerName@methodName');
+LtRoute::post('/students', function () {
+    echo "posting this method";
 });
-
-LtRoute::put('edit@user', 'UserController@edit');
-LtRoute::delete('/user/delete', 'UserController@delete');
 ```
 
 ---
+
+## 🧭 HTTP Methods
+
+| Method     | Usage Example |
+|------------|----------------|
+| GET        | `LtRoute::get('/path', 'Module@Controller@method')` |
+| POST       | `LtRoute::post('/path', function() {})` |
+| POST       | `LtRoute::put('/path{id}', function() {})` |
+| PATCH      | `LtRoute::patch('/path/{id}', 'Module@Controller@method')` |
+| DELETE     | `LtRoute::delete('/path/{id}', 'Module@Controller@method')` |
+
+---
+
+## 🧩 Dynamic Routes
+
+You can define routes with placeholders using curly braces:
+
+```php
+LtRoute::get('/students/{id}', 'ModuleName@StudentController@view');
+```
+
+The `{id}` placeholder is automatically extracted and passed as an argument to the controller method.
+
+---
+
+## 🔒 Closure Support
+
+Closures can be used directly in the route handler:
+
+```php
+LtRoute::get('/test', function () {
+    echo "This is a closure route";
+});
+```
+
+---
+
+## 🧼 Notes
+
+- All paths should start with a `/`.
+- Always use proper `ModuleName@Controller@method` format.
+- Supports RESTful design and dynamic parameters.
+
+---
+
+  
 
 ## 🔁 Method Spoofing
 To support PUT, DELETE, PATCH in HTML forms or JS requests:
@@ -110,42 +112,17 @@ Supports the format:
 
 Example:
 ```php
-LtRoute::get('load@page', 'PageController@load');
-LtRoute::post('submit@module', 'App\Module\Controller@submit');
+LtRoute::get('/students', 'StudentController@load');
+LtRoute::post('/students/regoster', 'mdStudent@StudentController@submit');
 ```
 
 ---
 
 ## 🔐 Middleware
-You can chain a middleware to a route:
-```php
-LtRoute::post('save@data', 'DataController@save')
-    ->middleware('AuthMiddleware@handle');
-```
-Middleware can be:
-- A closure
-- A `Class@method` pair
-
-If the middleware returns `false`, the request is halted.
+Lifetechocms already incorporated with RBAC so just publish your route to a the role
 
 ---
 
-## ⚙️ Custom Handlers
-You can pass closures directly for quick testing or simple responses:
-```php
-LtRoute::get('ping@pong', function() {
-    echo "Pong!";
-});
-```
-
----
-
-## 🧠 Internal Notes
-- JSON payloads (`application/json`) are parsed from `php://input`
-- For PUT, PATCH, DELETE, request data is parsed manually.
-- If the key has no match or the method doesn’t align, the route silently fails.
-
----
 
 This makes `LtRoute` a compact and flexible router for PHP projects.
 
