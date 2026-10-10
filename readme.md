@@ -19,7 +19,7 @@ _A modern PHP backend framework for secure and modular applications._
 ---
 
 ## 🛠 Introduction  
-Lifetech OCMS is a PHP framework designed with security, modularity, and performance in mind. It includes:  
+LifetechOCMS is a PHP framework designed with security, modularity, and performance in mind. It includes:  
 - **DDM Encryption**: Secure deployment by encrypting source code.  
 - **LW-Token System**: Secure authentication.  
 - **Modular Structure**: Separate themes, modules, and plugins.  
