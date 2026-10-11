@@ -4,144 +4,6 @@ Source: https://www.lifetech.host/hubs/Docs#theme-development-overview
 
 Website edition retrieved 10 October 2026.
 
-## Contents
-
-Select a topic or subtopic to navigate within this document.
-
-- [Theme Development Overview](#theme-development-overview)
-  - [What a theme does](#what-a-theme-does)
-  - [Requirements and testing environment](#requirements-and-testing-environment)
-  - [How to use this guide](#how-to-use-this-guide)
-  - [Key terminology](#key-terminology)
-- [Accessing Themes Development](#accessing-themes-development)
-  - [Open the theme management area](#open-the-theme-management-area)
-  - [Understand the theme list and actions](#understand-the-theme-list-and-actions)
-- [Theme Development Conventions](#theme-development-conventions)
-  - [1. Theme package names use PascalCase](#1-theme-package-names-use-pascalcase)
-  - [2. File names and content names use PascalCase](#2-file-names-and-content-names-use-pascalcase)
-  - [3. Theme versions use v followed by three numeric parts](#3-theme-versions-use-v-followed-by-three-numeric-parts)
-  - [4. GitHub release tags use the same three part version](#4-github-release-tags-use-the-same-three-part-version)
-- [Add Theme Package](#add-theme-package)
-  - [Understand package metadata and dependencies](#understand-package-metadata-and-dependencies)
-- [Theme Content and the Four Resource Types](#theme-content-and-the-four-resource-types)
-  - [Component content](#component-content)
-  - [View content](#view-content)
-  - [Layout content](#layout-content)
-  - [Asset content](#asset-content)
-  - [How these types work together](#how-these-types-work-together)
-- [Understand Theme Folders and Subfolders](#understand-theme-folders-and-subfolders)
-  - [How subfolders work](#how-subfolders-work)
-  - [What ddm and Export mean for a beginner](#what-ddm-and-export-mean-for-a-beginner)
-- [Add New Theme Content](#add-new-theme-content)
-  - [Understand the content form](#understand-the-content-form)
-- [Sync Files](#sync-files)
-  - [Which folders are scanned](#which-folders-are-scanned)
-  - [Register a locally created view](#register-a-locally-created-view)
-  - [Use Sync Files with AI generated code](#use-sync-files-with-ai-generated-code)
-  - [Understand syncing versus editing](#understand-syncing-versus-editing)
-- [Editing Theme Content Code](#editing-theme-content-code)
-  - [Use the built in code editor](#use-the-built-in-code-editor)
-  - [Work with a local code editor](#work-with-a-local-code-editor)
-  - [Check your saved changes](#check-your-saved-changes)
-- [Edit or Update Existing Theme Content](#edit-or-update-existing-theme-content)
-  - [Edit content settings](#edit-content-settings)
-  - [Upload an updated content file](#upload-an-updated-content-file)
-  - [Check references after a change](#check-references-after-a-change)
-- [Build the Shared Theme Components](#build-the-shared-theme-components)
-  - [Add the stylesheet](#add-the-stylesheet)
-  - [Create the document opening component](#create-the-document-opening-component)
-  - [Understand ltSiteName](#understand-ltsitename)
-  - [Understand ltImport](#understand-ltimport)
-  - [Create the visible header and navigation](#create-the-visible-header-and-navigation)
-  - [Add JavaScript and the footer](#add-javascript-and-the-footer)
-  - [Know whether your asset already contains tags](#know-whether-your-asset-already-contains-tags)
-- [Add the Compulsory Dynamic Content Loader](#add-the-compulsory-dynamic-content-loader)
-  - [Add the loader to your theme](#add-the-loader-to-your-theme)
-  - [How does it work](#how-does-it-work)
-  - [Why is it necessary](#why-is-it-necessary)
-  - [How is this different from ltImport](#how-is-this-different-from-ltimport)
-  - [What if the page uses a separate layout](#what-if-the-page-uses-a-separate-layout)
-- [Create Views Pages and Menus](#create-views-pages-and-menus)
-  - [Write the Home and About views](#write-the-home-and-about-views)
-  - [What happens when you create a view](#what-happens-when-you-create-a-view)
-  - [Check the generated route before writing links](#check-the-generated-route-before-writing-links)
-  - [Preview the generated pages](#preview-the-generated-pages)
-  - [Review publication and access settings](#review-publication-and-access-settings)
-- [Load Menus for the Current Users Roles](#load-menus-for-the-current-users-roles)
-  - [Understand token and session identification](#understand-token-and-session-identification)
-  - [Prepare the API and site addresses](#prepare-the-api-and-site-addresses)
-  - [Load menu data without HTML or CSS](#load-menu-data-without-html-or-css)
-  - [Inspect data before rendering](#inspect-data-before-rendering)
-  - [Understand the response fields](#understand-the-response-fields)
-  - [Display menus with plain HTML](#display-menus-with-plain-html)
-  - [Connect loading and rendering](#connect-loading-and-rendering)
-  - [Optional PHP rendering](#optional-php-rendering)
-  - [Test roles and distinguish the two loaders](#test-roles-and-distinguish-the-two-loaders)
-- [Understand the Default Layout and Custom Layouts](#understand-the-default-layout-and-custom-layouts)
-  - [Default components form the default layout](#default-components-form-the-default-layout)
-  - [15.2 Unpublish individual components on a page](#152-unpublish-individual-components-on-a-page)
-  - [Create custom Layout content](#create-custom-layout-content)
-  - [Add your own layout styling](#add-your-own-layout-styling)
-  - [Assign pages to the custom layout](#assign-pages-to-the-custom-layout)
-  - [Compare the two approaches](#compare-the-two-approaches)
-- [Import Content and Load Content](#import-content-and-load-content)
-  - [Method 1 Import registered content with ltImport](#method-1-import-registered-content-with-ltimport)
-  - [Method 2 Load content through direct or CDN links](#method-2-load-content-through-direct-or-cdn-links)
-  - [Which method should you use](#which-method-should-you-use)
-- [Use Site Information and Helper Functions](#use-site-information-and-helper-functions)
-  - [Other helpers used in your theme](#other-helpers-used-in-your-theme)
-  - [Use more site configuration helpers](#use-more-site-configuration-helpers)
-  - [Understand the URL and environment helpers](#understand-the-url-and-environment-helpers)
-- [Connect Theme Views to Backend APIs](#connect-theme-views-to-backend-apis)
-  - [Understand the API terms](#understand-the-api-terms)
-  - [Create a Posts view](#create-a-posts-view)
-  - [Read what the code does](#read-what-the-code-does)
-  - [Send a token for a protected request](#send-a-token-for-a-protected-request)
-- [Edit Theme Package](#edit-theme-package)
-  - [Update package information](#update-package-information)
-  - [Maintain the version and dependencies](#maintain-the-version-and-dependencies)
-  - [Write a useful README](#write-a-useful-readme)
-- [Previewing a Theme](#previewing-a-theme)
-  - [Open Preview](#open-preview)
-  - [Check the first working result](#check-the-first-working-result)
-  - [Test pages and browser behaviour](#test-pages-and-browser-behaviour)
-- [Publishing a Theme](#publishing-a-theme)
-  - [Understand publishing](#understand-publishing)
-  - [Publish through the panel](#publish-through-the-panel)
-  - [Check content publication separately](#check-content-publication-separately)
-- [Publish Theme to Page](#publish-theme-to-page)
-  - [When to use a page specific theme](#when-to-use-a-page-specific-theme)
-  - [Apply a theme to selected pages](#apply-a-theme-to-selected-pages)
-  - [Distinguish theme selection from View creation](#distinguish-theme-selection-from-view-creation)
-- [Set Theme as Default](#set-theme-as-default)
-  - [What default means](#what-default-means)
-  - [Select the default theme](#select-the-default-theme)
-  - [What happens to the previous default](#what-happens-to-the-previous-default)
-- [Export Theme](#export-theme)
-  - [Prepare the theme](#prepare-the-theme)
-  - [Export through the panel](#export-through-the-panel)
-  - [Understand what an export contains](#understand-what-an-export-contains)
-  - [Name the exported package](#name-the-exported-package)
-- [Installing a Theme](#installing-a-theme)
-  - [Method 1 Download and upload the theme](#method-1-download-and-upload-the-theme)
-  - [Method 2 Browse Online from the backend](#method-2-browse-online-from-the-backend)
-  - [Verify and choose how to use the theme](#verify-and-choose-how-to-use-the-theme)
-- [Delete Theme](#delete-theme)
-  - [Check before deleting](#check-before-deleting)
-  - [Delete through the panel](#delete-through-the-panel)
-  - [Check the result](#check-the-result)
-- [Security and Management Permissions](#security-and-management-permissions)
-  - [Backend management roles](#backend-management-roles)
-  - [Page access and API permissions](#page-access-and-api-permissions)
-  - [Site wide changes](#site-wide-changes)
-  - [Safe output and external assets](#safe-output-and-external-assets)
-- [Troubleshooting and Development Checklist](#troubleshooting-and-development-checklist)
-  - [Solve common beginner problems](#solve-common-beginner-problems)
-  - [Final checklist](#final-checklist)
-- [Example Themes and References](#example-themes-and-references)
-  - [Inspect the supplied themes](#inspect-the-supplied-themes)
-  - [Documentation references](#documentation-references)
-
 ## Theme Development Overview
 
 This guide teaches you how to create and manage a LifeTechOCMS theme. We build ThemeStarter with Home and About views, shared components, CSS and JavaScript, then add an optional dashboard layout and a backend API example.
@@ -160,7 +22,7 @@ Write theme content in the LifeTechOCMS code editor, or edit the corresponding f
 
 Follow sections [Accessing Themes Development](#accessing-themes-development) to [Create Views Pages and Menus](#create-views-pages-and-menus) to build your first theme.
 
-Section [Load Menus for the Current Users Roles](#load-menus-for-the-current-users-roles) adds role-based menus and section [Understand the Default Layout and Custom Layouts](#understand-the-default-layout-and-custom-layouts) explains alternative layouts. Sections [Import Content and Load Content](#import-content-and-load-content) to [Connect Theme Views to Backend APIs](#connect-theme-views-to-backend-apis) cover imports, helpers and APIs; sections [Edit Theme Package](#edit-theme-package) to [Security and Management Permissions](#security-and-management-permissions) cover management actions. Use a section title such as 'How does it work' when recording an observation.
+Section [Load Menus for the Current Users Roles](#load-menus-for-the-current-users-roles) adds role-based menus and section [Understand Default Components and Alternative Layouts](#understand-the-default-layout-and-custom-layouts) explains alternative layouts. Sections [Import Content and Load Assets](#import-content-and-load-content) to [Connect Theme Views to Backend APIs](#connect-theme-views-to-backend-apis) cover imports, helpers and APIs; sections [Edit Theme Package](#edit-theme-package) to [Security and Management Permissions](#security-and-management-permissions) cover management actions. Use a section title such as 'How does it work' when recording an observation.
 
 The snippets use ThemeStarter consistently. ThemeNova and ThemeStarter follow the same confirmed package and content naming conventions; this guide does not require ThemeNova to be installed. The CSS is a small teaching example, and the loader can work with your chosen styling framework.
 
@@ -189,8 +51,6 @@ The snippets use ThemeStarter consistently. ThemeNova and ThemeStarter follow th
 **A view is not a page route.** Home.html is a content filename; /ThemeStarter/Home is the address visitors open. When you create content as a View resource, LifeTechOCMS creates its page and menu automatically.
 
 **A layout is also content.** Components, views, layouts and assets are all managed as content items. Their resource types tell LifeTechOCMS what kind of content they are and where their files belong.
-
-[Back to contents](#contents)
 
 ## Accessing Themes Development
 
@@ -223,8 +83,6 @@ Button labels and icon placement can vary by installed version. Use the matching
 ![image](https://www.lifetech.host/hubs/packages/modules/MdDocs/Media/6f8b73070fc43c63ca1ec01cabb6e80e.png)
 
 **Expected result:** you can locate a theme package and distinguish package actions from actions on its content.
-
-[Back to contents](#contents)
 
 ## Theme Development Conventions
 
@@ -286,8 +144,6 @@ Use GitHub tags such as v1.0.0, v1.0.1 and v1.1.0. The release tag must match th
 
 For a theme whose package version is v1.0.0, the matching release tag is v1.0.0. Avoid shortened tags such as v1.0 for this convention. Update the package version before preparing its matching release tag.
 
-[Back to contents](#contents)
-
 ## Add Theme Package
 
 1. Sign in to the backend.
@@ -342,8 +198,6 @@ This is a shortened explanation, not a replacement for the generated manifest. K
 1. ltVersion specifies the LifeTechOCMS version associated with the package.
 
 ![image](https://www.lifetech.host/hubs/packages/modules/MdDocs/Media/e29ced364add1115c56b86eabc51318f.png)
-
-[Back to contents](#contents)
 
 ## Theme Content and the Four Resource Types
 
@@ -414,8 +268,6 @@ A resource type describes the content's purpose; it is different from its extens
 
 ![image](https://www.lifetech.host/hubs/packages/modules/MdDocs/Media/92c1d75ea0ee501dbb9f24387ff8353b.png)
 
-[Back to contents](#contents)
-
 ## Understand Theme Folders and Subfolders
 
 Your local theme lives under packages/themes/ThemeStarter/. Both uploaded themes use the following folders, with these exact capital letters.
@@ -453,8 +305,6 @@ ThemeBlog uses lowercase admin; ThemeBrainDump uses folders such as Admin and Au
 
 Export/content.json contains content registrations. Export/page.json contains page and route records. Export/menu.json contains menu records. Both supplied themes also have pageContent.json and table.json, currently containing empty arrays. Let LifeTechOCMS manage these records through its panel and export process.
 
-[Back to contents](#contents)
-
 ## Add New Theme Content
 
 Open ThemeStarter and select **Add Content**. Create the following items one at a time.
@@ -491,8 +341,6 @@ After creating an item, use its **Code Editor** action to enter the code in sect
 **What you have now:** eight registered items. Sections '**Build the Shared Theme Components**' to '**Create Views Pages and Menus**' give each item a specific job.  
 
 ![image](https://www.lifetech.host/hubs/packages/modules/MdDocs/Media/c144949b1140ee0331f7c310c1030806.png)
-
-[Back to contents](#contents)
 
 ## Sync Files
 
@@ -555,8 +403,6 @@ A file generated in another directory or on another computer must first be copie
 
 Saving an existing registered file changes its code. Creating a new file adds a file to disk; Sync Files supplies its content registration. After syncing, review publication, access and default component settings separately.
 
-[Back to contents](#contents)
-
 ## Editing Theme Content Code
 
 ### Use the built in code editor
@@ -587,8 +433,6 @@ The previous online guide used a single contents folder. Use the resource folder
 
 Change a paragraph in Home.html, save it and open the generated Home page. The new text should appear. If PHP appears as text, check that you opened the page through LifeTechOCMS rather than opening the file directly.
 
-[Back to contents](#contents)
-
 ## Edit or Update Existing Theme Content
 
 ### Edit content settings
@@ -612,8 +456,6 @@ Use Code Editor when writing code in the panel; use Upload when replacing it wit
 If you change a content name or path, verify imports, direct asset links and relevant page assignments. A direct URL contains the folders and filename, so a moved asset requires an updated URL. Registered imports must still identify the correct content item.
 
 **Expected result:** the existing registered item contains the update and pages that use it continue to work.
-
-[Back to contents](#contents)
 
 ## Build the Shared Theme Components
 
@@ -790,8 +632,6 @@ Do not wrap an asset that already contains [[script]] tags inside another [[scri
 
 When an asset contains PHP, load it through LifeTechOCMS's registered content processing. A direct request for an ordinary .js file does not normally execute PHP embedded in it.
 
-[Back to contents](#contents)
-
 ## Add the Compulsory Dynamic Content Loader
 
 Your theme provides the page design, including its header, navigation and footer. Each page also needs a place to display the content assigned to it.
@@ -853,8 +693,6 @@ Use an import for a specific reusable item. Keep the dynamic loader where page-a
 ### What if the page uses a separate layout
 
 A separate layout also needs a dynamic insertion point. Place the same function call inside that layout where assigned content should appear. The default composition provides the loader through ContentLoadBody; an alternative layout can provide it directly. Check that the resulting composition does not load the same dynamic content twice.
-
-[Back to contents](#contents)
 
 ## Create Views Pages and Menus
 
@@ -919,8 +757,6 @@ Automatic creation establishes the page, content and menu relationships. You can
 Automatic creation connects the records. Review who can visit the page and whether its content is published for those visitors. A published theme does not by itself give an anonymous visitor access to a restricted page.
 
 **Expected result:** Home and About each have their own page and menu, and the loader displays the appropriate assigned view.
-
-[Back to contents](#contents)
 
 ## Load Menus for the Current Users Roles
 
@@ -1245,8 +1081,6 @@ A menu directs the visitor to a page. The dynamic content loader displays that p
 
 **Expected result:** the theme loads role-filtered menu data and displays it using a separate renderer.
 
-[Back to contents](#contents)
-
 ## Understand the Default Layout and Custom Layouts
 
 LifeTechOCMS offers two ways to arrange a page's design: default components that together form the theme's default layout, and a separate custom Layout content item assigned to selected pages.
@@ -1386,8 +1220,6 @@ A separate Layout content item is optional because default components already pr
 
 **Expected result:** you understand both layout approaches and can assign the member layout to its intended pages.
 
-[Back to contents](#contents)
-
 ## Import Content and Load Content
 
 Importing means reusing an existing content item inside another content item. For example, a layout can include a sidebar component, and a header can load a stylesheet.
@@ -1493,8 +1325,6 @@ A CDN link follows the same browser-loading principle but points to a CDN-hosted
 
 **With ltImport, supply the package name and registered filename. With direct linking, supply the package name and full remaining path to the file.**
 
-[Back to contents](#contents)
-
 ## Use Site Information and Helper Functions
 
 ### Other helpers used in your theme
@@ -1586,8 +1416,6 @@ Check how your logo setting is stored before adding a directory: a stored full U
 Use **ltSiteUrl()** for installation-relative page links. Use a package parent helper for direct asset links and explicitly add the package folder name. These functions provide addresses; they do not replace content registration or page assignment.
 
 Full helper reference: [LtSiteInfo and Site Helper Functions](https://www.lifetech.host/hubs/Docs#ltsiteinfo-and-site-helper-functions)
-
-[Back to contents](#contents)
 
 ## Connect Theme Views to Backend APIs
 
@@ -1692,8 +1520,6 @@ ThemeBlog's administration views use the Authorization header. This example prep
 
 Use these headers only with the intended trusted backend and the module's documented request. Backend permissions must still decide what the caller can do. For a JSON submission, the module may require Content-Type: application/json and a body built with JSON.stringify(); follow its actual method and field names.
 
-[Back to contents](#contents)
-
 ## Edit Theme Package
 
 ### Update package information
@@ -1719,8 +1545,6 @@ Include the theme's purpose, installation instructions, required packages, inten
 
 ![image](https://www.lifetech.host/hubs/packages/modules/MdDocs/Media/3e0992590310e5957b493008178f4918.png)
 
-[Back to contents](#contents)
-
 ## Previewing a Theme
 
 ### Open Preview
@@ -1744,7 +1568,7 @@ Confirm these results:
 1. The navigation links open their configured routes.
 1. The page remains readable on a narrow screen.
 
-**You have completed a basic theme.** Sections [Understand the Default Layout and Custom Layouts](#understand-the-default-layout-and-custom-layouts) and [Connect Theme Views to Backend APIs](#connect-theme-views-to-backend-apis) extend it with an alternative layout and backend data.
+**You have completed a basic theme.** Sections [Understand Default Components and Alternative Layouts](#understand-the-default-layout-and-custom-layouts) and [Connect Theme Views to Backend APIs](#connect-theme-views-to-backend-apis) extend it with an alternative layout and backend data.
 
 ### Test pages and browser behaviour
 
@@ -1753,8 +1577,6 @@ Use Preview while developing. Check Home, About and any separate layout. Test li
 Check that only one document wrapper and one dynamic insertion point appear in the chosen composition. For API views, test successful data, an empty response and a failed request.
 
 **Expected result:** you have verified the design before using the publishing actions.
-
-[Back to contents](#contents)
 
 ## Publishing a Theme
 
@@ -1774,8 +1596,6 @@ Publishing makes a theme available for frontend use. Installing or creating a th
 Theme publication, page content publication and page access are different settings. Confirm all three when reviewing a page. If the header appears but the view does not, inspect ContentLoadBody and the assigned conten's publication rather than repeatedly publishing the theme.
 
 **Expected result:** the theme is available to apply, and its intended content can be displayed for the intended visitors.
-
-[Back to contents](#contents)
 
 ## Publish Theme to Page
 
@@ -1804,8 +1624,6 @@ Creating View content automatically creates its page and menu and connects the c
  
 **Expected result:** the selected pages use the chosen design while the site retains its configured default theme.
 
-[Back to contents](#contents)
-
 ## Set Theme as Default
 
 ### What default means
@@ -1833,8 +1651,6 @@ The selected theme becomes the main design, and the previous theme loses default
 
 **Expected result:** one theme is identified as the default, and the site's ordinary frontend pages use the intended design.
 
-[Back to contents](#contents)
-
 ## Export Theme
 
 ### Prepare the theme
@@ -1860,8 +1676,6 @@ The supplied exports combine source files with registration records such as cont
 Use a filename beginning with Theme, such as ThemeStarter.zip, as required by the previous installation documentation. Share installation guidance and dependency information with the ZIP.
 
 **Expected result:** you have a platform-exported theme package ready for backup or installation.
-
-[Back to contents](#contents)
 
 ## Installing a Theme
 
@@ -1901,8 +1715,6 @@ Check the theme's supported core versions before installing. Preserve its declar
 
 ![image](https://www.lifetech.host/hubs/packages/modules/MdDocs/Media/e27a7fb04cfcdcaa430cb45bb045ccb9.png)
 
-[Back to contents](#contents)
-
 ## Delete Theme
 
 ### Check before deleting
@@ -1925,8 +1737,6 @@ Test the default frontend design and any pages previously using the deleted them
 
 **Expected result:** the unwanted theme is removed and the site still has a working default design.
 
-[Back to contents](#contents)
-
 ## Security and Management Permissions
 
 ### Backend management roles
@@ -1946,8 +1756,6 @@ Changing the default theme affects the main frontend design. Preview and test re
 Use htmlspecialchars when displaying text in HTML, json_encode when supplying PHP values to JavaScript, and textContent for plain text returned by APIs. Choose asset URLs intentionally and confirm their availability in the browser's Network panel.
 
 **Expected result:** package management, page access and backend authorization are understood as separate responsibilities.
-
-[Back to contents](#contents)
 
 ## Troubleshooting and Development Checklist
 
@@ -1978,8 +1786,6 @@ Use htmlspecialchars when displaying text in HTML, json_encode when supplying PH
 1. Preview every page and install the modules required by API examples.
 1. Export through LifeTechOCMS when preparing the theme for another installation.
 
-[Back to contents](#contents)
-
 ## Example Themes and References
 
 ### Inspect the supplied themes
@@ -2004,5 +1810,3 @@ Previous learning documentation: [Theme Development](https://www.lifetech.host/h
 The updated folder names, resource types, registration fields and function calls are grounded in the supplied ThemeBlog and ThemeBrainDump packages. The beginner theme is a new teaching example built from those patterns. The view creation workflow and DDM terminology include the platform author's corrections. Exact layout controls should be checked in the installed platform.
 
 Site helper reference: [Site Info](https://www.lifetech.host/hubs/Docs#ltsiteinfo-and-site-helper-functions)
-
-[Back to contents](#contents)
