@@ -17,6 +17,7 @@ _A modern PHP backend framework for secure and modular applications._
 13. [Development Conventions](#development-conventions)  
 14. [Contributing Guides](contributing.md) 
 15. [Theme Development](theme-development.md)  
+15. [Theme Development2](theme-dev/theme-development.md)  
 ---
 
 ## 🛠 Introduction  
