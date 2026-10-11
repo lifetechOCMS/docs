@@ -15,9 +15,8 @@ _A modern PHP backend framework for secure and modular applications._
 11. [Auth & Classes](#-auth--classes)  
 12. [Security Features](#security-features)  
 13. [Development Conventions](#development-conventions)  
-14. [Contributing Guides](contributing.md) 
-15. [Theme Development](theme-development.md)  
-15. [Theme Development2](theme-dev/theme-development.md)  
+14. [Contributing Guides](contributing.md)   
+15. [Learn Theme Development](theme-dev/README.md)  
 ---
 
 ## 🛠 Introduction  
