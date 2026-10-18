@@ -3,39 +3,7 @@
 LifeTechOCMS is a PHP-based content management system and application framework for building websites, portals, APIs and business applications.
 
 It brings content management and application development into one platform. Administrators manage pages, menus, users and access permissions through the backend, while developers extend the application through themes, modules and plugins.
-
-## On this page
-
-- [How the platform fits together](#how-the-platform-fits-together)
-- [Choose your starting point](#choose-your-starting-point)
-- [Development and deployment](#development-and-deployment)
-- [Documentation areas](#documentation-areas)
-- [Complete guide](#complete-guide)
-- [Using this documentation](#using-this-documentation)
-
-## How the platform fits together
-
-| Part | Responsibility | Example |
-| --- | --- | --- |
-| Theme | Page presentation, reusable components and layouts | A public website design or member dashboard |
-| Module | Application features and backend logic | Blog posts and their backend APIs |
-| Plugin | Extensions and integrations | A supporting editor or frontend library |
-| Page and content | Destinations and the registered content assigned to them | A page displaying an assigned theme view |
-| Roles and permissions | Control access to the relevant pages and operations | Different access for visitors and signed-in users |
-
-For example, a blog module can provide posts and backend APIs while a theme presents those posts to visitors. The same installation can support additional features, each with its own content and access requirements.
-
-A theme's dynamic content loader displays the content assigned to the current page. This lets developers build a shared page design while using different theme, module or plugin content on individual pages.
-
-## Choose your starting point
-
-- **New to LifeTechOCMS?** Begin with [Getting Started](get-started/README.md) for requirements, installation and first-run guidance.
-- **Managing a website?** Explore the [Backend Tutorial](backend-tutorial/README.md) for administration tasks.
-- **Building an interface?** Follow [Theme Development](backend-development/theme-dev/README.md).
-- **Building application features?** Follow [Module Development](backend-development/module-dev/README.md).
-- **Looking up a helper or class?** Open [Functions and Classes](functions-and-classes/README.md).
-- **Working with backend requests and responses?** Read [Request and Response Management](request-and-respond-management/README.md).
-
+ 
 ## Development and deployment
 
 Start by checking the [installation and system requirements](get-started/README.md) for the LifeTechOCMS release you intend to use. Follow the documented setup before creating or installing packages.
