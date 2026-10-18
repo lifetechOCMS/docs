@@ -4,110 +4,153 @@
 
 ## On this page
 
-- [Default components form the default layout](#default-components-form-the-default-layout)
-- [15.2 Unpublish individual components on a page](#152-unpublish-individual-components-on-a-page)
-- [Create custom Layout content](#create-custom-layout-content)
-- [Add your own layout styling](#add-your-own-layout-styling)
-- [Assign pages to the custom layout](#assign-pages-to-the-custom-layout)
-- [Compare the two approaches](#compare-the-two-approaches)
+- [Understand how the layout is selected](#understand-how-the-layout-is-selected)
+- [Create the automatic default layout](#create-the-automatic-default-layout)
+- [Understand the fallback default components](#understand-the-fallback-default-components)
+- [Create a custom layout for selected pages](#create-a-custom-layout-for-selected-pages)
+- [Add your own styling](#add-your-own-styling)
+- [Assign a custom layout through the backend](#assign-a-custom-layout-through-the-backend)
+- [Prepare automatic custom layout assignments](#prepare-automatic-custom-layout-assignments)
+- [Compare the layout approaches](#compare-the-layout-approaches)
+- [Check the result](#check-the-result)
 
-LifeTechOCMS offers two ways to arrange a page's design: default components that together form the theme's default layout, and a separate custom Layout content item assigned to selected pages.
+A layout controls the structure around the content assigned to a page. In the updated LifeTechOCMS workflow, `Layouts/Default.html` is selected automatically as the theme's default layout. Selected pages can use a different registered Layout content item, such as `MemberLayout.html`.
 
-## Default components form the default layout
+## Understand how the layout is selected
 
-Component content has an optional is_theme_default field with Yes or No. All components set to Yes automatically form the theme's default layout for new pages. You do not need to write a separate Layout content file for this default composition.
+| Page configuration | Layout used |
+| --- | --- |
+| A page has a custom layout assignment | The assigned custom layout |
+| No custom layout is assigned and the theme has `Layouts/Default.html` | `Default.html` automatically |
+| No custom layout is assigned and the theme has no `Default.html` | Components marked Is Theme Default provide the fallback composition |
 
-| **Component** | **is_theme_default** | **Purpose** |
-| --- | --- | --- |
-| TopHeader.html | Yes | Open the document and load shared styles |
-| Header.html | Yes | Display the header and navigation |
-| ContentLoadBody.html | Yes | Load the content assigned to the page |
-| Footer.html | Yes | Display the footer and close the document |
-| Announcement.html | No | Use only on pages that need it |
+The filename `Default.html` has a specific purpose. Preserve its spelling and capitalization. Create and register it as Layout content in the theme's `Layouts/` folder.
 
-Arrange the default components in the intended display order: document opening, header, content loader, then footer. The panel may label the field Is Theme Default; exported content records use isThemeDefault.
+You do not need to assign `Default.html` separately to every page. It does not belong in `PendingLayouts.json`: that file is for custom layout assignments.
 
-## 15.2 Unpublish individual components on a page
+## Create the automatic default layout
 
-Default components are published as independent content assignments on each new page. They are not statically combined inside one layout file. The owner can later unpublish a particular component on a particular page without changing its publication on other pages.
+In ThemeStarter, create this content item:
 
-For example, a campaign landing page may unpublish Header.html while Home and About keep it. This changes the landing page's composition without editing a shared layout file.
-
-Keep the dynamic content loader available wherever assigned page content should appear. Also preserve the required document opening and closing, and any files that supply the page's styles or scripts.
-
-## Create custom Layout content
-
-A custom layout is a content item created with the Layout resource type. The developer writes its structure and imports the components it needs with ltImport(). Use it when selected pages need a different arrangement, such as a member dashboard with a sidebar.
-
-Create these additional content items in ThemeStarter:
-
-| **Content name** | **Resource type** | **Additional path** | **Is Theme Default** |
+| Content name | Resource type | Additional path | File location |
 | --- | --- | --- | --- |
-| MemberLayout.html | Layout | / | No |
-| MemberSidebar.html | Component | / | No |
-| MemberHeader.html | Component | / | No |
-| MemberDashboard.html | View | / | No |
+| Default.html | Layout | / | Layouts/Default.html |
 
-MemberSidebar.html supplies the navigation content inside the layout's aside element:
+Use the existing registered components `TopHeader.html`, `Header.html` and `Footer.html`:
+
+```php
+<?php ltImport('ThemeStarter', 'TopHeader.html'); ?>
+<?php ltImport('ThemeStarter', 'Header.html'); ?>
+
+<main class="container" id="main-content">
+    <?php dddm::loadDynamicContent(); ?>
+</main>
+
+<?php ltImport('ThemeStarter', 'Footer.html'); ?>
+```
+
+`TopHeader.html` opens the document and loads the shared styles. `Header.html` supplies the visible navigation. The dynamic loader displays the content assigned to the current page. `Footer.html` supplies the footer, shared scripts and document closing tags.
+
+The `main` element, `container` class and `main-content` ID are design examples. The required dynamic loading instruction is:
+
+```php
+<?php dddm::loadDynamicContent(); ?>
+```
+
+This layout already calls the dynamic loader, so it does not also import `ContentLoadBody.html`. Keep one dynamic insertion point in the resulting composition.
+
+When Home and About have no custom layout assignment, both automatically use this layout. Their assigned views supply the different page content.
+
+## Understand the fallback default components
+
+The component field Is Theme Default remains useful when there is no `Default.html`. Components marked Yes provide the fallback page composition, in the intended order:
+
+| Order | Component | Purpose |
+| --- | --- | --- |
+| 1 | TopHeader.html | Open the document and load styles |
+| 2 | Header.html | Display navigation |
+| 3 | ContentLoadBody.html | Call the dynamic content loader |
+| 4 | Footer.html | Display the footer and close the document |
+
+In this fallback approach, default components are independent content assignments on each page. An owner can unpublish a component on one page without unpublishing it on another page. Preserve a complete document and a dynamic loader in the resulting composition.
+
+With `Default.html`, components are imported by the layout's code. Unpublishing a separate page assignment does not remove an explicit `ltImport()` call. Edit the layout's imports to change its shared structure, or assign a custom layout to pages needing another design.
+
+For the ThemeStarter example using `Default.html`, keep the imported components' Is Theme Default flags set to No. This makes the example use the layout explicitly rather than relying on fallback component assignments. The panel may label the component field Is Theme Default; exports use `isThemeDefault`.
+
+## Create a custom layout for selected pages
+
+A custom layout is also registered content. For example, a member dashboard needs a sidebar and member header while public pages use `Default.html`.
+
+Create these items:
+
+| Content name | Resource type | Additional path |
+| --- | --- | --- |
+| MemberLayout.html | Layout | / |
+| MemberSidebar.html | Component | / |
+| MemberHeader.html | Component | / |
+| MemberDashboard.html | View | / |
+
+Set the member components' Is Theme Default flags to No: they are imported only where needed.
+
+In `MemberSidebar.html`, add:
 
 ```html
 <h2>Member area</h2>
 <nav aria-label="Member navigation">
-     <a href="<?= htmlspecialchars(
-         rtrim(ltSiteUrl(), '/') . '/ThemeStarter/MemberDashboard',
-         ENT_QUOTES, 'UTF-8'
-     ) ?>">Dashboard</a>
+    <a href="<?= htmlspecialchars(
+        rtrim(ltSiteUrl(), '/') . '/ThemeStarter/MemberDashboard',
+        ENT_QUOTES, 'UTF-8'
+    ) ?>">Dashboard</a>
 </nav>
 ```
 
-Use the actual generated route for MemberDashboard. You can replace this teaching link with the role-based menu renderer in section [Load menu data without HTML or CSS](14-load-menus-for-the-current-users-roles.md#load-menu-data-without-html-or-css).
+Use the actual generated page route in your installation. The [role-based menu loader](14-load-menus-for-the-current-users-roles.md#load-menu-data-without-html-or-css) can replace this static navigation example.
 
-MemberHeader.html supplies the dashboard heading inside the layout's header element:
+In `MemberHeader.html`, add:
 
 ```html
 <h1>Member dashboard</h1>
 ```
 
-MemberDashboard.html supplies the page's view content:
+In `MemberDashboard.html`, add:
 
 ```html
 <section class="card">
-     <h2>Your overview</h2>
-     <p>This content appears inside the member layout.</p>
+    <h2>Your overview</h2>
+    <p>This content appears inside the member layout.</p>
 </section>
 ```
 
-Open MemberLayout.html and enter:
+In `MemberLayout.html`, add:
 
-```html
+```php
 <?php ltImport('ThemeStarter', 'TopHeader.html'); ?>
 
 <div class="member-layout">
-     <aside class="member-sidebar">
-         <?php ltImport('ThemeStarter', 'MemberSidebar.html'); ?>
-     </aside>
+    <aside class="member-sidebar">
+        <?php ltImport('ThemeStarter', 'MemberSidebar.html'); ?>
+    </aside>
 
-     <div class="member-content">
-         <header class="member-header">
-             <?php ltImport('ThemeStarter', 'MemberHeader.html'); ?>
-         </header>
+    <div class="member-content">
+        <header class="member-header">
+            <?php ltImport('ThemeStarter', 'MemberHeader.html'); ?>
+        </header>
 
-         <main class="member-body">
-             <?php dddm::loadDynamicContent(); ?>
-         </main>
-     </div>
+        <main class="member-body">
+            <?php dddm::loadDynamicContent(); ?>
+        </main>
+    </div>
 </div>
 
 <?php ltImport('ThemeStarter', 'Footer.html'); ?>
 ```
 
-TopHeader.html and Footer.html are the registered components created earlier in this guide. The custom layout imports them explicitly. MemberSidebar.html and MemberHeader.html supply its member-specific navigation and heading.
+This layout imports its own components and provides its own dynamic insertion point. It does not import `Default.html` or `ContentLoadBody.html`. Several pages can share MemberLayout while the loader displays each page's assigned content.
 
-The dynamic loader displays whichever content is assigned to the current page. The same layout can serve several member pages. It does not import ContentLoadBody.html, because the layout already calls the dynamic loader directly.
+## Add your own styling
 
-## Add your own layout styling
-
-The HTML class names above are examples, not required framework classes. Add CSS to the registered Style.css content if you want a sidebar arrangement:
+Add this optional CSS to the shared `Style.css` content:
 
 ```css
 .member-layout { display: flex; min-height: 70vh; }
@@ -116,36 +159,91 @@ The HTML class names above are examples, not required framework classes. Add CSS
 .member-header, .member-body { padding: 24px; }
 
 @media (max-width: 640px) {
-     .member-layout { display: block; }
-     .member-sidebar { width: auto; }
+    .member-layout { display: block; }
+    .member-sidebar { width: auto; }
 }
 ```
 
-Developers can use their own CSS or styling framework while keeping the imports and dynamic loader in the appropriate positions.
+The class names and CSS are examples. Use your own styles or framework while keeping the imports and dynamic loader in the correct positions.
 
-## Assign pages to the custom layout
+## Assign a custom layout through the backend
 
-1. Create and register MemberLayout.html as Layout content.
-1. Open the layout assignment controls in the theme development backend.
-1. Assign MemberDashboard and the other intended member pages to MemberLayout.html.
-1. Review each page's content publication and access roles.
-1. Preview the pages and confirm the document, header, sidebar and assigned content appear once.
+1. Create or sync the layout and its components so they are registered content.
+2. Open the layout assignment controls in the theme development backend.
+3. Assign MemberDashboard to MemberLayout.html.
+4. Review the page's content publication and access roles.
+5. Preview the page and confirm that the member layout and assigned content appear once.
 
-Public pages can continue using the theme's default components. For pages assigned to the custom layout, inspect the resulting composition so imported TopHeader and Footer are not duplicated by separate page assignments, and the content loader runs once.
+Home, About and other pages without custom assignments continue using `Default.html` automatically. Selecting a layout controls presentation; it does not grant access to the page or its backend APIs.
 
-Components imported inside a custom layout are controlled by its code. Unpublishing a separate page assignment does not remove an explicit ltImport() call from that layout. To change those imported components, edit the layout's imports or the imported content.
+## Prepare automatic custom layout assignments
 
-## Compare the two approaches
+The updated workflow uses two application storage files:
 
-| **Default layout from components** | **Custom Layout content** |
+| File | Purpose |
 | --- | --- |
-| Components marked is_theme_default = Yes form the composition | A Layout content file defines the composition |
-| Automatically included for new pages | Assigned to the pages that need it |
-| Individual component assignments can be unpublished per page | Imported components are controlled by the layout code |
-| Useful for a shared design with per-page adjustments | Useful for a different arrangement, such as a member dashboard |
+| `/Storage/Layouts/PendingLayouts.json` | Holds custom layout mappings waiting to be applied |
+| `/Storage/Layouts/AppliedLayouts.json` | Records mappings processed by the platform |
 
-A separate Layout content item is optional because default components already provide the theme's default layout.
+These paths refer to the application's storage area. Theme layout source files still belong in the theme's `Layouts/` folder.
 
-**Expected result:** you understand both layout approaches and can assign the member layout to its intended pages.
+A pending mapping identifies a custom layout, the target content and the package containing the layout:
+
+```json
+[
+    {
+        "layoutName": "MemberLayout.html",
+        "contentName": "MemberDashboard.html",
+        "layoutPackageName": "ThemeStarter"
+    },
+    {
+        "layoutName": "DynamicMenuLayout.html",
+        "contentName": "DynamicMenuDemo.html",
+        "layoutPackageName": "ThemeStarter"
+    }
+]
+```
+
+| Key | Meaning | Example |
+| --- | --- | --- |
+| layoutName | Registered custom Layout content filename | MemberLayout.html |
+| contentName | Target content filename, including its extension | MemberDashboard.html |
+| layoutPackageName | Package containing the layout | ThemeStarter |
+
+The second mapping is optional and assumes DynamicMenuLayout.html and DynamicMenuDemo.html have also been created and registered. Remove it when using only the member example.
+
+Use exact registered names. `MemberDashboard.html` is a content filename; it is not the page route `/ThemeStarter/MemberDashboard`.
+
+After the required content has been registered, the platform's pending layout processing applies the custom assignments and records processed mappings in AppliedLayouts.json. This supports automatic assignment without repeating the backend assignment clicks for each prepared mapping. Use the pending processing supported by your installed core version; do not add an invented function call or endpoint to the theme.
+
+Do not add Home or About mappings to Default.html. Default selection already handles pages without a custom assignment. Do not manually mark mappings as applied to bypass processing; inspect the resulting assignments and preview the pages instead.
+
+When preparing JSON, keep a valid array with double-quoted strings and no comments or trailing commas. Preserve unrelated mappings already present in the storage files.
+
+## Compare the layout approaches
+
+| Approach | When it is used | How components are controlled |
+| --- | --- | --- |
+| Default.html | Automatically for pages without a custom layout assignment | Imports in Default.html |
+| Custom layout | For pages assigned to that layout, through the backend or pending mappings | Imports in the custom layout |
+| Default components | Fallback when Default.html is absent and no custom layout is assigned | Independent component publication on each page |
+
+## Check the result
+
+| Page | Custom mapping | Expected layout |
+| --- | --- | --- |
+| Home | None | Default.html automatically |
+| About | None | Default.html automatically |
+| MemberDashboard | MemberLayout.html | MemberLayout.html |
+| DynamicMenuDemo, when included | DynamicMenuLayout.html | DynamicMenuLayout.html |
+
+1. Confirm layouts, components and views are registered with the correct names and resource types.
+2. Open Home and About and check that the default layout appears automatically.
+3. Open each custom-layout page and check its assigned layout.
+4. If a mapping has not taken effect, inspect pending processing and the registered filenames; check page access and content publication separately.
+5. Confirm one document wrapper, one header/footer arrangement and one dynamic loader in the resulting page.
+6. Check styles, scripts, navigation and narrow-screen display.
+
+**Expected result:** ordinary pages automatically use Default.html, selected pages use their custom layouts, and default components remain the fallback when Default.html is absent.
 
 [Previous topic](14-load-menus-for-the-current-users-roles.md) · [Contents](README.md) · [Next topic](16-import-content-and-load-content.md)
