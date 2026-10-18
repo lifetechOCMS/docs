@@ -1,19 +1,14 @@
 # FUNCTIONS AND CLASSES
 
+Look up LifeTechOCMS helpers, classes and methods. Use these reference guides alongside the development tutorials to understand supported interfaces and practical examples.
 
 [Main documentation](../README.md)
 
-
 ## Lessons
-
-
-1. [FUNCTIONS AND CLASSES](functions-and-classes.md)
 
 2. [LtNavigate](ltnavigate.md)
 
-
 ## Guides
-
 
 - [LtImport](ltimport/README.md)
 

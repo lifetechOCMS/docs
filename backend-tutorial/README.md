@@ -1,17 +1,10 @@
 # BACKEND TUTORIAL
 
+Learn to manage your LifeTechOCMS installation through the administration panel. Choose a guide below for site information, roles, content, menus, pages, users or file management.
 
 [Main documentation](../README.md)
 
-
-## Lessons
-
-
-1. [BACKEND TUTORIAL](backend-tutorial.md)
-
-
 ## Guides
-
 
 - [Site Information](site-information/README.md)
 

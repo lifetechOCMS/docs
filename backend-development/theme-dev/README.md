@@ -1,13 +1,12 @@
 # Theme Development Overview
 
+This guide covers theme development overview. Open a lesson below for explanations, steps and examples. Use the listed lesson order when following the guide from the beginning.
 
 [Main documentation](../../README.md)
 
 [Parent contents](../README.md)
 
-
 ## Lessons
-
 
 1. [Theme Development Overview](theme-development-overview.md)
 

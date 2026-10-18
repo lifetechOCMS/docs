@@ -14,7 +14,7 @@ Retrieved from the live documentation on 18 October 2026. [Main documentation](R
 
 - [First Run, Administration and Next Steps](get-started/first-run-administration-and-next-steps.md)
 
-- [BACKEND TUTORIAL](backend-tutorial/backend-tutorial.md)
+- [BACKEND TUTORIAL](backend-tutorial/README.md)
 
 - [Site Information](backend-tutorial/site-information/site-information.md)
 
@@ -94,7 +94,7 @@ Retrieved from the live documentation on 18 October 2026. [Main documentation](R
 
 - [Life Media](backend-tutorial/file-manager/life-media.md)
 
-- [BACKEND DEVELOPMENT](backend-development/backend-development.md)
+- [BACKEND DEVELOPMENT](backend-development/README.md)
 
 - [Module Development](backend-development/module-dev/module-development.md)
 
@@ -182,7 +182,7 @@ Retrieved from the live documentation on 18 October 2026. [Main documentation](R
 
 - [Example Themes and References](backend-development/theme-dev/example-themes-and-references.md)
 
-- [FUNCTIONS AND CLASSES](functions-and-classes/functions-and-classes.md)
+- [FUNCTIONS AND CLASSES](functions-and-classes/README.md)
 
 - [LtImport](functions-and-classes/ltimport/ltimport.md)
 
@@ -236,7 +236,7 @@ Retrieved from the live documentation on 18 October 2026. [Main documentation](R
 
 - [Session Lifecycle Methods (Instance Methods)](functions-and-classes/ltsession/session-lifecycle-methods-instance-methods.md)
 
-- [REQUEST AND RESPOND MANAGEMENT](request-and-respond-management/request-and-respond-management.md)
+- [REQUEST AND RESPOND MANAGEMENT](request-and-respond-management/README.md)
 
 - [REQUEST](request-and-respond-management/request.md)
 

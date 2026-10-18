@@ -1,11 +1,10 @@
 # GET STARTED
 
+Start here to understand LifeTechOCMS, check its requirements, install the platform and open the administration panel. Follow the lessons below in order.
 
 [Main documentation](../README.md)
 
-
 ## Lessons
-
 
 1. [GET STARTED](get-started.md)
 
