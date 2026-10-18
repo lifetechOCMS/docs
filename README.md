@@ -1,8 +1,48 @@
 # LifeTechOCMS Documentation
 
-Markdown edition of the published documentation retrieved on 18 October 2026. Choose an area below, then its guide or lesson. Each lesson has Previous, Main documentation, Guide contents and Next navigation.
+LifeTechOCMS is a PHP-based content management system and application framework for building websites, portals, APIs and business applications.
 
-Source: https://www.lifetech.host/hubs/Docs
+It brings content management and application development into one platform. Administrators manage pages, menus, users and access permissions through the backend, while developers extend the application through themes, modules and plugins.
+
+## On this page
+
+- [How the platform fits together](#how-the-platform-fits-together)
+- [Choose your starting point](#choose-your-starting-point)
+- [Development and deployment](#development-and-deployment)
+- [Documentation areas](#documentation-areas)
+- [Complete guide](#complete-guide)
+- [Using this documentation](#using-this-documentation)
+
+## How the platform fits together
+
+| Part | Responsibility | Example |
+| --- | --- | --- |
+| Theme | Page presentation, reusable components and layouts | A public website design or member dashboard |
+| Module | Application features and backend logic | Blog posts and their backend APIs |
+| Plugin | Extensions and integrations | A supporting editor or frontend library |
+| Page and content | Destinations and the registered content assigned to them | A page displaying an assigned theme view |
+| Roles and permissions | Control access to the relevant pages and operations | Different access for visitors and signed-in users |
+
+For example, a blog module can provide posts and backend APIs while a theme presents those posts to visitors. The same installation can support additional features, each with its own content and access requirements.
+
+A theme's dynamic content loader displays the content assigned to the current page. This lets developers build a shared page design while using different theme, module or plugin content on individual pages.
+
+## Choose your starting point
+
+- **New to LifeTechOCMS?** Begin with [Getting Started](get-started/README.md) for requirements, installation and first-run guidance.
+- **Managing a website?** Explore the [Backend Tutorial](backend-tutorial/README.md) for administration tasks.
+- **Building an interface?** Follow [Theme Development](backend-development/theme-dev/README.md).
+- **Building application features?** Follow [Module Development](backend-development/module-dev/README.md).
+- **Looking up a helper or class?** Open [Functions and Classes](functions-and-classes/README.md).
+- **Working with backend requests and responses?** Read [Request and Response Management](request-and-respond-management/README.md).
+
+## Development and deployment
+
+Start by checking the [installation and system requirements](get-started/README.md) for the LifeTechOCMS release you intend to use. Follow the documented setup before creating or installing packages.
+
+Developers can work with the backend code editor or edit files in a local installation. Test pages through LifeTechOCMS so PHP helpers and the platform's content processing can run. A theme's source HTML file opened directly is not equivalent to its rendered application page.
+
+Before moving a package to another installation, check its dependencies and supported core version. Use the documented export and installation workflows so source files and registration records travel together.
 
 ## Documentation areas
 
@@ -51,10 +91,12 @@ Source: https://www.lifetech.host/hubs/Docs
 
 [Read the complete documentation](all-documentation.md)
 
-## About this edition
+## Using this documentation
 
-The folder structure follows the website hierarchy. Lesson filenames have no sequence prefixes; README lists define learning order. This edition preserves published technical content and does not claim new runtime testing or compatibility. Screenshots link to their original website files and require internet access.
+Each guide has a README contents page and individual lesson files. Follow the listed learning order, or open a reference topic directly when you need a particular function or feature.
 
-The website supplied duplicate file-manager topic targets. They remain separate pages in this edition; links to an ambiguous source target use the matching guide where possible. Source target identifiers have not been changed on the website.
+Lessons include four navigation positions at the top and bottom: **Previous · Main documentation · Guide contents · Next**. Longer lessons also include an **On this page** list. An unavailable Previous or Next position appears as plain text.
 
-[Documentation conventions](documentation-conventions.md)
+Filenames describe their topic without sequence numbers, allowing new lessons to be inserted without renaming the rest of the guide. Contributors should follow the [documentation conventions](documentation-conventions.md) and update affected links when adding or moving content.
+
+The [LifeTechOCMS online documentation](https://www.lifetech.host/hubs/Docs) provides the published website edition. Check the relevant version and prerequisites when following examples.
