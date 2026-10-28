@@ -1,18 +1,16 @@
 # CaseConverter — Developer Guide
 
-> **LifeTech OCMS core service** · `MdLt` · `v1.x`
+> **LifeTech OCMS core service** · `MdLt`
 >
 > Source: [Services/CaseConverter.php](https://github.com/lifetechOCMS/MdLt/blob/v1.x/Services/CaseConverter.php)
 
 ## Overview
 
-Convert names between snake_case, camelCase and PascalCase.
+`CaseConverter` converts names between **snake_case**, **camelCase**, and **PascalCase**. It also converts the keys of database result arrays into camelCase, which is useful when PHP models and API consumers use different naming conventions.
 
-This guide is written for a developer learning LifeTech OCMS services for the first time. The method inventory is based on the previously inspected `v1.x` source. For methods whose exact return values or visibility have not been established, the guide explicitly asks you to inspect the linked implementation rather than inventing a contract.
+All nine methods in this class are **public static** methods. Call them with `CaseConverter::methodName(...)`; no object is needed.
 
 ## Import the class
-
-Inside a module controller or service:
 
 ```php
 <?php
@@ -20,126 +18,165 @@ Inside a module controller or service:
 use Lt\Modules\MdLt\Services\CaseConverter;
 ```
 
-An import only resolves the class name; it does not initialize the class or its dependencies. Check whether a method is `static` before choosing `ClassName::method()` versus an instance call.
-
-## Quick start: a first practical example
-
-The following illustrates a common use. Run it within a correctly configured LifeTech OCMS application.
+## Quick start
 
 ```php
-<?php
-use Lt\Modules\MdLt\Services\CaseConverter;
+$tableName = 'tb_card_profile';
+$modelName = CaseConverter::snakeToPascal($tableName);
 
-CaseConverter::snakeToPascal('tb_card_profile');
+echo $modelName; // TbCardProfile
 ```
 
 ## Method reference
 
-| Method | Call style | Arguments | Actual behavior / return |
+| Method | Call style | Input | Returns |
 |---|---|---|---|
-| `snakeToCamel($string)` | Confirm in source | `$string` | Convert names between snake_case, camelCase and PascalCase. Exact method behavior, visibility and return type require checking the linked implementation. |
-| `pascalToSnake($string)` | Confirm in source | `$string` | Convert names between snake_case, camelCase and PascalCase. Exact method behavior, visibility and return type require checking the linked implementation. |
-| `camelToSnake($string)` | Confirm in source | `$string` | Convert names between snake_case, camelCase and PascalCase. Exact method behavior, visibility and return type require checking the linked implementation. |
-| `snakeToPascal($string)` | Confirm in source | `$string` | Convert names between snake_case, camelCase and PascalCase. Exact method behavior, visibility and return type require checking the linked implementation. |
-| `pascalToCamel($string)` | Confirm in source | `$string` | Convert names between snake_case, camelCase and PascalCase. Exact method behavior, visibility and return type require checking the linked implementation. |
-| `camelToPascal($string)` | Confirm in source | `$string` | Convert names between snake_case, camelCase and PascalCase. Exact method behavior, visibility and return type require checking the linked implementation. |
-| `toCamelCaseArray(array $data)` | Confirm in source | `array $data` | Convert names between snake_case, camelCase and PascalCase. Exact method behavior, visibility and return type require checking the linked implementation. |
-| `arrayToCamelCaseArray(array $data)` | Confirm in source | `array $data` | Convert names between snake_case, camelCase and PascalCase. Exact method behavior, visibility and return type require checking the linked implementation. |
-| `arrayToCamelCase(array $data)` | Confirm in source | `array $data` | Convert names between snake_case, camelCase and PascalCase. Exact method behavior, visibility and return type require checking the linked implementation. |
+| `snakeToCamel($string)` | Static | `snake_case` string | `camelCase` string |
+| `pascalToSnake($string)` | Static | `PascalCase` string | `snake_case` string |
+| `camelToSnake($string)` | Static | `camelCase` string | `snake_case` string |
+| `snakeToPascal($string)` | Static | `snake_case` string | `PascalCase` string |
+| `pascalToCamel($string)` | Static | `PascalCase` string | `camelCase` string |
+| `camelToPascal($string)` | Static | `camelCase` string | `PascalCase` string |
+| `toCamelCaseArray(array $data)` | Static | Array of associative rows | Array of rows with camelCase keys |
+| `arrayToCamelCaseArray(array $data)` | Static | Array of associative rows | Array of rows with camelCase keys |
+| `arrayToCamelCase(array $data)` | Static | Array of associative rows | Array of `stdClass` objects with camelCase properties |
 
-### `snakeToCamel()` — understanding this method
+## Public methods with examples
 
-**Purpose:** Part of the `CaseConverter` service's responsibility: convert names between snake_case, camelCase and PascalCase.
+### `snakeToCamel()` — snake_case to camelCase
 
-**How to study it:** Open the source and find `snakeToCamel(`. Check its visibility (`public`, `protected`, or `private`), whether it is static, how its parameters are used, what it returns, and whether it changes stored data. Do not assume a return type based only on the method name.
+Use this when converting a database field name into a PHP or JSON property name.
 
-### `pascalToSnake()` — understanding this method
+```php
+$result = CaseConverter::snakeToCamel('user_first_name');
+echo $result; // userFirstName
+```
 
-**Purpose:** Part of the `CaseConverter` service's responsibility: convert names between snake_case, camelCase and PascalCase.
+### `pascalToSnake()` — PascalCase to snake_case
 
-**How to study it:** Open the source and find `pascalToSnake(`. Check its visibility (`public`, `protected`, or `private`), whether it is static, how its parameters are used, what it returns, and whether it changes stored data. Do not assume a return type based only on the method name.
+```php
+$result = CaseConverter::pascalToSnake('UserProfile');
+echo $result; // user_profile
+```
 
-### `camelToSnake()` — understanding this method
+### `camelToSnake()` — camelCase to snake_case
 
-**Purpose:** Part of the `CaseConverter` service's responsibility: convert names between snake_case, camelCase and PascalCase.
+```php
+$result = CaseConverter::camelToSnake('createdAt');
+echo $result; // created_at
+```
 
-**How to study it:** Open the source and find `camelToSnake(`. Check its visibility (`public`, `protected`, or `private`), whether it is static, how its parameters are used, what it returns, and whether it changes stored data. Do not assume a return type based only on the method name.
+### `snakeToPascal()` — snake_case to PascalCase
 
-### `snakeToPascal()` — understanding this method
+Useful when generating a class-style name from a table name.
 
-**Purpose:** Part of the `CaseConverter` service's responsibility: convert names between snake_case, camelCase and PascalCase.
+```php
+$result = CaseConverter::snakeToPascal('tb_blog_post');
+echo $result; // TbBlogPost
+```
 
-**How to study it:** Open the source and find `snakeToPascal(`. Check its visibility (`public`, `protected`, or `private`), whether it is static, how its parameters are used, what it returns, and whether it changes stored data. Do not assume a return type based only on the method name.
+### `pascalToCamel()` — PascalCase to camelCase
 
-### `pascalToCamel()` — understanding this method
+```php
+$result = CaseConverter::pascalToCamel('PageTitle');
+echo $result; // pageTitle
+```
 
-**Purpose:** Part of the `CaseConverter` service's responsibility: convert names between snake_case, camelCase and PascalCase.
+### `camelToPascal()` — camelCase to PascalCase
 
-**How to study it:** Open the source and find `pascalToCamel(`. Check its visibility (`public`, `protected`, or `private`), whether it is static, how its parameters are used, what it returns, and whether it changes stored data. Do not assume a return type based only on the method name.
+```php
+$result = CaseConverter::camelToPascal('pageTitle');
+echo $result; // PageTitle
+```
 
-### `camelToPascal()` — understanding this method
+### `toCamelCaseArray()` — convert keys in multiple rows
 
-**Purpose:** Part of the `CaseConverter` service's responsibility: convert names between snake_case, camelCase and PascalCase.
+Pass an **array of associative arrays**, such as database records.
 
-**How to study it:** Open the source and find `camelToPascal(`. Check its visibility (`public`, `protected`, or `private`), whether it is static, how its parameters are used, what it returns, and whether it changes stored data. Do not assume a return type based only on the method name.
+```php
+$rows = [
+    ['user_id' => 1, 'first_name' => 'Ada'],
+    ['user_id' => 2, 'first_name' => 'Tayo'],
+];
 
-### `toCamelCaseArray()` — understanding this method
+$result = CaseConverter::toCamelCaseArray($rows);
 
-**Purpose:** Part of the `CaseConverter` service's responsibility: convert names between snake_case, camelCase and PascalCase.
+// [
+//     ['userId' => 1, 'firstName' => 'Ada'],
+//     ['userId' => 2, 'firstName' => 'Tayo'],
+// ]
+```
 
-**How to study it:** Open the source and find `toCamelCaseArray(`. Check its visibility (`public`, `protected`, or `private`), whether it is static, how its parameters are used, what it returns, and whether it changes stored data. Do not assume a return type based only on the method name.
+### `arrayToCamelCaseArray()` — convert keys and keep array rows
 
-### `arrayToCamelCaseArray()` — understanding this method
+This method currently performs the same conversion as `toCamelCaseArray()`.
 
-**Purpose:** Part of the `CaseConverter` service's responsibility: convert names between snake_case, camelCase and PascalCase.
+```php
+$rows = [
+    ['page_name' => 'Home', 'route_path' => '/home'],
+];
 
-**How to study it:** Open the source and find `arrayToCamelCaseArray(`. Check its visibility (`public`, `protected`, or `private`), whether it is static, how its parameters are used, what it returns, and whether it changes stored data. Do not assume a return type based only on the method name.
+$result = CaseConverter::arrayToCamelCaseArray($rows);
 
-### `arrayToCamelCase()` — understanding this method
+// [['pageName' => 'Home', 'routePath' => '/home']]
+```
 
-**Purpose:** Part of the `CaseConverter` service's responsibility: convert names between snake_case, camelCase and PascalCase.
+### `arrayToCamelCase()` — convert keys and return object rows
 
-**How to study it:** Open the source and find `arrayToCamelCase(`. Check its visibility (`public`, `protected`, or `private`), whether it is static, how its parameters are used, what it returns, and whether it changes stored data. Do not assume a return type based only on the method name.
+Unlike the previous two methods, this returns an array of **`stdClass` objects**, not associative arrays.
 
-## Practical LifeTech module example: convert a database field name for an api response
+```php
+$rows = [
+    ['page_name' => 'Home', 'is_published' => 1],
+];
 
-**Scenario:** A developer is building an `MdExample` module and wants to use `CaseConverter` from a controller. The example shows the service in a real controller-shaped context. Replace sample IDs and paths with actual application values, and ensure the necessary models and permissions are configured.
+$result = CaseConverter::arrayToCamelCase($rows);
+
+echo $result[0]->pageName; // Home
+echo $result[0]->isPublished; // 1
+```
+
+**Input note:** The three array-conversion methods expect a collection of rows. For a single associative record, wrap it in an array first: `[$record]`.
+
+## Practical LifeTech module example: format database records for an API
+
+**Scenario:** An `MdExample` controller receives database-style associative rows with snake_case keys and wants to return camelCase keys in its JSON response.
 
 ```php
 <?php
 
 namespace Lt\Modules\MdExample\Controllers;
 
-use Lt\\Modules\\MdLt\\Services\\CaseConverter;
+use Lt\Modules\MdLt\Services\CaseConverter;
 use Lt\Modules\MdLt\Services\LtResponse;
 
 class TbExampleController
 {
     public function index()
     {
-        $modelName = CaseConverter::snakeToPascal('tb_card_profile');
-        return LtResponse::json('Model name converted', '2000', '200', [
-            'modelName' => $modelName
-        ]);
+        // Illustrative records; replace with your module's model results.
+        $records = [
+            ['post_id' => 101, 'post_title' => 'Getting Started'],
+            ['post_id' => 102, 'post_title' => 'Theme Development'],
+        ];
+
+        $posts = CaseConverter::toCamelCaseArray($records);
+
+        return LtResponse::json(
+            'Posts loaded successfully',
+            '2000',
+            '200',
+            $posts
+        );
     }
 }
 ```
 
-**What happens:** The `index()` method demonstrates the service's role in a module request. Methods that read or change database records depend on the installed schema, active session, and appropriate authorization. Some service methods return JSON strings; do not double-encode their responses.
-
-## Common mistakes
-
-1. Calling an instance method statically, or creating an object when only a static method is needed.
-2. Guessing method arguments or return values instead of inspecting the implementation.
-3. Running data-changing operations without permissions, validation, and error handling.
-4. Assuming a service method is safe to expose as an unauthenticated endpoint.
-5. Copying an example without adapting it to your module's model and route configuration.
-
-**Source-specific caution:** Some methods require a model, configured database connection or application context. The source method names alone do not establish standalone usage.
+The returned `responseData` contains keys such as `postId` and `postTitle`, instead of `post_id` and `post_title`.
 
 ## Summary
 
-Convert names between snake_case, camelCase and PascalCase. Begin with the quick-start section, then use the method reference as a map to the implementation. Where a contract is not verified, treat it as a point to investigate rather than a promise.
+Use the six string methods for individual names. Use `toCamelCaseArray()` or `arrayToCamelCaseArray()` for arrays of associative records, and `arrayToCamelCase()` when you need object-style property access. All nine methods are static.
 
 ## Source and navigation
 
@@ -147,5 +184,3 @@ Convert names between snake_case, camelCase and PascalCase. Begin with the quick
 - [Back to MdLt Services index](README.md)
 - Previous: none
 - [Next: LtAuth](LtAuth.md)
-
-*This guide describes the `v1.x` branch inspected on 25 October 2026. Verify source details again after branch updates.*
