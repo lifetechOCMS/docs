@@ -1,6 +1,6 @@
 # LtValidator — Developer Guide
 
-> **LifeTech OCMS core service** · `MdLt` · `v1.x`
+> **LifeTech OCMS core service** · `MdLt`
 >
 > Source: [Services/LtValidator.php](https://github.com/lifetechOCMS/MdLt/blob/v1.x/Services/LtValidator.php)
 
@@ -8,11 +8,7 @@
 
 Validate submitted data and report field errors.
 
-This guide is written for a developer learning LifeTech OCMS services for the first time. The method inventory is based on the previously inspected `v1.x` source. For methods whose exact return values or visibility have not been established, the guide explicitly asks you to inspect the linked implementation rather than inventing a contract.
-
 ## Import the class
-
-Inside a module controller or service:
 
 ```php
 <?php
@@ -20,52 +16,49 @@ Inside a module controller or service:
 use Lt\Modules\MdLt\Services\LtValidator;
 ```
 
-An import only resolves the class name; it does not initialize the class or its dependencies. Check whether a method is `static` before choosing `ClassName::method()` versus an instance call.
+## Quick start
 
-## Quick start: a first practical example
-
-The following illustrates a common use. Run it within a correctly configured LifeTech OCMS application.
+A small illustration of a public method (adapt the sample values to your application):
 
 ```php
-<?php
-use Lt\Modules\MdLt\Services\LtValidator;
-
-// Prepare validation rules before calling validate().
-$errors = LtValidator::errors();
+$result = LtValidator::validate(['name' => 'Ada'], ['name' => 'required|min:2']);
 ```
 
 ## Method reference
 
-| Method | Call style | Arguments | Actual behavior / return |
+| Public method | Call style | Arguments | Purpose / result |
 |---|---|---|---|
-| `validate(array $data, array $rules)` | Confirm in source | `array $data, array $rules` | Validate submitted data and report field errors. Exact method behavior, visibility and return type require checking the linked implementation. |
-| `errors()` | Confirm in source | `None` | Validate submitted data and report field errors. Exact method behavior, visibility and return type require checking the linked implementation. |
-| `passed()` | Confirm in source | `None` | Validate submitted data and report field errors. Exact method behavior, visibility and return type require checking the linked implementation. |
-| `addError(string $field, string $message)` | Confirm in source | `string $field, string $message` | Validate submitted data and report field errors. Exact method behavior, visibility and return type require checking the linked implementation. |
+| `validate(array $data, array $rules)` | Static | `$data, $rules` | Validate input against a set of rules. |
+| `errors()` | Static | `None` | Read collected validation errors; declared return `array`. |
+| `passed()` | Static | `None` | Check whether validation has recorded any errors; declared return `bool`. |
 
-### `validate()` — understanding this method
+## Public methods with examples
 
-**Purpose:** Part of the `LtValidator` service's responsibility: validate submitted data and report field errors.
+### `validate()` — validate input against a set of rules
 
-**How to study it:** Open the source and find `validate(`. Check its visibility (`public`, `protected`, or `private`), whether it is static, how its parameters are used, what it returns, and whether it changes stored data. Do not assume a return type based only on the method name.
+**Call style:** Static. **Parameters:** `array $data, array $rules`.
 
-### `errors()` — understanding this method
+```php
+$result = LtValidator::validate(['name' => 'Ada'], ['name' => 'required|min:2']);
+```
 
-**Purpose:** Part of the `LtValidator` service's responsibility: validate submitted data and report field errors.
+**Important:** This implementation echoes a JSON response and exits when validation fails.
 
-**How to study it:** Open the source and find `errors(`. Check its visibility (`public`, `protected`, or `private`), whether it is static, how its parameters are used, what it returns, and whether it changes stored data. Do not assume a return type based only on the method name.
+### `errors()` — read collected validation errors
 
-### `passed()` — understanding this method
+**Call style:** Static. **Parameters:** `none`.
 
-**Purpose:** Part of the `LtValidator` service's responsibility: validate submitted data and report field errors.
+```php
+$result = LtValidator::errors();
+```
 
-**How to study it:** Open the source and find `passed(`. Check its visibility (`public`, `protected`, or `private`), whether it is static, how its parameters are used, what it returns, and whether it changes stored data. Do not assume a return type based only on the method name.
+### `passed()` — check whether validation has recorded any errors
 
-### `addError()` — understanding this method
+**Call style:** Static. **Parameters:** `none`.
 
-**Purpose:** Part of the `LtValidator` service's responsibility: validate submitted data and report field errors.
-
-**How to study it:** Open the source and find `addError(`. Check its visibility (`public`, `protected`, or `private`), whether it is static, how its parameters are used, what it returns, and whether it changes stored data. Do not assume a return type based only on the method name.
+```php
+$result = LtValidator::passed();
+```
 
 ## Practical LifeTech module example: validate a contact form before saving
 
@@ -96,19 +89,9 @@ class TbExampleController
 
 **What happens:** The `index()` method demonstrates the service's role in a module request. Methods that read or change database records depend on the installed schema, active session, and appropriate authorization. Some service methods return JSON strings; do not double-encode their responses.
 
-## Common mistakes
-
-1. Calling an instance method statically, or creating an object when only a static method is needed.
-2. Guessing method arguments or return values instead of inspecting the implementation.
-3. Running data-changing operations without permissions, validation, and error handling.
-4. Assuming a service method is safe to expose as an unauthenticated endpoint.
-5. Copying an example without adapting it to your module's model and route configuration.
-
-**Source-specific caution:** Some methods require a model, configured database connection or application context. The source method names alone do not establish standalone usage.
-
 ## Summary
 
-Validate submitted data and report field errors. Begin with the quick-start section, then use the method reference as a map to the implementation. Where a contract is not verified, treat it as a point to investigate rather than a promise.
+Validate submitted data and report field errors. See the method reference and practical module scenario for usage.
 
 ## Source and navigation
 
@@ -116,5 +99,3 @@ Validate submitted data and report field errors. Begin with the quick-start sect
 - [Back to MdLt Services index](README.md)
 - [Previous: LtSiteInfo](LtSiteInfo.md)
 - [Next: TbContentService](TbContentService.md)
-
-*This guide describes the `v1.x` branch inspected on 25 October 2026. Verify source details again after branch updates.*

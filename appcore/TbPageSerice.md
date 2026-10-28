@@ -1,6 +1,6 @@
 # TbPageSerice — Developer Guide
 
-> **LifeTech OCMS core service** · `MdLt` · `v1.x`
+> **LifeTech OCMS core service** · `MdLt`
 >
 > Source: [Services/TbPageSerice.php](https://github.com/lifetechOCMS/MdLt/blob/v1.x/Services/TbPageSerice.php)
 
@@ -8,11 +8,7 @@
 
 Legacy or alternate page service with the filename spelling 'Serice'.
 
-This guide is written for a developer learning LifeTech OCMS services for the first time. The method inventory is based on the previously inspected `v1.x` source. For methods whose exact return values or visibility have not been established, the guide explicitly asks you to inspect the linked implementation rather than inventing a contract.
-
 ## Import the class
-
-Inside a module controller or service:
 
 ```php
 <?php
@@ -20,51 +16,79 @@ Inside a module controller or service:
 use Lt\Modules\MdLt\Services\TbPageSerice;
 ```
 
-An import only resolves the class name; it does not initialize the class or its dependencies. Check whether a method is `static` before choosing `ClassName::method()` versus an instance call.
+## Quick start
 
-## Quick start: a first practical example
+A small illustration of a public method (adapt the sample values to your application):
 
-This service depends on application-specific models or setup. Start by locating a controller that already uses it, and inspect the arguments supplied there. A made-up call could mislead beginners or change application data.
+```php
+$service = new TbPageSerice();
+$result = $service->fetchPublishPages();
+```
 
 ## Method reference
 
-| Method | Call style | Arguments | Actual behavior / return |
+| Public method | Call style | Arguments | Purpose / result |
 |---|---|---|---|
-| `__construct()` | Confirm in source | `None` | Legacy or alternate page service with the filename spelling 'Serice'. Exact method behavior, visibility and return type require checking the linked implementation. |
-| `store($model)` | Confirm in source | `$model` | Legacy or alternate page service with the filename spelling 'Serice'. Exact method behavior, visibility and return type require checking the linked implementation. |
-| `publishedContent($model)` | Confirm in source | `$model` | Legacy or alternate page service with the filename spelling 'Serice'. Exact method behavior, visibility and return type require checking the linked implementation. |
-| `publishedRegion($model)` | Confirm in source | `$model` | Legacy or alternate page service with the filename spelling 'Serice'. Exact method behavior, visibility and return type require checking the linked implementation. |
-| `fetchPublishPages()` | Confirm in source | `None` | Legacy or alternate page service with the filename spelling 'Serice'. Exact method behavior, visibility and return type require checking the linked implementation. |
+| `__construct()` | Instance | `None` |   construct in the service. |
+| `store($model)` | Instance | `$model` | Save a record using the service and its model. |
+| `publishedContent($model)` | Instance | `$model` | Published content in the service. |
+| `publishedRegion($model)` | Instance | `$model` | Published region in the service. |
+| `fetchPublishPages()` | Instance | `None` | Retrieve published pages. |
 
-### `__construct()` — understanding this method
+## Public methods with examples
 
-**Purpose:** Part of the `TbPageSerice` service's responsibility: legacy or alternate page service with the filename spelling 'Serice'.
+### `__construct()` — initialize the service
 
-**How to study it:** Open the source and find `__construct(`. Check its visibility (`public`, `protected`, or `private`), whether it is static, how its parameters are used, what it returns, and whether it changes stored data. Do not assume a return type based only on the method name.
+The constructor prepares the service and its dependencies.
 
-### `store()` — understanding this method
+```php
+$service = new TbPageSerice();
+```
 
-**Purpose:** Part of the `TbPageSerice` service's responsibility: legacy or alternate page service with the filename spelling 'Serice'.
+### `store()` — save a record using the service and its model
 
-**How to study it:** Open the source and find `store(`. Check its visibility (`public`, `protected`, or `private`), whether it is static, how its parameters are used, what it returns, and whether it changes stored data. Do not assume a return type based only on the method name.
+**Call style:** Instance. **Parameters:** `$model`.
 
-### `publishedContent()` — understanding this method
+```php
+// $model must be a populated, validated framework model.
+// $service = new TbPageSerice();
+// $result = $service->store($model);
+```
 
-**Purpose:** Part of the `TbPageSerice` service's responsibility: legacy or alternate page service with the filename spelling 'Serice'.
+The call is intentionally commented out because it may modify records, files, sessions, or security state. Supply valid inputs and authorization before enabling it.
 
-**How to study it:** Open the source and find `publishedContent(`. Check its visibility (`public`, `protected`, or `private`), whether it is static, how its parameters are used, what it returns, and whether it changes stored data. Do not assume a return type based only on the method name.
+### `publishedContent()` — published content in the service
 
-### `publishedRegion()` — understanding this method
+**Call style:** Instance. **Parameters:** `$model`.
 
-**Purpose:** Part of the `TbPageSerice` service's responsibility: legacy or alternate page service with the filename spelling 'Serice'.
+```php
+// $model must be a populated, validated framework model.
+// $service = new TbPageSerice();
+// $result = $service->publishedContent($model);
+```
 
-**How to study it:** Open the source and find `publishedRegion(`. Check its visibility (`public`, `protected`, or `private`), whether it is static, how its parameters are used, what it returns, and whether it changes stored data. Do not assume a return type based only on the method name.
+The call is intentionally commented out because it may modify records, files, sessions, or security state. Supply valid inputs and authorization before enabling it.
 
-### `fetchPublishPages()` — understanding this method
+### `publishedRegion()` — published region in the service
 
-**Purpose:** Part of the `TbPageSerice` service's responsibility: legacy or alternate page service with the filename spelling 'Serice'.
+**Call style:** Instance. **Parameters:** `$model`.
 
-**How to study it:** Open the source and find `fetchPublishPages(`. Check its visibility (`public`, `protected`, or `private`), whether it is static, how its parameters are used, what it returns, and whether it changes stored data. Do not assume a return type based only on the method name.
+```php
+// $model must be a populated, validated framework model.
+// $service = new TbPageSerice();
+// $result = $service->publishedRegion($model);
+```
+
+The call is intentionally commented out because it may modify records, files, sessions, or security state. Supply valid inputs and authorization before enabling it.
+
+### `fetchPublishPages()` — retrieve published pages
+
+**Call style:** Instance. **Parameters:** `none`.
+
+```php
+$service = new TbPageSerice();
+$result = $service->fetchPublishPages();
+```
 
 ## Practical LifeTech module example: understand the legacy page service
 
@@ -93,19 +117,9 @@ class TbExampleController
 
 **What happens:** The `index()` method demonstrates the service's role in a module request. Methods that read or change database records depend on the installed schema, active session, and appropriate authorization. Some service methods return JSON strings; do not double-encode their responses.
 
-## Common mistakes
-
-1. Calling an instance method statically, or creating an object when only a static method is needed.
-2. Guessing method arguments or return values instead of inspecting the implementation.
-3. Running data-changing operations without permissions, validation, and error handling.
-4. Assuming a service method is safe to expose as an unauthenticated endpoint.
-5. Copying an example without adapting it to your module's model and route configuration.
-
-**Source-specific caution:** The filename is spelled `Serice`, not `Service`. Check whether this older file is still used before importing it.
-
 ## Summary
 
-Legacy or alternate page service with the filename spelling 'Serice'. Begin with the quick-start section, then use the method reference as a map to the implementation. Where a contract is not verified, treat it as a point to investigate rather than a promise.
+Legacy or alternate page service with the filename spelling 'Serice'. See the method reference and practical module scenario for usage.
 
 ## Source and navigation
 
@@ -113,5 +127,3 @@ Legacy or alternate page service with the filename spelling 'Serice'. Begin with
 - [Back to MdLt Services index](README.md)
 - [Previous: TbPageContentService](TbPageContentService.md)
 - [Next: TbPageService](TbPageService.md)
-
-*This guide describes the `v1.x` branch inspected on 25 October 2026. Verify source details again after branch updates.*

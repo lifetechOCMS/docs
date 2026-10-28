@@ -1,6 +1,6 @@
 # TbRoleService — Developer Guide
 
-> **LifeTech OCMS core service** · `MdLt` · `v1.x`
+> **LifeTech OCMS core service** · `MdLt`
 >
 > Source: [Services/TbRoleService.php](https://github.com/lifetechOCMS/MdLt/blob/v1.x/Services/TbRoleService.php)
 
@@ -8,11 +8,7 @@
 
 Work with user roles and permission checks.
 
-This guide is written for a developer learning LifeTech OCMS services for the first time. The method inventory is based on the previously inspected `v1.x` source. For methods whose exact return values or visibility have not been established, the guide explicitly asks you to inspect the linked implementation rather than inventing a contract.
-
 ## Import the class
-
-Inside a module controller or service:
 
 ```php
 <?php
@@ -20,58 +16,83 @@ Inside a module controller or service:
 use Lt\Modules\MdLt\Services\TbRoleService;
 ```
 
-An import only resolves the class name; it does not initialize the class or its dependencies. Check whether a method is `static` before choosing `ClassName::method()` versus an instance call.
+## Quick start
 
-## Quick start: a first practical example
+A small illustration of a public method (adapt the sample values to your application):
 
-This service depends on application-specific models or setup. Start by locating a controller that already uses it, and inspect the arguments supplied there. A made-up call could mislead beginners or change application data.
+```php
+$service = new TbRoleService();
+$result = $service->roleUserPermissionStatus();
+```
 
 ## Method reference
 
-| Method | Call style | Arguments | Actual behavior / return |
+| Public method | Call style | Arguments | Purpose / result |
 |---|---|---|---|
-| `__construct()` | Confirm in source | `None` | Work with user roles and permission checks. Exact method behavior, visibility and return type require checking the linked implementation. |
-| `rolePermission()` | Confirm in source | `None` | Work with user roles and permission checks. Exact method behavior, visibility and return type require checking the linked implementation. |
-| `roleUserPermissionStatus($roles = [])` | Confirm in source | `$roles = []` | Work with user roles and permission checks. Exact method behavior, visibility and return type require checking the linked implementation. |
-| `dashboardAnalysis()` | Confirm in source | `None` | Work with user roles and permission checks. Exact method behavior, visibility and return type require checking the linked implementation. |
-| `roleExist($role)` | Confirm in source | `$role` | Work with user roles and permission checks. Exact method behavior, visibility and return type require checking the linked implementation. |
-| `getRoleNameById($role)` | Confirm in source | `$role` | Work with user roles and permission checks. Exact method behavior, visibility and return type require checking the linked implementation. |
+| `__construct()` | Instance | `None` |   construct in the service. |
+| `rolePermission()` | Instance | `None` | Role permission in the service. |
+| `roleUserPermissionStatus($roles=[])` | Instance | `$roles` | Role user permission status in the service. |
+| `dashboardAnalysis()` | Instance | `None` | Return dashboard-related summary data. |
+| `roleExist(String $role)` | Instance | `$role` | Check whether a role exists. |
+| `getRoleNameById($role)` | Instance | `$role` | Find the name associated with a role identifier. |
 
-### `__construct()` — understanding this method
+## Public methods with examples
 
-**Purpose:** Part of the `TbRoleService` service's responsibility: work with user roles and permission checks.
+### `__construct()` — initialize the service
 
-**How to study it:** Open the source and find `__construct(`. Check its visibility (`public`, `protected`, or `private`), whether it is static, how its parameters are used, what it returns, and whether it changes stored data. Do not assume a return type based only on the method name.
+The constructor prepares the service and its dependencies.
 
-### `rolePermission()` — understanding this method
+```php
+$service = new TbRoleService();
+```
 
-**Purpose:** Part of the `TbRoleService` service's responsibility: work with user roles and permission checks.
+### `rolePermission()` — role permission in the service
 
-**How to study it:** Open the source and find `rolePermission(`. Check its visibility (`public`, `protected`, or `private`), whether it is static, how its parameters are used, what it returns, and whether it changes stored data. Do not assume a return type based only on the method name.
+**Call style:** Instance. **Parameters:** `none`.
 
-### `roleUserPermissionStatus()` — understanding this method
+```php
+// This operation can change application state; review permissions and inputs.
+// $service = new TbRoleService();
+// $result = $service->rolePermission();
+```
 
-**Purpose:** Part of the `TbRoleService` service's responsibility: work with user roles and permission checks.
+The call is intentionally commented out because it may modify records, files, sessions, or security state. Supply valid inputs and authorization before enabling it.
 
-**How to study it:** Open the source and find `roleUserPermissionStatus(`. Check its visibility (`public`, `protected`, or `private`), whether it is static, how its parameters are used, what it returns, and whether it changes stored data. Do not assume a return type based only on the method name.
+### `roleUserPermissionStatus()` — role user permission status in the service
 
-### `dashboardAnalysis()` — understanding this method
+**Call style:** Instance. **Parameters:** `$roles=[]`.
 
-**Purpose:** Part of the `TbRoleService` service's responsibility: work with user roles and permission checks.
+```php
+$service = new TbRoleService();
+$result = $service->roleUserPermissionStatus();
+```
 
-**How to study it:** Open the source and find `dashboardAnalysis(`. Check its visibility (`public`, `protected`, or `private`), whether it is static, how its parameters are used, what it returns, and whether it changes stored data. Do not assume a return type based only on the method name.
+### `dashboardAnalysis()` — return dashboard-related summary data
 
-### `roleExist()` — understanding this method
+**Call style:** Instance. **Parameters:** `none`.
 
-**Purpose:** Part of the `TbRoleService` service's responsibility: work with user roles and permission checks.
+```php
+$service = new TbRoleService();
+$result = $service->dashboardAnalysis();
+```
 
-**How to study it:** Open the source and find `roleExist(`. Check its visibility (`public`, `protected`, or `private`), whether it is static, how its parameters are used, what it returns, and whether it changes stored data. Do not assume a return type based only on the method name.
+### `roleExist()` — check whether a role exists
 
-### `getRoleNameById()` — understanding this method
+**Call style:** Instance. **Parameters:** `String $role`.
 
-**Purpose:** Part of the `TbRoleService` service's responsibility: work with user roles and permission checks.
+```php
+$service = new TbRoleService();
+$result = $service->roleExist('EXAMPLE_VALUE');
+```
 
-**How to study it:** Open the source and find `getRoleNameById(`. Check its visibility (`public`, `protected`, or `private`), whether it is static, how its parameters are used, what it returns, and whether it changes stored data. Do not assume a return type based only on the method name.
+### `getRoleNameById()` — find the name associated with a role identifier
+
+**Call style:** Instance. **Parameters:** `$role`.
+
+```php
+$service = new TbRoleService();
+$result = $service->getRoleNameById('EXAMPLE_VALUE');
+```
 
 ## Practical LifeTech module example: look up a role name for a dashboard
 
@@ -102,19 +123,9 @@ class TbExampleController
 
 **What happens:** The `index()` method demonstrates the service's role in a module request. Methods that read or change database records depend on the installed schema, active session, and appropriate authorization. Some service methods return JSON strings; do not double-encode their responses.
 
-## Common mistakes
-
-1. Calling an instance method statically, or creating an object when only a static method is needed.
-2. Guessing method arguments or return values instead of inspecting the implementation.
-3. Running data-changing operations without permissions, validation, and error handling.
-4. Assuming a service method is safe to expose as an unauthenticated endpoint.
-5. Copying an example without adapting it to your module's model and route configuration.
-
-**Source-specific caution:** Some methods require a model, configured database connection or application context. The source method names alone do not establish standalone usage.
-
 ## Summary
 
-Work with user roles and permission checks. Begin with the quick-start section, then use the method reference as a map to the implementation. Where a contract is not verified, treat it as a point to investigate rather than a promise.
+Work with user roles and permission checks. See the method reference and practical module scenario for usage.
 
 ## Source and navigation
 
@@ -122,5 +133,3 @@ Work with user roles and permission checks. Begin with the quick-start section, 
 - [Back to MdLt Services index](README.md)
 - [Previous: TbResponseService](TbResponseService.md)
 - [Next: TbThemeService](TbThemeService.md)
-
-*This guide describes the `v1.x` branch inspected on 25 October 2026. Verify source details again after branch updates.*

@@ -1,6 +1,6 @@
 # LtFile — Developer Guide
 
-> **LifeTech OCMS core service** · `MdLt` · `v1.x`
+> **LifeTech OCMS core service** · `MdLt`
 >
 > Source: [Services/LtFile.php](https://github.com/lifetechOCMS/MdLt/blob/v1.x/Services/LtFile.php)
 
@@ -8,11 +8,7 @@
 
 Manage files and directories, including uploads, writing, copying and ZIP archives.
 
-This guide is written for a developer learning LifeTech OCMS services for the first time. The method inventory is based on the previously inspected `v1.x` source. For methods whose exact return values or visibility have not been established, the guide explicitly asks you to inspect the linked implementation rather than inventing a contract.
-
 ## Import the class
-
-Inside a module controller or service:
 
 ```php
 <?php
@@ -20,149 +16,245 @@ Inside a module controller or service:
 use Lt\Modules\MdLt\Services\LtFile;
 ```
 
-An import only resolves the class name; it does not initialize the class or its dependencies. Check whether a method is `static` before choosing `ClassName::method()` versus an instance call.
+## Quick start
 
-## Quick start: a first practical example
-
-The following illustrates a common use. Run it within a correctly configured LifeTech OCMS application.
+A small illustration of a public method (adapt the sample values to your application):
 
 ```php
-<?php
-use Lt\Modules\MdLt\Services\LtFile;
-
-// Configure a permitted base path and validate filenames before file operations.
+$result = LtFile::path('packages/modules/MdExample/Storage');
 ```
 
 ## Method reference
 
-| Method | Call style | Arguments | Actual behavior / return |
+| Public method | Call style | Arguments | Purpose / result |
 |---|---|---|---|
-| `path($basePath, $createPathIfNotExist)` | Confirm in source | `$basePath, $createPathIfNotExist` | Manage files and directories, including uploads, writing, copying and ZIP archives. Exact method behavior, visibility and return type require checking the linked implementation. |
-| `size($value)` | Confirm in source | `$value` | Manage files and directories, including uploads, writing, copying and ZIP archives. Exact method behavior, visibility and return type require checking the linked implementation. |
-| `ext($extensions)` | Confirm in source | `$extensions` | Manage files and directories, including uploads, writing, copying and ZIP archives. Exact method behavior, visibility and return type require checking the linked implementation. |
-| `overwrite($yes)` | Confirm in source | `$yes` | Manage files and directories, including uploads, writing, copying and ZIP archives. Exact method behavior, visibility and return type require checking the linked implementation. |
-| `uploadFile($file)` | Confirm in source | `$file` | Manage files and directories, including uploads, writing, copying and ZIP archives. Exact method behavior, visibility and return type require checking the linked implementation. |
-| `createFile($fileName, $initialContent)` | Confirm in source | `$fileName, $initialContent` | Manage files and directories, including uploads, writing, copying and ZIP archives. Exact method behavior, visibility and return type require checking the linked implementation. |
-| `writeFile($fileName, $content)` | Confirm in source | `$fileName, $content` | Manage files and directories, including uploads, writing, copying and ZIP archives. Exact method behavior, visibility and return type require checking the linked implementation. |
-| `deleteFile($fileName)` | Confirm in source | `$fileName` | Manage files and directories, including uploads, writing, copying and ZIP archives. Exact method behavior, visibility and return type require checking the linked implementation. |
-| `createFolder($folderName)` | Confirm in source | `$folderName` | Manage files and directories, including uploads, writing, copying and ZIP archives. Exact method behavior, visibility and return type require checking the linked implementation. |
-| `deleteFolder($folderName, $recursive)` | Confirm in source | `$folderName, $recursive` | Manage files and directories, including uploads, writing, copying and ZIP archives. Exact method behavior, visibility and return type require checking the linked implementation. |
-| `download($fileName)` | Confirm in source | `$fileName` | Manage files and directories, including uploads, writing, copying and ZIP archives. Exact method behavior, visibility and return type require checking the linked implementation. |
-| `createZip($folder, &$zipFile, $target)` | Confirm in source | `$folder, &$zipFile, $target` | Manage files and directories, including uploads, writing, copying and ZIP archives. Exact method behavior, visibility and return type require checking the linked implementation. |
-| `copy($dst)` | Confirm in source | `$dst` | Manage files and directories, including uploads, writing, copying and ZIP archives. Exact method behavior, visibility and return type require checking the linked implementation. |
-| `copyFolder($src, $dst)` | Confirm in source | `$src, $dst` | Manage files and directories, including uploads, writing, copying and ZIP archives. Exact method behavior, visibility and return type require checking the linked implementation. |
-| `move($dst)` | Confirm in source | `$dst` | Manage files and directories, including uploads, writing, copying and ZIP archives. Exact method behavior, visibility and return type require checking the linked implementation. |
-| `moveFolder($src, $dest, $overwrite)` | Confirm in source | `$src, $dest, $overwrite` | Manage files and directories, including uploads, writing, copying and ZIP archives. Exact method behavior, visibility and return type require checking the linked implementation. |
-| `runUnlink($folderPath, $deleteMainFolder)` | Confirm in source | `$folderPath, $deleteMainFolder` | Manage files and directories, including uploads, writing, copying and ZIP archives. Exact method behavior, visibility and return type require checking the linked implementation. |
-| `unlink($fileName, $deleteMainFolder)` | Confirm in source | `$fileName, $deleteMainFolder` | Manage files and directories, including uploads, writing, copying and ZIP archives. Exact method behavior, visibility and return type require checking the linked implementation. |
+| `path(string $basePath="",string $createPathIfNotExist = '')` | Static | `$basePath, $createPathIfNotExist` | Create a file manager for a base path; declared return `self`. |
+| `size($value)` | Instance | `$value` | Configure the maximum upload size; declared return `self`. |
+| `ext($extensions)` | Instance | `$extensions` | Configure permitted file extensions; declared return `self`. |
+| `overwrite(bool $yes = true)` | Instance | `$yes` | Configure whether existing files may be replaced; declared return `self`. |
+| `uploadFile($file)` | Instance | `$file` | Process an uploaded file. |
+| `createFile(string $fileName, string $initialContent = '')` | Instance | `$fileName, $initialContent` | Create a file with initial content. |
+| `writeFile(string $fileName, string $content)` | Instance | `$fileName, $content` | Write content to a file. |
+| `deleteFile(string $fileName)` | Instance | `$fileName` | Delete a file. |
+| `createFolder(string $folderName)` | Instance | `$folderName` | Create a directory. |
+| `deleteFolder(string $folderName, bool $recursive = false)` | Instance | `$folderName, $recursive` | Delete a directory. |
+| `download(string $fileName)` | Instance | `$fileName` | Prepare or serve a file download. |
+| `createZip($folder, &$zipFile, $target)` | Instance | `$folder, $zipFile, $target` | Create a ZIP archive. |
+| `copy($dst)` | Instance | `$dst` | Copy a file or directory. |
+| `copyFolder($src, $dst)` | Instance | `$src, $dst` | Copy folder in the service. |
+| `move($dst)` | Instance | `$dst` | Move a file or directory. |
+| `moveFolder(string $src, string $dest, bool $overwrite = true)` | Instance | `$src, $dest, $overwrite` | Move folder in the service. |
+| `deleteFolder2(string $dir)` | Instance | `$dir` | Delete folder2; declared return `void`. |
+| `runUnlink($folderPath, $deleteMainFolder="yes")` | Instance | `$folderPath, $deleteMainFolder` | Run unlink in the service. |
+| `unlink($fileName, $deleteMainFolder="yes")` | Instance | `$fileName, $deleteMainFolder` | Unlink in the service. |
 
-### `path()` — understanding this method
+## Public methods with examples
 
-**Purpose:** Part of the `LtFile` service's responsibility: manage files and directories, including uploads, writing, copying and ZIP archives.
+### `path()` — create a file manager for a base path
 
-**How to study it:** Open the source and find `path(`. Check its visibility (`public`, `protected`, or `private`), whether it is static, how its parameters are used, what it returns, and whether it changes stored data. Do not assume a return type based only on the method name.
+**Call style:** Static. **Parameters:** `string $basePath="",string $createPathIfNotExist = ''`.
 
-### `size()` — understanding this method
+```php
+$result = LtFile::path('packages/modules/MdExample/Storage');
+```
 
-**Purpose:** Part of the `LtFile` service's responsibility: manage files and directories, including uploads, writing, copying and ZIP archives.
+### `size()` — configure the maximum upload size
 
-**How to study it:** Open the source and find `size(`. Check its visibility (`public`, `protected`, or `private`), whether it is static, how its parameters are used, what it returns, and whether it changes stored data. Do not assume a return type based only on the method name.
+**Call style:** Instance. **Parameters:** `$value`.
 
-### `ext()` — understanding this method
+```php
+$service = LtFile::path('packages/modules/MdExample/Storage');
+$result = $service->size('2MB');
+```
 
-**Purpose:** Part of the `LtFile` service's responsibility: manage files and directories, including uploads, writing, copying and ZIP archives.
+### `ext()` — configure permitted file extensions
 
-**How to study it:** Open the source and find `ext(`. Check its visibility (`public`, `protected`, or `private`), whether it is static, how its parameters are used, what it returns, and whether it changes stored data. Do not assume a return type based only on the method name.
+**Call style:** Instance. **Parameters:** `$extensions`.
 
-### `overwrite()` — understanding this method
+```php
+$service = LtFile::path('packages/modules/MdExample/Storage');
+$result = $service->ext(['jpg', 'png']);
+```
 
-**Purpose:** Part of the `LtFile` service's responsibility: manage files and directories, including uploads, writing, copying and ZIP archives.
+### `overwrite()` — configure whether existing files may be replaced
 
-**How to study it:** Open the source and find `overwrite(`. Check its visibility (`public`, `protected`, or `private`), whether it is static, how its parameters are used, what it returns, and whether it changes stored data. Do not assume a return type based only on the method name.
+**Call style:** Instance. **Parameters:** `bool $yes = true`.
 
-### `uploadFile()` — understanding this method
+```php
+$service = LtFile::path('packages/modules/MdExample/Storage');
+$result = $service->overwrite();
+```
 
-**Purpose:** Part of the `LtFile` service's responsibility: manage files and directories, including uploads, writing, copying and ZIP archives.
+### `uploadFile()` — process an uploaded file
 
-**How to study it:** Open the source and find `uploadFile(`. Check its visibility (`public`, `protected`, or `private`), whether it is static, how its parameters are used, what it returns, and whether it changes stored data. Do not assume a return type based only on the method name.
+**Call style:** Instance. **Parameters:** `$file`.
 
-### `createFile()` — understanding this method
+```php
+// This operation can change application state; review permissions and inputs.
+// $service = LtFile::path('packages/modules/MdExample/Storage');
+// $result = $service->uploadFile('example.txt');
+```
 
-**Purpose:** Part of the `LtFile` service's responsibility: manage files and directories, including uploads, writing, copying and ZIP archives.
+The call is intentionally commented out because it may modify records, files, sessions, or security state. Supply valid inputs and authorization before enabling it.
 
-**How to study it:** Open the source and find `createFile(`. Check its visibility (`public`, `protected`, or `private`), whether it is static, how its parameters are used, what it returns, and whether it changes stored data. Do not assume a return type based only on the method name.
+### `createFile()` — create a file with initial content
 
-### `writeFile()` — understanding this method
+**Call style:** Instance. **Parameters:** `string $fileName, string $initialContent = ''`.
 
-**Purpose:** Part of the `LtFile` service's responsibility: manage files and directories, including uploads, writing, copying and ZIP archives.
+```php
+// This operation can change application state; review permissions and inputs.
+// $service = LtFile::path('packages/modules/MdExample/Storage');
+// $result = $service->createFile('example.txt');
+```
 
-**How to study it:** Open the source and find `writeFile(`. Check its visibility (`public`, `protected`, or `private`), whether it is static, how its parameters are used, what it returns, and whether it changes stored data. Do not assume a return type based only on the method name.
+The call is intentionally commented out because it may modify records, files, sessions, or security state. Supply valid inputs and authorization before enabling it.
 
-### `deleteFile()` — understanding this method
+### `writeFile()` — write content to a file
 
-**Purpose:** Part of the `LtFile` service's responsibility: manage files and directories, including uploads, writing, copying and ZIP archives.
+**Call style:** Instance. **Parameters:** `string $fileName, string $content`.
 
-**How to study it:** Open the source and find `deleteFile(`. Check its visibility (`public`, `protected`, or `private`), whether it is static, how its parameters are used, what it returns, and whether it changes stored data. Do not assume a return type based only on the method name.
+```php
+// This operation can change application state; review permissions and inputs.
+// $service = LtFile::path('packages/modules/MdExample/Storage');
+// $result = $service->writeFile('example.txt', 'Example content');
+```
 
-### `createFolder()` — understanding this method
+The call is intentionally commented out because it may modify records, files, sessions, or security state. Supply valid inputs and authorization before enabling it.
 
-**Purpose:** Part of the `LtFile` service's responsibility: manage files and directories, including uploads, writing, copying and ZIP archives.
+### `deleteFile()` — delete a file
 
-**How to study it:** Open the source and find `createFolder(`. Check its visibility (`public`, `protected`, or `private`), whether it is static, how its parameters are used, what it returns, and whether it changes stored data. Do not assume a return type based only on the method name.
+**Call style:** Instance. **Parameters:** `string $fileName`.
 
-### `deleteFolder()` — understanding this method
+```php
+// This operation can change application state; review permissions and inputs.
+// $service = LtFile::path('packages/modules/MdExample/Storage');
+// $result = $service->deleteFile('example.txt');
+```
 
-**Purpose:** Part of the `LtFile` service's responsibility: manage files and directories, including uploads, writing, copying and ZIP archives.
+The call is intentionally commented out because it may modify records, files, sessions, or security state. Supply valid inputs and authorization before enabling it.
 
-**How to study it:** Open the source and find `deleteFolder(`. Check its visibility (`public`, `protected`, or `private`), whether it is static, how its parameters are used, what it returns, and whether it changes stored data. Do not assume a return type based only on the method name.
+### `createFolder()` — create a directory
 
-### `download()` — understanding this method
+**Call style:** Instance. **Parameters:** `string $folderName`.
 
-**Purpose:** Part of the `LtFile` service's responsibility: manage files and directories, including uploads, writing, copying and ZIP archives.
+```php
+// This operation can change application state; review permissions and inputs.
+// $service = LtFile::path('packages/modules/MdExample/Storage');
+// $result = $service->createFolder('Exports');
+```
 
-**How to study it:** Open the source and find `download(`. Check its visibility (`public`, `protected`, or `private`), whether it is static, how its parameters are used, what it returns, and whether it changes stored data. Do not assume a return type based only on the method name.
+The call is intentionally commented out because it may modify records, files, sessions, or security state. Supply valid inputs and authorization before enabling it.
 
-### `createZip()` — understanding this method
+### `deleteFolder()` — delete a directory
 
-**Purpose:** Part of the `LtFile` service's responsibility: manage files and directories, including uploads, writing, copying and ZIP archives.
+**Call style:** Instance. **Parameters:** `string $folderName, bool $recursive = false`.
 
-**How to study it:** Open the source and find `createZip(`. Check its visibility (`public`, `protected`, or `private`), whether it is static, how its parameters are used, what it returns, and whether it changes stored data. Do not assume a return type based only on the method name.
+```php
+// This operation can change application state; review permissions and inputs.
+// $service = LtFile::path('packages/modules/MdExample/Storage');
+// $result = $service->deleteFolder('Exports');
+```
 
-### `copy()` — understanding this method
+The call is intentionally commented out because it may modify records, files, sessions, or security state. Supply valid inputs and authorization before enabling it.
 
-**Purpose:** Part of the `LtFile` service's responsibility: manage files and directories, including uploads, writing, copying and ZIP archives.
+### `download()` — prepare or serve a file download
 
-**How to study it:** Open the source and find `copy(`. Check its visibility (`public`, `protected`, or `private`), whether it is static, how its parameters are used, what it returns, and whether it changes stored data. Do not assume a return type based only on the method name.
+**Call style:** Instance. **Parameters:** `string $fileName`.
 
-### `copyFolder()` — understanding this method
+```php
+$service = LtFile::path('packages/modules/MdExample/Storage');
+$result = $service->download('example.txt');
+```
 
-**Purpose:** Part of the `LtFile` service's responsibility: manage files and directories, including uploads, writing, copying and ZIP archives.
+### `createZip()` — create a ZIP archive
 
-**How to study it:** Open the source and find `copyFolder(`. Check its visibility (`public`, `protected`, or `private`), whether it is static, how its parameters are used, what it returns, and whether it changes stored data. Do not assume a return type based only on the method name.
+**Call style:** Instance. **Parameters:** `$folder, &$zipFile, $target`.
 
-### `move()` — understanding this method
+```php
+// This operation can change application state; review permissions and inputs.
+// $service = LtFile::path('packages/modules/MdExample/Storage');
+// $result = $service->createZip('Exports', 'EXAMPLE_VALUE', 'EXAMPLE_VALUE');
+```
 
-**Purpose:** Part of the `LtFile` service's responsibility: manage files and directories, including uploads, writing, copying and ZIP archives.
+The call is intentionally commented out because it may modify records, files, sessions, or security state. Supply valid inputs and authorization before enabling it.
 
-**How to study it:** Open the source and find `move(`. Check its visibility (`public`, `protected`, or `private`), whether it is static, how its parameters are used, what it returns, and whether it changes stored data. Do not assume a return type based only on the method name.
+### `copy()` — copy a file or directory
 
-### `moveFolder()` — understanding this method
+**Call style:** Instance. **Parameters:** `$dst`.
 
-**Purpose:** Part of the `LtFile` service's responsibility: manage files and directories, including uploads, writing, copying and ZIP archives.
+```php
+// This operation can change application state; review permissions and inputs.
+// $service = LtFile::path('packages/modules/MdExample/Storage');
+// $result = $service->copy('EXAMPLE_VALUE');
+```
 
-**How to study it:** Open the source and find `moveFolder(`. Check its visibility (`public`, `protected`, or `private`), whether it is static, how its parameters are used, what it returns, and whether it changes stored data. Do not assume a return type based only on the method name.
+The call is intentionally commented out because it may modify records, files, sessions, or security state. Supply valid inputs and authorization before enabling it.
 
-### `runUnlink()` — understanding this method
+### `copyFolder()` — copy folder in the service
 
-**Purpose:** Part of the `LtFile` service's responsibility: manage files and directories, including uploads, writing, copying and ZIP archives.
+**Call style:** Instance. **Parameters:** `$src, $dst`.
 
-**How to study it:** Open the source and find `runUnlink(`. Check its visibility (`public`, `protected`, or `private`), whether it is static, how its parameters are used, what it returns, and whether it changes stored data. Do not assume a return type based only on the method name.
+```php
+// This operation can change application state; review permissions and inputs.
+// $service = LtFile::path('packages/modules/MdExample/Storage');
+// $result = $service->copyFolder('EXAMPLE_VALUE', 'EXAMPLE_VALUE');
+```
 
-### `unlink()` — understanding this method
+The call is intentionally commented out because it may modify records, files, sessions, or security state. Supply valid inputs and authorization before enabling it.
 
-**Purpose:** Part of the `LtFile` service's responsibility: manage files and directories, including uploads, writing, copying and ZIP archives.
+### `move()` — move a file or directory
 
-**How to study it:** Open the source and find `unlink(`. Check its visibility (`public`, `protected`, or `private`), whether it is static, how its parameters are used, what it returns, and whether it changes stored data. Do not assume a return type based only on the method name.
+**Call style:** Instance. **Parameters:** `$dst`.
+
+```php
+// This operation can change application state; review permissions and inputs.
+// $service = LtFile::path('packages/modules/MdExample/Storage');
+// $result = $service->move('EXAMPLE_VALUE');
+```
+
+The call is intentionally commented out because it may modify records, files, sessions, or security state. Supply valid inputs and authorization before enabling it.
+
+### `moveFolder()` — move folder in the service
+
+**Call style:** Instance. **Parameters:** `string $src, string $dest, bool $overwrite = true`.
+
+```php
+// This operation can change application state; review permissions and inputs.
+// $service = LtFile::path('packages/modules/MdExample/Storage');
+// $result = $service->moveFolder('EXAMPLE_VALUE', 'EXAMPLE_VALUE');
+```
+
+The call is intentionally commented out because it may modify records, files, sessions, or security state. Supply valid inputs and authorization before enabling it.
+
+### `deleteFolder2()` — delete folder2
+
+**Call style:** Instance. **Parameters:** `string $dir`.
+
+```php
+// This operation can change application state; review permissions and inputs.
+// $service = LtFile::path('packages/modules/MdExample/Storage');
+// $result = $service->deleteFolder2('EXAMPLE_VALUE');
+```
+
+The call is intentionally commented out because it may modify records, files, sessions, or security state. Supply valid inputs and authorization before enabling it.
+
+### `runUnlink()` — run unlink in the service
+
+**Call style:** Instance. **Parameters:** `$folderPath, $deleteMainFolder="yes"`.
+
+```php
+$service = LtFile::path('packages/modules/MdExample/Storage');
+$result = $service->runUnlink('EXAMPLE_VALUE');
+```
+
+### `unlink()` — unlink in the service
+
+**Call style:** Instance. **Parameters:** `$fileName, $deleteMainFolder="yes"`.
+
+```php
+$service = LtFile::path('packages/modules/MdExample/Storage');
+$result = $service->unlink('example.txt');
+```
 
 ## Practical LifeTech module example: create a small text asset in a controlled folder
 
@@ -190,19 +282,9 @@ class TbExampleController
 
 **What happens:** The `index()` method demonstrates the service's role in a module request. Methods that read or change database records depend on the installed schema, active session, and appropriate authorization. Some service methods return JSON strings; do not double-encode their responses.
 
-## Common mistakes
-
-1. Calling an instance method statically, or creating an object when only a static method is needed.
-2. Guessing method arguments or return values instead of inspecting the implementation.
-3. Running data-changing operations without permissions, validation, and error handling.
-4. Assuming a service method is safe to expose as an unauthenticated endpoint.
-5. Copying an example without adapting it to your module's model and route configuration.
-
-**Source-specific caution:** Validate upload types and file paths; do not accept unrestricted user-controlled paths.
-
 ## Summary
 
-Manage files and directories, including uploads, writing, copying and ZIP archives. Begin with the quick-start section, then use the method reference as a map to the implementation. Where a contract is not verified, treat it as a point to investigate rather than a promise.
+Manage files and directories, including uploads, writing, copying and ZIP archives. See the method reference and practical module scenario for usage.
 
 ## Source and navigation
 
@@ -210,5 +292,3 @@ Manage files and directories, including uploads, writing, copying and ZIP archiv
 - [Back to MdLt Services index](README.md)
 - [Previous: LtDate](LtDate.md)
 - [Next: LtLWToken](LtLWToken.md)
-
-*This guide describes the `v1.x` branch inspected on 25 October 2026. Verify source details again after branch updates.*

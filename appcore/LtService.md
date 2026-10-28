@@ -1,6 +1,6 @@
 # LtService — Developer Guide
 
-> **LifeTech OCMS core service** · `MdLt` · `v1.x`
+> **LifeTech OCMS core service** · `MdLt`
 >
 > Source: [Services/LtService.php](https://github.com/lifetechOCMS/MdLt/blob/v1.x/Services/LtService.php)
 
@@ -8,11 +8,7 @@
 
 Provide shared utilities for IDs, boolean-like values and database columns.
 
-This guide is written for a developer learning LifeTech OCMS services for the first time. The method inventory is based on the previously inspected `v1.x` source. For methods whose exact return values or visibility have not been established, the guide explicitly asks you to inspect the linked implementation rather than inventing a contract.
-
 ## Import the class
-
-Inside a module controller or service:
 
 ```php
 <?php
@@ -20,51 +16,62 @@ Inside a module controller or service:
 use Lt\Modules\MdLt\Services\LtService;
 ```
 
-An import only resolves the class name; it does not initialize the class or its dependencies. Check whether a method is `static` before choosing `ClassName::method()` versus an instance call.
+## Quick start
 
-## Quick start: a first practical example
-
-The following illustrates a common use. Run it within a correctly configured LifeTech OCMS application.
+A small illustration of a public method (adapt the sample values to your application):
 
 ```php
-<?php
-use Lt\Modules\MdLt\Services\LtService;
-
-$id = LtService::generateLtId();
+$result = LtService::getIsValue('yes');
 ```
 
 ## Method reference
 
-| Method | Call style | Arguments | Actual behavior / return |
+| Public method | Call style | Arguments | Purpose / result |
 |---|---|---|---|
-| `getIsValue($raw)` | Confirm in source | `$raw` | Provide shared utilities for IDs, boolean-like values and database columns. Exact method behavior, visibility and return type require checking the linked implementation. |
-| `generateLtId($length = 12)` | Confirm in source | `$length = 12` | Provide shared utilities for IDs, boolean-like values and database columns. Exact method behavior, visibility and return type require checking the linked implementation. |
-| `alterTableColumn($tables, $column, $type)` | Confirm in source | `$tables, $column, $type` | Provide shared utilities for IDs, boolean-like values and database columns. Exact method behavior, visibility and return type require checking the linked implementation. |
-| `dropTableColumn($tables, $column)` | Confirm in source | `$tables, $column` | Provide shared utilities for IDs, boolean-like values and database columns. Exact method behavior, visibility and return type require checking the linked implementation. |
+| `getIsValue($raw)` | Static | `$raw` | Convert common truthy/falsy strings to 1, 0 or null. |
+| `generateLtId($length = 12)` | Static | `$length` | Generate a short alphanumeric identifier. |
+| `alterTableColumn($tables, $column, $type = 'TINYINT(1)', $default = 0)` | Static | `$tables, $column, $type, $default` | Alter table column in the service. |
+| `dropTableColumn($tables, $column)` | Static | `$tables, $column` | Drop table column in the service. |
 
-### `getIsValue()` — understanding this method
+## Public methods with examples
 
-**Purpose:** Part of the `LtService` service's responsibility: provide shared utilities for IDs, boolean-like values and database columns.
+### `getIsValue()` — convert common truthy/falsy strings to 1, 0 or null
 
-**How to study it:** Open the source and find `getIsValue(`. Check its visibility (`public`, `protected`, or `private`), whether it is static, how its parameters are used, what it returns, and whether it changes stored data. Do not assume a return type based only on the method name.
+**Call style:** Static. **Parameters:** `$raw`.
 
-### `generateLtId()` — understanding this method
+```php
+$result = LtService::getIsValue('yes');
+```
 
-**Purpose:** Part of the `LtService` service's responsibility: provide shared utilities for IDs, boolean-like values and database columns.
+### `generateLtId()` — generate a short alphanumeric identifier
 
-**How to study it:** Open the source and find `generateLtId(`. Check its visibility (`public`, `protected`, or `private`), whether it is static, how its parameters are used, what it returns, and whether it changes stored data. Do not assume a return type based only on the method name.
+**Call style:** Static. **Parameters:** `$length = 12`.
 
-### `alterTableColumn()` — understanding this method
+```php
+$result = LtService::generateLtId();
+```
 
-**Purpose:** Part of the `LtService` service's responsibility: provide shared utilities for IDs, boolean-like values and database columns.
+### `alterTableColumn()` — alter table column in the service
 
-**How to study it:** Open the source and find `alterTableColumn(`. Check its visibility (`public`, `protected`, or `private`), whether it is static, how its parameters are used, what it returns, and whether it changes stored data. Do not assume a return type based only on the method name.
+**Call style:** Static. **Parameters:** `$tables, $column, $type = 'TINYINT(1)', $default = 0`.
 
-### `dropTableColumn()` — understanding this method
+```php
+// This operation can change application state; review permissions and inputs.
+// $result = LtService::alterTableColumn(['tb_example'], 'is_enabled');
+```
 
-**Purpose:** Part of the `LtService` service's responsibility: provide shared utilities for IDs, boolean-like values and database columns.
+The call is intentionally commented out because it may modify records, files, sessions, or security state. Supply valid inputs and authorization before enabling it.
 
-**How to study it:** Open the source and find `dropTableColumn(`. Check its visibility (`public`, `protected`, or `private`), whether it is static, how its parameters are used, what it returns, and whether it changes stored data. Do not assume a return type based only on the method name.
+### `dropTableColumn()` — drop table column in the service
+
+**Call style:** Static. **Parameters:** `$tables, $column`.
+
+```php
+// This operation can change application state; review permissions and inputs.
+// $result = LtService::dropTableColumn(['tb_example'], 'is_enabled');
+```
+
+The call is intentionally commented out because it may modify records, files, sessions, or security state. Supply valid inputs and authorization before enabling it.
 
 ## Practical LifeTech module example: normalize an enabled flag from a request
 
@@ -92,19 +99,9 @@ class TbExampleController
 
 **What happens:** The `index()` method demonstrates the service's role in a module request. Methods that read or change database records depend on the installed schema, active session, and appropriate authorization. Some service methods return JSON strings; do not double-encode their responses.
 
-## Common mistakes
-
-1. Calling an instance method statically, or creating an object when only a static method is needed.
-2. Guessing method arguments or return values instead of inspecting the implementation.
-3. Running data-changing operations without permissions, validation, and error handling.
-4. Assuming a service method is safe to expose as an unauthenticated endpoint.
-5. Copying an example without adapting it to your module's model and route configuration.
-
-**Source-specific caution:** Some methods require a model, configured database connection or application context. The source method names alone do not establish standalone usage.
-
 ## Summary
 
-Provide shared utilities for IDs, boolean-like values and database columns. Begin with the quick-start section, then use the method reference as a map to the implementation. Where a contract is not verified, treat it as a point to investigate rather than a promise.
+Provide shared utilities for IDs, boolean-like values and database columns. See the method reference and practical module scenario for usage.
 
 ## Source and navigation
 
@@ -112,5 +109,3 @@ Provide shared utilities for IDs, boolean-like values and database columns. Begi
 - [Back to MdLt Services index](README.md)
 - [Previous: LtRoute](LtRoute.md)
 - [Next: LtSession](LtSession.md)
-
-*This guide describes the `v1.x` branch inspected on 25 October 2026. Verify source details again after branch updates.*

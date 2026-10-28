@@ -1,6 +1,6 @@
 # TbPageContentService — Developer Guide
 
-> **LifeTech OCMS core service** · `MdLt` · `v1.x`
+> **LifeTech OCMS core service** · `MdLt`
 >
 > Source: [Services/TbPageContentService.php](https://github.com/lifetechOCMS/MdLt/blob/v1.x/Services/TbPageContentService.php)
 
@@ -8,11 +8,7 @@
 
 Connect content to pages and regions, and control publication.
 
-This guide is written for a developer learning LifeTech OCMS services for the first time. The method inventory is based on the previously inspected `v1.x` source. For methods whose exact return values or visibility have not been established, the guide explicitly asks you to inspect the linked implementation rather than inventing a contract.
-
 ## Import the class
-
-Inside a module controller or service:
 
 ```php
 <?php
@@ -20,65 +16,105 @@ Inside a module controller or service:
 use Lt\Modules\MdLt\Services\TbPageContentService;
 ```
 
-An import only resolves the class name; it does not initialize the class or its dependencies. Check whether a method is `static` before choosing `ClassName::method()` versus an instance call.
+## Quick start
 
-## Quick start: a first practical example
+A small illustration of a public method (adapt the sample values to your application):
 
-This service depends on application-specific models or setup. Start by locating a controller that already uses it, and inspect the arguments supplied there. A made-up call could mislead beginners or change application data.
+```php
+$service = new TbPageContentService();
+$result = $service->fetchPublished('EXISTING_ID');
+```
 
 ## Method reference
 
-| Method | Call style | Arguments | Actual behavior / return |
+| Public method | Call style | Arguments | Purpose / result |
 |---|---|---|---|
-| `__construct()` | Confirm in source | `None` | Connect content to pages and regions, and control publication. Exact method behavior, visibility and return type require checking the linked implementation. |
-| `publishPageContent($model)` | Confirm in source | `$model` | Connect content to pages and regions, and control publication. Exact method behavior, visibility and return type require checking the linked implementation. |
-| `publishPage($id, $type)` | Confirm in source | `$id, $type` | Connect content to pages and regions, and control publication. Exact method behavior, visibility and return type require checking the linked implementation. |
-| `publishContent($id)` | Confirm in source | `$id` | Connect content to pages and regions, and control publication. Exact method behavior, visibility and return type require checking the linked implementation. |
-| `deletePageContent($ltId = null, $packageName = null)` | Confirm in source | `$ltId = null, $packageName = null` | Connect content to pages and regions, and control publication. Exact method behavior, visibility and return type require checking the linked implementation. |
-| `publishPageRegion($dataArr, $contentRecord = null)` | Confirm in source | `$dataArr, $contentRecord = null` | Connect content to pages and regions, and control publication. Exact method behavior, visibility and return type require checking the linked implementation. |
-| `fetchPublished($id, $fetchType = 'page', $source = 'region')` | Confirm in source | `$id, $fetchType = 'page', $source = 'region'` | Connect content to pages and regions, and control publication. Exact method behavior, visibility and return type require checking the linked implementation. |
+| `__construct()` | Instance | `None` |   construct in the service. |
+| `publishPageContent($model)` | Instance | `$model` | Publish page content in the service. |
+| `publishPage($id, $type)` | Instance | `$id, $type` | Publish page in the service. |
+| `publishContent($id)` | Instance | `$id` | Publish content in the service. |
+| `deletePageContent($ltId = null, $packageName = null)` | Instance | `$ltId, $packageName` | Delete page content. |
+| `publishPageRegion($dataArr, $contentRecord = null)` | Instance | `$dataArr, $contentRecord` | Publish page region in the service. |
+| `fetchPublished($id, $fetchType='page', $source='region')` | Instance | `$id, $fetchType, $source` | Fetch published using the configured models. |
 
-### `__construct()` — understanding this method
+## Public methods with examples
 
-**Purpose:** Part of the `TbPageContentService` service's responsibility: connect content to pages and regions, and control publication.
+### `__construct()` — initialize the service
 
-**How to study it:** Open the source and find `__construct(`. Check its visibility (`public`, `protected`, or `private`), whether it is static, how its parameters are used, what it returns, and whether it changes stored data. Do not assume a return type based only on the method name.
+The constructor prepares the service and its dependencies.
 
-### `publishPageContent()` — understanding this method
+```php
+$service = new TbPageContentService();
+```
 
-**Purpose:** Part of the `TbPageContentService` service's responsibility: connect content to pages and regions, and control publication.
+### `publishPageContent()` — publish page content in the service
 
-**How to study it:** Open the source and find `publishPageContent(`. Check its visibility (`public`, `protected`, or `private`), whether it is static, how its parameters are used, what it returns, and whether it changes stored data. Do not assume a return type based only on the method name.
+**Call style:** Instance. **Parameters:** `$model`.
 
-### `publishPage()` — understanding this method
+```php
+// $model must be a populated, validated framework model.
+// $service = new TbPageContentService();
+// $result = $service->publishPageContent($model);
+```
 
-**Purpose:** Part of the `TbPageContentService` service's responsibility: connect content to pages and regions, and control publication.
+The call is intentionally commented out because it may modify records, files, sessions, or security state. Supply valid inputs and authorization before enabling it.
 
-**How to study it:** Open the source and find `publishPage(`. Check its visibility (`public`, `protected`, or `private`), whether it is static, how its parameters are used, what it returns, and whether it changes stored data. Do not assume a return type based only on the method name.
+### `publishPage()` — publish page in the service
 
-### `publishContent()` — understanding this method
+**Call style:** Instance. **Parameters:** `$id, $type`.
 
-**Purpose:** Part of the `TbPageContentService` service's responsibility: connect content to pages and regions, and control publication.
+```php
+// This operation can change application state; review permissions and inputs.
+// $service = new TbPageContentService();
+// $result = $service->publishPage('EXISTING_ID', 'EXAMPLE_VALUE');
+```
 
-**How to study it:** Open the source and find `publishContent(`. Check its visibility (`public`, `protected`, or `private`), whether it is static, how its parameters are used, what it returns, and whether it changes stored data. Do not assume a return type based only on the method name.
+The call is intentionally commented out because it may modify records, files, sessions, or security state. Supply valid inputs and authorization before enabling it.
 
-### `deletePageContent()` — understanding this method
+### `publishContent()` — publish content in the service
 
-**Purpose:** Part of the `TbPageContentService` service's responsibility: connect content to pages and regions, and control publication.
+**Call style:** Instance. **Parameters:** `$id`.
 
-**How to study it:** Open the source and find `deletePageContent(`. Check its visibility (`public`, `protected`, or `private`), whether it is static, how its parameters are used, what it returns, and whether it changes stored data. Do not assume a return type based only on the method name.
+```php
+// This operation can change application state; review permissions and inputs.
+// $service = new TbPageContentService();
+// $result = $service->publishContent('EXISTING_ID');
+```
 
-### `publishPageRegion()` — understanding this method
+The call is intentionally commented out because it may modify records, files, sessions, or security state. Supply valid inputs and authorization before enabling it.
 
-**Purpose:** Part of the `TbPageContentService` service's responsibility: connect content to pages and regions, and control publication.
+### `deletePageContent()` — delete page content
 
-**How to study it:** Open the source and find `publishPageRegion(`. Check its visibility (`public`, `protected`, or `private`), whether it is static, how its parameters are used, what it returns, and whether it changes stored data. Do not assume a return type based only on the method name.
+**Call style:** Instance. **Parameters:** `$ltId = null, $packageName = null`.
 
-### `fetchPublished()` — understanding this method
+```php
+// This operation can change application state; review permissions and inputs.
+// $service = new TbPageContentService();
+// $result = $service->deletePageContent();
+```
 
-**Purpose:** Part of the `TbPageContentService` service's responsibility: connect content to pages and regions, and control publication.
+The call is intentionally commented out because it may modify records, files, sessions, or security state. Supply valid inputs and authorization before enabling it.
 
-**How to study it:** Open the source and find `fetchPublished(`. Check its visibility (`public`, `protected`, or `private`), whether it is static, how its parameters are used, what it returns, and whether it changes stored data. Do not assume a return type based only on the method name.
+### `publishPageRegion()` — publish page region in the service
+
+**Call style:** Instance. **Parameters:** `$dataArr, $contentRecord = null`.
+
+```php
+// This operation can change application state; review permissions and inputs.
+// $service = new TbPageContentService();
+// $result = $service->publishPageRegion('EXAMPLE_VALUE');
+```
+
+The call is intentionally commented out because it may modify records, files, sessions, or security state. Supply valid inputs and authorization before enabling it.
+
+### `fetchPublished()` — fetch published using the configured models
+
+**Call style:** Instance. **Parameters:** `$id, $fetchType='page', $source='region'`.
+
+```php
+$service = new TbPageContentService();
+$result = $service->fetchPublished('EXISTING_ID');
+```
 
 ## Practical LifeTech module example: fetch published content assigned to a page
 
@@ -106,19 +142,9 @@ class TbExampleController
 
 **What happens:** The `index()` method demonstrates the service's role in a module request. Methods that read or change database records depend on the installed schema, active session, and appropriate authorization. Some service methods return JSON strings; do not double-encode their responses.
 
-## Common mistakes
-
-1. Calling an instance method statically, or creating an object when only a static method is needed.
-2. Guessing method arguments or return values instead of inspecting the implementation.
-3. Running data-changing operations without permissions, validation, and error handling.
-4. Assuming a service method is safe to expose as an unauthenticated endpoint.
-5. Copying an example without adapting it to your module's model and route configuration.
-
-**Source-specific caution:** Some methods require a model, configured database connection or application context. The source method names alone do not establish standalone usage.
-
 ## Summary
 
-Connect content to pages and regions, and control publication. Begin with the quick-start section, then use the method reference as a map to the implementation. Where a contract is not verified, treat it as a point to investigate rather than a promise.
+Connect content to pages and regions, and control publication. See the method reference and practical module scenario for usage.
 
 ## Source and navigation
 
@@ -126,5 +152,3 @@ Connect content to pages and regions, and control publication. Begin with the qu
 - [Back to MdLt Services index](README.md)
 - [Previous: TbPackageService](TbPackageService.md)
 - [Next: TbPageSerice](TbPageSerice.md)
-
-*This guide describes the `v1.x` branch inspected on 25 October 2026. Verify source details again after branch updates.*

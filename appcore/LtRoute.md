@@ -1,6 +1,6 @@
 # LtRoute — Developer Guide
 
-> **LifeTech OCMS core service** · `MdLt` · `v1.x`
+> **LifeTech OCMS core service** · `MdLt`
 >
 > Source: [Services/LtRoute.php](https://github.com/lifetechOCMS/MdLt/blob/v1.x/Services/LtRoute.php)
 
@@ -8,11 +8,7 @@
 
 Register and handle module HTTP routes.
 
-This guide is written for a developer learning LifeTech OCMS services for the first time. The method inventory is based on the previously inspected `v1.x` source. For methods whose exact return values or visibility have not been established, the guide explicitly asks you to inspect the linked implementation rather than inventing a contract.
-
 ## Import the class
-
-Inside a module controller or service:
 
 ```php
 <?php
@@ -20,51 +16,67 @@ Inside a module controller or service:
 use Lt\Modules\MdLt\Services\LtRoute;
 ```
 
-An import only resolves the class name; it does not initialize the class or its dependencies. Check whether a method is `static` before choosing `ClassName::method()` versus an instance call.
+## Quick start
 
-## Quick start: a first practical example
-
-The following illustrates a common use. Run it within a correctly configured LifeTech OCMS application.
+A small illustration of a public method (adapt the sample values to your application):
 
 ```php
-<?php
-use Lt\Modules\MdLt\Services\LtRoute;
-
-LtRoute::get('/blog/posts', 'MdBlog@TbBlogController@index');
+$result = LtRoute::__callStatic('EXAMPLE_VALUE', 'EXAMPLE_VALUE');
 ```
 
 ## Method reference
 
-| Method | Call style | Arguments | Actual behavior / return |
+| Public method | Call style | Arguments | Purpose / result |
 |---|---|---|---|
-| `__callStatic($method, $args)` | Confirm in source | `$method, $args` | Register and handle module HTTP routes. Exact method behavior, visibility and return type require checking the linked implementation. |
-| `middleware($callback = null)` | Confirm in source | `$callback = null` | Register and handle module HTTP routes. Exact method behavior, visibility and return type require checking the linked implementation. |
-| `handle()` | Confirm in source | `None` | Register and handle module HTTP routes. Exact method behavior, visibility and return type require checking the linked implementation. |
-| `register($packageName = '', $contentName = '', $contentBody = '')` | Confirm in source | `$packageName = '', $contentName = '', $contentBody = ''` | Register and handle module HTTP routes. Exact method behavior, visibility and return type require checking the linked implementation. |
+| `__callStatic($method, $args)` | Static | `$method, $args` |   call static in the service. |
+| `trimBasePath()` | Instance | `None` | Trim base path in the service; declared return `string`. |
+| `middleware($callback = null)` | Instance | `$callback` | Middleware in the service. |
+| `invokeAction($value)` | Static | `$value` | Invoke action in the service. |
+| `register($packageName = '' , $contentName='',$contentBody='')` | Static | `$packageName, $contentName, $contentBody` | Register in the service. |
 
-### `__callStatic()` — understanding this method
+## Public methods with examples
 
-**Purpose:** Part of the `LtRoute` service's responsibility: register and handle module HTTP routes.
+### `__callStatic()` —   call static in the service
 
-**How to study it:** Open the source and find `__callStatic(`. Check its visibility (`public`, `protected`, or `private`), whether it is static, how its parameters are used, what it returns, and whether it changes stored data. Do not assume a return type based only on the method name.
+**Call style:** Static. **Parameters:** `$method, $args`.
 
-### `middleware()` — understanding this method
+```php
+$result = LtRoute::__callStatic('EXAMPLE_VALUE', 'EXAMPLE_VALUE');
+```
 
-**Purpose:** Part of the `LtRoute` service's responsibility: register and handle module HTTP routes.
+### `trimBasePath()` — trim base path in the service
 
-**How to study it:** Open the source and find `middleware(`. Check its visibility (`public`, `protected`, or `private`), whether it is static, how its parameters are used, what it returns, and whether it changes stored data. Do not assume a return type based only on the method name.
+**Call style:** Instance. **Parameters:** `none`.
 
-### `handle()` — understanding this method
+```php
+$service = new LtRoute();
+$result = $service->trimBasePath();
+```
 
-**Purpose:** Part of the `LtRoute` service's responsibility: register and handle module HTTP routes.
+### `middleware()` — middleware in the service
 
-**How to study it:** Open the source and find `handle(`. Check its visibility (`public`, `protected`, or `private`), whether it is static, how its parameters are used, what it returns, and whether it changes stored data. Do not assume a return type based only on the method name.
+**Call style:** Instance. **Parameters:** `$callback = null`.
 
-### `register()` — understanding this method
+```php
+$service = new LtRoute();
+$result = $service->middleware();
+```
 
-**Purpose:** Part of the `LtRoute` service's responsibility: register and handle module HTTP routes.
+### `invokeAction()` — invoke action in the service
 
-**How to study it:** Open the source and find `register(`. Check its visibility (`public`, `protected`, or `private`), whether it is static, how its parameters are used, what it returns, and whether it changes stored data. Do not assume a return type based only on the method name.
+**Call style:** Static. **Parameters:** `$value`.
+
+```php
+$result = LtRoute::invokeAction('yes');
+```
+
+### `register()` — register in the service
+
+**Call style:** Static. **Parameters:** `$packageName = '' , $contentName='',$contentBody=''`.
+
+```php
+$result = LtRoute::register();
+```
 
 ## Practical LifeTech module example: register a blog route for a module controller
 
@@ -82,19 +94,9 @@ LtRoute::get('/blog/posts', 'MdBlog@TbBlogController@index');
 
 A corresponding controller class and method must exist. Adapt the package name, path, and handler to your installed module.
 
-## Common mistakes
-
-1. Calling an instance method statically, or creating an object when only a static method is needed.
-2. Guessing method arguments or return values instead of inspecting the implementation.
-3. Running data-changing operations without permissions, validation, and error handling.
-4. Assuming a service method is safe to expose as an unauthenticated endpoint.
-5. Copying an example without adapting it to your module's model and route configuration.
-
-**Source-specific caution:** The dynamic HTTP methods are implemented via `__callStatic`; routes can also be registered with the framework's page synchronization mechanism.
-
 ## Summary
 
-Register and handle module HTTP routes. Begin with the quick-start section, then use the method reference as a map to the implementation. Where a contract is not verified, treat it as a point to investigate rather than a promise.
+Register and handle module HTTP routes. See the method reference and practical module scenario for usage.
 
 ## Source and navigation
 
@@ -102,5 +104,3 @@ Register and handle module HTTP routes. Begin with the quick-start section, then
 - [Back to MdLt Services index](README.md)
 - [Previous: LtResponse](LtResponse.md)
 - [Next: LtService](LtService.md)
-
-*This guide describes the `v1.x` branch inspected on 25 October 2026. Verify source details again after branch updates.*

@@ -1,6 +1,6 @@
 # LtSession — Developer Guide
 
-> **LifeTech OCMS core service** · `MdLt` · `v1.x`
+> **LifeTech OCMS core service** · `MdLt`
 >
 > Source: [Services/LtSession.php](https://github.com/lifetechOCMS/MdLt/blob/v1.x/Services/LtSession.php)
 
@@ -8,132 +8,108 @@
 
 A **session** lets a PHP application remember information between HTTP requests from the same visitor. For example, a module might remember a temporary preference or read an authenticated user's ID that the LifeTech OCMS login system has already placed in the session.
 
-`LtSession` is a small wrapper around PHP's `$_SESSION` and session functions. It does **not** perform authentication or authorization by itself. Never assume that setting a user ID manually means a user has securely logged in.
+`LtSession` is a small wrapper around PHP's `$_SESSION` and session functions. It does **not** perform authentication or authorization by itself.
 
 ## Import the class
 
-Inside your module's controller or service:
-
 ```php
 <?php
 
 use Lt\Modules\MdLt\Services\LtSession;
 ```
 
-Most frequently used methods are **static**: call `LtSession::get(...)`, not `(new LtSession())->get(...)`.
+## Quick start
 
-## Quick start: store, read, and remove a preference
+A small illustration of a public method (adapt the sample values to your application):
 
 ```php
-<?php
-
-use Lt\Modules\MdLt\Services\LtSession;
-
-// Assumes LifeTech has already started the PHP session.
-LtSession::set('preferredLanguage', 'en');
-
-if (LtSession::has('preferredLanguage')) {
-    $language = LtSession::get('preferredLanguage');
-    echo 'Selected language: ' . htmlspecialchars((string) $language, ENT_QUOTES, 'UTF-8');
-}
-
-LtSession::forget('preferredLanguage');
-```
-
-Expected output before removal:
-
-```text
-Selected language: en
+$service = new LtSession();
+$result = $service->start();
 ```
 
 ## Method reference
 
-| Method | Call style | Arguments | Actual behavior / return |
+| Public method | Call style | Arguments | Purpose / result |
 |---|---|---|---|
-| `start()` | Instance | None | Calls `session_start()` and returns `true` on success, otherwise `false`. |
-| `set($key, $value)` | Static | Session key and value | Assigns `$_SESSION[$key] = $value`; returns the assigned value. |
-| `get($key)` | Static | Session key | Returns the stored value, or `false` if the key is not set. |
-| `has($key)` | Static | Session key | Uses `isset()`; returns `true` or `false`. Keys storing `null` are treated as absent. |
-| `forget($key)` | Static | Session key | Returns `false` if absent; otherwise unsets the key and implicitly returns `null`. |
-| `all()` | Static | None | Returns the entire `$_SESSION` array. |
-| `destroy()` | Static | None | Calls `session_destroy()`; the method does not return PHP's result. |
-| `end()` | Instance | None | Attempts to start if needed, then destroys/unsets the session and expires its cookie. **See implementation warning below.** |
+| `start()` | Instance | `None` | Start or resume the current PHP session. |
+| `end()` | Instance | `None` | End the PHP session and expire its cookie (see implementation caveat). |
+| `set($key, $value)` | Static | `$key, $value` | Store a value under a session key. |
+| `has($key)` | Static | `$key` | Check whether a session key exists. |
+| `get($key)` | Static | `$key` | Retrieve a stored value. |
+| `forget($key)` | Static | `$key` | Remove one session value. |
+| `destroy()` | Static | `None` | Destroy the current PHP session. |
+| `all()` | Static | `None` | Read all current session values. |
 
-### `set()` — save a value
+## Public methods with examples
 
-```php
-LtSession::set('dashboardTheme', 'dark');
-LtSession::set('itemsPerPage', 20);
-```
+### `start()` — start or resume the current PHP session
 
-Use meaningful, consistent key names to avoid collisions with LifeTech's own session keys.
-
-### `get()` — retrieve a value
+**Call style:** Instance. **Parameters:** `none`.
 
 ```php
-$theme = LtSession::get('dashboardTheme');
-
-if ($theme === false) {
-    $theme = 'light';
-}
+$service = new LtSession();
+$result = $service->start();
 ```
 
-**Important:** This fallback also treats a deliberately stored `false` as missing. Use `has()` if distinguishing those cases matters.
+### `end()` — end the PHP session and expire its cookie (see implementation caveat)
 
-### `has()` — check before reading
+**Call style:** Instance. **Parameters:** `none`.
 
 ```php
-if (LtSession::has('itemsPerPage')) {
-    $itemsPerPage = LtSession::get('itemsPerPage');
-} else {
-    $itemsPerPage = 10;
-}
+$service = new LtSession();
+$result = $service->end();
 ```
 
-### `forget()` — remove one key
+### `set()` — store a value under a session key
+
+**Call style:** Static. **Parameters:** `$key, $value`.
 
 ```php
-LtSession::forget('dashboardTheme');
+$result = LtSession::set('dashboardTheme', 'yes');
 ```
 
-This does not log the user out and does not remove other session values.
+### `has()` — check whether a session key exists
 
-### `all()` — inspect available values
+**Call style:** Static. **Parameters:** `$key`.
 
 ```php
-$keys = array_keys(LtSession::all());
+$result = LtSession::has('dashboardTheme');
 ```
 
-Inspecting **keys** is generally safer than exposing all values. Never return all session data to an untrusted client.
+### `get()` — retrieve a stored value
 
-### `start()` — begin or resume a session
+**Call style:** Static. **Parameters:** `$key`.
 
 ```php
-$session = new LtSession();
-$started = $session->start();
+$result = LtSession::get('dashboardTheme');
 ```
 
-This is the actual instance method in the source, but **do not call it routinely inside module controllers** when the framework has already started the session. Starting twice can produce warnings or unexpected behavior. Session initialization should occur before output is sent.
+### `forget()` — remove one session value
 
-### `destroy()` — destroy server-side session data
+**Call style:** Static. **Parameters:** `$key`.
 
 ```php
-LtSession::destroy();
+$result = LtSession::forget('dashboardTheme');
 ```
 
-**Do not treat this alone as a complete logout implementation.** The method does not clear the in-memory `$_SESSION` array or delete the browser cookie. Use the framework's established logout/authentication flow instead.
+### `destroy()` — destroy the current PHP session
 
-### `end()` — implementation caution
-
-The current source refers to `$this->status` without declaring that property:
+**Call style:** Static. **Parameters:** `none`.
 
 ```php
-if ($this->status != true) {
-    $this->start();
-}
+// This operation can change application state; review permissions and inputs.
+// $result = LtSession::destroy();
 ```
 
-This may generate a warning and makes the method unsuitable as a recommended logout example until the implementation is corrected. Prefer the application's established logout flow.
+The call is intentionally commented out because it may modify records, files, sessions, or security state. Supply valid inputs and authorization before enabling it.
+
+### `all()` — read all current session values
+
+**Call style:** Static. **Parameters:** `none`.
+
+```php
+$result = LtSession::all();
+```
 
 ## Practical LifeTech module example: a temporary dashboard preference
 
@@ -167,15 +143,6 @@ class TbDashboardController
 
 This example **reads a preference**, not a login credential. The exact controller invocation and HTTP response handling depend on the module's route setup.
 
-## Common mistakes
-
-1. **Creating an instance for every operation:** `LtSession::get('key')` is sufficient; `get()` is static.
-2. **Starting the session repeatedly:** use the existing LifeTech request/session initialization.
-3. **Assuming `get()` returns `null` when absent:** this implementation returns `false`.
-4. **Treating `has()` as authentication:** the presence of a key does not establish that the user is authorized.
-5. **Using `destroy()` as a complete logout:** rely on the framework's authentication/logout workflow.
-6. **Displaying `all()` in production:** session data can contain private or security-sensitive information.
-
 ## Summary
 
 For ordinary module development, the most useful calls are `LtSession::set()`, `LtSession::get()`, `LtSession::has()`, and `LtSession::forget()`. Use `all()` sparingly. Leave session initialization and logout to LifeTech OCMS's established lifecycle unless you are working on the framework itself.
@@ -186,5 +153,3 @@ For ordinary module development, the most useful calls are `LtSession::set()`, `
 - [Back to MdLt Services index](README.md)
 - [Previous: LtService](LtService.md)
 - [Next: LtSiteInfo](LtSiteInfo.md)
-
-*This guide documents the `v1.x` implementation reviewed on 25 October 2026. Verify the source again after updating the branch.*

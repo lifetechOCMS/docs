@@ -1,6 +1,6 @@
 # TbPackageService — Developer Guide
 
-> **LifeTech OCMS core service** · `MdLt` · `v1.x`
+> **LifeTech OCMS core service** · `MdLt`
 >
 > Source: [Services/TbPackageService.php](https://github.com/lifetechOCMS/MdLt/blob/v1.x/Services/TbPackageService.php)
 
@@ -8,11 +8,7 @@
 
 Manage package registration, marketplace installation, dependencies, imports and exports.
 
-This guide is written for a developer learning LifeTech OCMS services for the first time. The method inventory is based on the previously inspected `v1.x` source. For methods whose exact return values or visibility have not been established, the guide explicitly asks you to inspect the linked implementation rather than inventing a contract.
-
 ## Import the class
-
-Inside a module controller or service:
 
 ```php
 <?php
@@ -20,156 +16,218 @@ Inside a module controller or service:
 use Lt\Modules\MdLt\Services\TbPackageService;
 ```
 
-An import only resolves the class name; it does not initialize the class or its dependencies. Check whether a method is `static` before choosing `ClassName::method()` versus an instance call.
+## Quick start
 
-## Quick start: a first practical example
+A small illustration of a public method (adapt the sample values to your application):
 
-This service depends on application-specific models or setup. Start by locating a controller that already uses it, and inspect the arguments supplied there. A made-up call could mislead beginners or change application data.
+```php
+$service = new TbPackageService();
+$result = $service->filteredPackages();
+```
 
 ## Method reference
 
-| Method | Call style | Arguments | Actual behavior / return |
+| Public method | Call style | Arguments | Purpose / result |
 |---|---|---|---|
-| `__construct()` | Confirm in source | `None` | Manage package registration, marketplace installation, dependencies, imports and exports. Exact method behavior, visibility and return type require checking the linked implementation. |
-| `store($model)` | Confirm in source | `$model` | Manage package registration, marketplace installation, dependencies, imports and exports. Exact method behavior, visibility and return type require checking the linked implementation. |
-| `updatePackage($model)` | Confirm in source | `$model` | Manage package registration, marketplace installation, dependencies, imports and exports. Exact method behavior, visibility and return type require checking the linked implementation. |
-| `filteredPackages()` | Confirm in source | `None` | Manage package registration, marketplace installation, dependencies, imports and exports. Exact method behavior, visibility and return type require checking the linked implementation. |
-| `validateDependency()` | Confirm in source | `None` | Manage package registration, marketplace installation, dependencies, imports and exports. Exact method behavior, visibility and return type require checking the linked implementation. |
-| `checkDependencyRequirement($dependencies)` | Confirm in source | `$dependencies` | Manage package registration, marketplace installation, dependencies, imports and exports. Exact method behavior, visibility and return type require checking the linked implementation. |
-| `browseProductFromMarkePlace()` | Confirm in source | `None` | Manage package registration, marketplace installation, dependencies, imports and exports. Exact method behavior, visibility and return type require checking the linked implementation. |
-| `installFromMarketplace()` | Confirm in source | `None` | Manage package registration, marketplace installation, dependencies, imports and exports. Exact method behavior, visibility and return type require checking the linked implementation. |
-| `exportTable()` | Confirm in source | `None` | Manage package registration, marketplace installation, dependencies, imports and exports. Exact method behavior, visibility and return type require checking the linked implementation. |
-| `exportPackage()` | Confirm in source | `None` | Manage package registration, marketplace installation, dependencies, imports and exports. Exact method behavior, visibility and return type require checking the linked implementation. |
-| `importPackage()` | Confirm in source | `None` | Manage package registration, marketplace installation, dependencies, imports and exports. Exact method behavior, visibility and return type require checking the linked implementation. |
-| `togglePublish($model)` | Confirm in source | `$model` | Manage package registration, marketplace installation, dependencies, imports and exports. Exact method behavior, visibility and return type require checking the linked implementation. |
-| `isDefault($model)` | Confirm in source | `$model` | Manage package registration, marketplace installation, dependencies, imports and exports. Exact method behavior, visibility and return type require checking the linked implementation. |
-| `dashboardAnalysis()` | Confirm in source | `None` | Manage package registration, marketplace installation, dependencies, imports and exports. Exact method behavior, visibility and return type require checking the linked implementation. |
-| `importPackageAbstract($path)` | Confirm in source | `$path` | Manage package registration, marketplace installation, dependencies, imports and exports. Exact method behavior, visibility and return type require checking the linked implementation. |
-| `batchInsertPageContent($pageContents, $batchSize, $userId)` | Confirm in source | `$pageContents, $batchSize, $userId` | Manage package registration, marketplace installation, dependencies, imports and exports. Exact method behavior, visibility and return type require checking the linked implementation. |
-| `batchUpsert($table, $rows, $skipUpdate)` | Confirm in source | `$table, $rows, $skipUpdate` | Manage package registration, marketplace installation, dependencies, imports and exports. Exact method behavior, visibility and return type require checking the linked implementation. |
-| `importPackageRecords($table, $records, $columnMap, $fixedValues, $batchSize, $userId)` | Confirm in source | `$table, $records, $columnMap, $fixedValues, $batchSize, $userId` | Manage package registration, marketplace installation, dependencies, imports and exports. Exact method behavior, visibility and return type require checking the linked implementation. |
-| `insertThemePageRegions($pages, $pageContents, $batchSize, $userId, $now)` | Confirm in source | `$pages, $pageContents, $batchSize, $userId, $now` | Manage package registration, marketplace installation, dependencies, imports and exports. Exact method behavior, visibility and return type require checking the linked implementation. |
-| `readImportJson($file, $expectList = false)` | Confirm in source | `$file, $expectList = false` | Manage package registration, marketplace installation, dependencies, imports and exports. Exact method behavior, visibility and return type require checking the linked implementation. |
+| `__construct()` | Instance | `None` |   construct in the service. |
+| `store($model)` | Instance | `$model` | Save a record using the service and its model. |
+| `updatePackage($model)` | Instance | `$model` | Update package in the service. |
+| `filteredPackages()` | Instance | `None` | Filtered packages in the service. |
+| `validateDependency()` | Instance | `None` | Validate dependency in the service. |
+| `checkDependencyRequirement($dependencies)` | Instance | `$dependencies` | Check dependency requirement. |
+| `browseProductFromMarkePlace()` | Instance | `None` | Browse product from marke place in the service. |
+| `installFromMarketplace()` | Instance | `None` | Install from marketplace in the service. |
+| `exportTable()` | Instance | `None` | Export table in the service. |
+| `exportPackage()` | Instance | `None` | Export package in the service. |
+| `zipFolder($folderPath, $zipFilePath)` | Instance | `$folderPath, $zipFilePath` | Zip folder in the service. |
+| `importPackage()` | Instance | `None` | Import package in the service. |
+| `togglePublish($model)` | Instance | `$model` | Toggle publish. |
+| `isDefault($model)` | Instance | `$model` | Check default status. |
+| `dashboardAnalysis()` | Instance | `None` | Return dashboard-related summary data. |
+| `importPackageAbstract($path)` | Instance | `$path` | Import package abstract in the service. |
+| `batchInsertPageContent(array $pageContents, int $batchSize, $userId)` | Instance | `$pageContents, $batchSize, $userId` | Batch insert page content in the service; declared return `void`. |
 
-### `__construct()` — understanding this method
+## Public methods with examples
 
-**Purpose:** Part of the `TbPackageService` service's responsibility: manage package registration, marketplace installation, dependencies, imports and exports.
+### `__construct()` — initialize the service
 
-**How to study it:** Open the source and find `__construct(`. Check its visibility (`public`, `protected`, or `private`), whether it is static, how its parameters are used, what it returns, and whether it changes stored data. Do not assume a return type based only on the method name.
+The constructor prepares the service and its dependencies.
 
-### `store()` — understanding this method
+```php
+$service = new TbPackageService();
+```
 
-**Purpose:** Part of the `TbPackageService` service's responsibility: manage package registration, marketplace installation, dependencies, imports and exports.
+### `store()` — save a record using the service and its model
 
-**How to study it:** Open the source and find `store(`. Check its visibility (`public`, `protected`, or `private`), whether it is static, how its parameters are used, what it returns, and whether it changes stored data. Do not assume a return type based only on the method name.
+**Call style:** Instance. **Parameters:** `$model`.
 
-### `updatePackage()` — understanding this method
+```php
+// $model must be a populated, validated framework model.
+// $service = new TbPackageService();
+// $result = $service->store($model);
+```
 
-**Purpose:** Part of the `TbPackageService` service's responsibility: manage package registration, marketplace installation, dependencies, imports and exports.
+The call is intentionally commented out because it may modify records, files, sessions, or security state. Supply valid inputs and authorization before enabling it.
 
-**How to study it:** Open the source and find `updatePackage(`. Check its visibility (`public`, `protected`, or `private`), whether it is static, how its parameters are used, what it returns, and whether it changes stored data. Do not assume a return type based only on the method name.
+### `updatePackage()` — update package in the service
 
-### `filteredPackages()` — understanding this method
+**Call style:** Instance. **Parameters:** `$model`.
 
-**Purpose:** Part of the `TbPackageService` service's responsibility: manage package registration, marketplace installation, dependencies, imports and exports.
+```php
+// $model must be a populated, validated framework model.
+// $service = new TbPackageService();
+// $result = $service->updatePackage($model);
+```
 
-**How to study it:** Open the source and find `filteredPackages(`. Check its visibility (`public`, `protected`, or `private`), whether it is static, how its parameters are used, what it returns, and whether it changes stored data. Do not assume a return type based only on the method name.
+The call is intentionally commented out because it may modify records, files, sessions, or security state. Supply valid inputs and authorization before enabling it.
 
-### `validateDependency()` — understanding this method
+### `filteredPackages()` — filtered packages in the service
 
-**Purpose:** Part of the `TbPackageService` service's responsibility: manage package registration, marketplace installation, dependencies, imports and exports.
+**Call style:** Instance. **Parameters:** `none`.
 
-**How to study it:** Open the source and find `validateDependency(`. Check its visibility (`public`, `protected`, or `private`), whether it is static, how its parameters are used, what it returns, and whether it changes stored data. Do not assume a return type based only on the method name.
+```php
+$service = new TbPackageService();
+$result = $service->filteredPackages();
+```
 
-### `checkDependencyRequirement()` — understanding this method
+### `validateDependency()` — validate dependency in the service
 
-**Purpose:** Part of the `TbPackageService` service's responsibility: manage package registration, marketplace installation, dependencies, imports and exports.
+**Call style:** Instance. **Parameters:** `none`.
 
-**How to study it:** Open the source and find `checkDependencyRequirement(`. Check its visibility (`public`, `protected`, or `private`), whether it is static, how its parameters are used, what it returns, and whether it changes stored data. Do not assume a return type based only on the method name.
+```php
+$service = new TbPackageService();
+$result = $service->validateDependency();
+```
 
-### `browseProductFromMarkePlace()` — understanding this method
+### `checkDependencyRequirement()` — check dependency requirement
 
-**Purpose:** Part of the `TbPackageService` service's responsibility: manage package registration, marketplace installation, dependencies, imports and exports.
+**Call style:** Instance. **Parameters:** `$dependencies`.
 
-**How to study it:** Open the source and find `browseProductFromMarkePlace(`. Check its visibility (`public`, `protected`, or `private`), whether it is static, how its parameters are used, what it returns, and whether it changes stored data. Do not assume a return type based only on the method name.
+```php
+$service = new TbPackageService();
+$result = $service->checkDependencyRequirement('EXAMPLE_VALUE');
+```
 
-### `installFromMarketplace()` — understanding this method
+### `browseProductFromMarkePlace()` — browse product from marke place in the service
 
-**Purpose:** Part of the `TbPackageService` service's responsibility: manage package registration, marketplace installation, dependencies, imports and exports.
+**Call style:** Instance. **Parameters:** `none`.
 
-**How to study it:** Open the source and find `installFromMarketplace(`. Check its visibility (`public`, `protected`, or `private`), whether it is static, how its parameters are used, what it returns, and whether it changes stored data. Do not assume a return type based only on the method name.
+```php
+$service = new TbPackageService();
+$result = $service->browseProductFromMarkePlace();
+```
 
-### `exportTable()` — understanding this method
+### `installFromMarketplace()` — install from marketplace in the service
 
-**Purpose:** Part of the `TbPackageService` service's responsibility: manage package registration, marketplace installation, dependencies, imports and exports.
+**Call style:** Instance. **Parameters:** `none`.
 
-**How to study it:** Open the source and find `exportTable(`. Check its visibility (`public`, `protected`, or `private`), whether it is static, how its parameters are used, what it returns, and whether it changes stored data. Do not assume a return type based only on the method name.
+```php
+// This operation can change application state; review permissions and inputs.
+// $service = new TbPackageService();
+// $result = $service->installFromMarketplace();
+```
 
-### `exportPackage()` — understanding this method
+The call is intentionally commented out because it may modify records, files, sessions, or security state. Supply valid inputs and authorization before enabling it.
 
-**Purpose:** Part of the `TbPackageService` service's responsibility: manage package registration, marketplace installation, dependencies, imports and exports.
+### `exportTable()` — export table in the service
 
-**How to study it:** Open the source and find `exportPackage(`. Check its visibility (`public`, `protected`, or `private`), whether it is static, how its parameters are used, what it returns, and whether it changes stored data. Do not assume a return type based only on the method name.
+**Call style:** Instance. **Parameters:** `none`.
 
-### `importPackage()` — understanding this method
+```php
+// This operation can change application state; review permissions and inputs.
+// $service = new TbPackageService();
+// $result = $service->exportTable();
+```
 
-**Purpose:** Part of the `TbPackageService` service's responsibility: manage package registration, marketplace installation, dependencies, imports and exports.
+The call is intentionally commented out because it may modify records, files, sessions, or security state. Supply valid inputs and authorization before enabling it.
 
-**How to study it:** Open the source and find `importPackage(`. Check its visibility (`public`, `protected`, or `private`), whether it is static, how its parameters are used, what it returns, and whether it changes stored data. Do not assume a return type based only on the method name.
+### `exportPackage()` — export package in the service
 
-### `togglePublish()` — understanding this method
+**Call style:** Instance. **Parameters:** `none`.
 
-**Purpose:** Part of the `TbPackageService` service's responsibility: manage package registration, marketplace installation, dependencies, imports and exports.
+```php
+// This operation can change application state; review permissions and inputs.
+// $service = new TbPackageService();
+// $result = $service->exportPackage();
+```
 
-**How to study it:** Open the source and find `togglePublish(`. Check its visibility (`public`, `protected`, or `private`), whether it is static, how its parameters are used, what it returns, and whether it changes stored data. Do not assume a return type based only on the method name.
+The call is intentionally commented out because it may modify records, files, sessions, or security state. Supply valid inputs and authorization before enabling it.
 
-### `isDefault()` — understanding this method
+### `zipFolder()` — zip folder in the service
 
-**Purpose:** Part of the `TbPackageService` service's responsibility: manage package registration, marketplace installation, dependencies, imports and exports.
+**Call style:** Instance. **Parameters:** `$folderPath, $zipFilePath`.
 
-**How to study it:** Open the source and find `isDefault(`. Check its visibility (`public`, `protected`, or `private`), whether it is static, how its parameters are used, what it returns, and whether it changes stored data. Do not assume a return type based only on the method name.
+```php
+$service = new TbPackageService();
+$result = $service->zipFolder('EXAMPLE_VALUE', 'EXAMPLE_VALUE');
+```
 
-### `dashboardAnalysis()` — understanding this method
+### `importPackage()` — import package in the service
 
-**Purpose:** Part of the `TbPackageService` service's responsibility: manage package registration, marketplace installation, dependencies, imports and exports.
+**Call style:** Instance. **Parameters:** `none`.
 
-**How to study it:** Open the source and find `dashboardAnalysis(`. Check its visibility (`public`, `protected`, or `private`), whether it is static, how its parameters are used, what it returns, and whether it changes stored data. Do not assume a return type based only on the method name.
+```php
+// This operation can change application state; review permissions and inputs.
+// $service = new TbPackageService();
+// $result = $service->importPackage();
+```
 
-### `importPackageAbstract()` — understanding this method
+The call is intentionally commented out because it may modify records, files, sessions, or security state. Supply valid inputs and authorization before enabling it.
 
-**Purpose:** Part of the `TbPackageService` service's responsibility: manage package registration, marketplace installation, dependencies, imports and exports.
+### `togglePublish()` — toggle publish
 
-**How to study it:** Open the source and find `importPackageAbstract(`. Check its visibility (`public`, `protected`, or `private`), whether it is static, how its parameters are used, what it returns, and whether it changes stored data. Do not assume a return type based only on the method name.
+**Call style:** Instance. **Parameters:** `$model`.
 
-### `batchInsertPageContent()` — understanding this method
+```php
+// $model must be a populated, validated framework model.
+// $service = new TbPackageService();
+// $result = $service->togglePublish($model);
+```
 
-**Purpose:** Part of the `TbPackageService` service's responsibility: manage package registration, marketplace installation, dependencies, imports and exports.
+The call is intentionally commented out because it may modify records, files, sessions, or security state. Supply valid inputs and authorization before enabling it.
 
-**How to study it:** Open the source and find `batchInsertPageContent(`. Check its visibility (`public`, `protected`, or `private`), whether it is static, how its parameters are used, what it returns, and whether it changes stored data. Do not assume a return type based only on the method name.
+### `isDefault()` — check default status
 
-### `batchUpsert()` — understanding this method
+**Call style:** Instance. **Parameters:** `$model`.
 
-**Purpose:** Part of the `TbPackageService` service's responsibility: manage package registration, marketplace installation, dependencies, imports and exports.
+```php
+// $model must be a populated, validated framework model.
+// $service = new TbPackageService();
+// $result = $service->isDefault($model);
+```
 
-**How to study it:** Open the source and find `batchUpsert(`. Check its visibility (`public`, `protected`, or `private`), whether it is static, how its parameters are used, what it returns, and whether it changes stored data. Do not assume a return type based only on the method name.
+### `dashboardAnalysis()` — return dashboard-related summary data
 
-### `importPackageRecords()` — understanding this method
+**Call style:** Instance. **Parameters:** `none`.
 
-**Purpose:** Part of the `TbPackageService` service's responsibility: manage package registration, marketplace installation, dependencies, imports and exports.
+```php
+$service = new TbPackageService();
+$result = $service->dashboardAnalysis();
+```
 
-**How to study it:** Open the source and find `importPackageRecords(`. Check its visibility (`public`, `protected`, or `private`), whether it is static, how its parameters are used, what it returns, and whether it changes stored data. Do not assume a return type based only on the method name.
+### `importPackageAbstract()` — import package abstract in the service
 
-### `insertThemePageRegions()` — understanding this method
+**Call style:** Instance. **Parameters:** `$path`.
 
-**Purpose:** Part of the `TbPackageService` service's responsibility: manage package registration, marketplace installation, dependencies, imports and exports.
+```php
+// This operation can change application state; review permissions and inputs.
+// $service = new TbPackageService();
+// $result = $service->importPackageAbstract('packages/modules/MdExample/Storage');
+```
 
-**How to study it:** Open the source and find `insertThemePageRegions(`. Check its visibility (`public`, `protected`, or `private`), whether it is static, how its parameters are used, what it returns, and whether it changes stored data. Do not assume a return type based only on the method name.
+The call is intentionally commented out because it may modify records, files, sessions, or security state. Supply valid inputs and authorization before enabling it.
 
-### `readImportJson()` — understanding this method
+### `batchInsertPageContent()` — batch insert page content in the service
 
-**Purpose:** Part of the `TbPackageService` service's responsibility: manage package registration, marketplace installation, dependencies, imports and exports.
+**Call style:** Instance. **Parameters:** `array $pageContents, int $batchSize, $userId`.
 
-**How to study it:** Open the source and find `readImportJson(`. Check its visibility (`public`, `protected`, or `private`), whether it is static, how its parameters are used, what it returns, and whether it changes stored data. Do not assume a return type based only on the method name.
+```php
+// This operation can change application state; review permissions and inputs.
+// $service = new TbPackageService();
+// $result = $service->batchInsertPageContent('EXAMPLE_VALUE', 'EXAMPLE_VALUE', 'EXISTING_ID');
+```
+
+The call is intentionally commented out because it may modify records, files, sessions, or security state. Supply valid inputs and authorization before enabling it.
 
 ## Practical LifeTech module example: display package dashboard statistics
 
@@ -196,19 +254,9 @@ class TbExampleController
 
 **What happens:** The `index()` method demonstrates the service's role in a module request. Methods that read or change database records depend on the installed schema, active session, and appropriate authorization. Some service methods return JSON strings; do not double-encode their responses.
 
-## Common mistakes
-
-1. Calling an instance method statically, or creating an object when only a static method is needed.
-2. Guessing method arguments or return values instead of inspecting the implementation.
-3. Running data-changing operations without permissions, validation, and error handling.
-4. Assuming a service method is safe to expose as an unauthenticated endpoint.
-5. Copying an example without adapting it to your module's model and route configuration.
-
-**Source-specific caution:** Package installation/import changes files and database records. Test with backups before production use.
-
 ## Summary
 
-Manage package registration, marketplace installation, dependencies, imports and exports. Begin with the quick-start section, then use the method reference as a map to the implementation. Where a contract is not verified, treat it as a point to investigate rather than a promise.
+Manage package registration, marketplace installation, dependencies, imports and exports. See the method reference and practical module scenario for usage.
 
 ## Source and navigation
 
@@ -216,5 +264,3 @@ Manage package registration, marketplace installation, dependencies, imports and
 - [Back to MdLt Services index](README.md)
 - [Previous: TbModuleService](TbModuleService.md)
 - [Next: TbPageContentService](TbPageContentService.md)
-
-*This guide describes the `v1.x` branch inspected on 25 October 2026. Verify source details again after branch updates.*

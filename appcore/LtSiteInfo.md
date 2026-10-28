@@ -1,6 +1,6 @@
 # LtSiteInfo — Developer Guide
 
-> **LifeTech OCMS core service** · `MdLt` · `v1.x`
+> **LifeTech OCMS core service** · `MdLt`
 >
 > Source: [Services/LtSiteInfo.php](https://github.com/lifetechOCMS/MdLt/blob/v1.x/Services/LtSiteInfo.php)
 
@@ -8,11 +8,7 @@
 
 Read site settings and construct site or package URLs.
 
-This guide is written for a developer learning LifeTech OCMS services for the first time. The method inventory is based on the previously inspected `v1.x` source. For methods whose exact return values or visibility have not been established, the guide explicitly asks you to inspect the linked implementation rather than inventing a contract.
-
 ## Import the class
-
-Inside a module controller or service:
 
 ```php
 <?php
@@ -20,247 +16,308 @@ Inside a module controller or service:
 use Lt\Modules\MdLt\Services\LtSiteInfo;
 ```
 
-An import only resolves the class name; it does not initialize the class or its dependencies. Check whether a method is `static` before choosing `ClassName::method()` versus an instance call.
+## Quick start
 
-## Quick start: a first practical example
-
-The following illustrates a common use. Run it within a correctly configured LifeTech OCMS application.
+A small illustration of a public method (adapt the sample values to your application):
 
 ```php
-<?php
-use Lt\Modules\MdLt\Services\LtSiteInfo;
-
-// Read the current site configuration through LtSiteInfo methods.
+$result = LtSiteInfo::getSiteInfo();
 ```
 
 ## Method reference
 
-| Method | Call style | Arguments | Actual behavior / return |
+| Public method | Call style | Arguments | Purpose / result |
 |---|---|---|---|
-| `getSiteInfo()` | Confirm in source | `None` | Read site settings and construct site or package URLs. Exact method behavior, visibility and return type require checking the linked implementation. |
-| `dbName()` | Confirm in source | `None` | Read site settings and construct site or package URLs. Exact method behavior, visibility and return type require checking the linked implementation. |
-| `siteName()` | Confirm in source | `None` | Read site settings and construct site or package URLs. Exact method behavior, visibility and return type require checking the linked implementation. |
-| `siteTitle()` | Confirm in source | `None` | Read site settings and construct site or package URLs. Exact method behavior, visibility and return type require checking the linked implementation. |
-| `pageTitle()` | Confirm in source | `None` | Read site settings and construct site or package URLs. Exact method behavior, visibility and return type require checking the linked implementation. |
-| `siteAlias()` | Confirm in source | `None` | Read site settings and construct site or package URLs. Exact method behavior, visibility and return type require checking the linked implementation. |
-| `siteCopyright()` | Confirm in source | `None` | Read site settings and construct site or package URLs. Exact method behavior, visibility and return type require checking the linked implementation. |
-| `siteEmail()` | Confirm in source | `None` | Read site settings and construct site or package URLs. Exact method behavior, visibility and return type require checking the linked implementation. |
-| `siteEmail2()` | Confirm in source | `None` | Read site settings and construct site or package URLs. Exact method behavior, visibility and return type require checking the linked implementation. |
-| `sitePhone()` | Confirm in source | `None` | Read site settings and construct site or package URLs. Exact method behavior, visibility and return type require checking the linked implementation. |
-| `sitePhone2()` | Confirm in source | `None` | Read site settings and construct site or package URLs. Exact method behavior, visibility and return type require checking the linked implementation. |
-| `siteAddress()` | Confirm in source | `None` | Read site settings and construct site or package URLs. Exact method behavior, visibility and return type require checking the linked implementation. |
-| `siteAddress2()` | Confirm in source | `None` | Read site settings and construct site or package URLs. Exact method behavior, visibility and return type require checking the linked implementation. |
-| `siteLogo()` | Confirm in source | `None` | Read site settings and construct site or package URLs. Exact method behavior, visibility and return type require checking the linked implementation. |
-| `siteFavicon()` | Confirm in source | `None` | Read site settings and construct site or package URLs. Exact method behavior, visibility and return type require checking the linked implementation. |
-| `siteOpenHour()` | Confirm in source | `None` | Read site settings and construct site or package URLs. Exact method behavior, visibility and return type require checking the linked implementation. |
-| `siteClosedHour()` | Confirm in source | `None` | Read site settings and construct site or package URLs. Exact method behavior, visibility and return type require checking the linked implementation. |
-| `siteLinkedln()` | Confirm in source | `None` | Read site settings and construct site or package URLs. Exact method behavior, visibility and return type require checking the linked implementation. |
-| `siteInstagram()` | Confirm in source | `None` | Read site settings and construct site or package URLs. Exact method behavior, visibility and return type require checking the linked implementation. |
-| `siteFacebook()` | Confirm in source | `None` | Read site settings and construct site or package URLs. Exact method behavior, visibility and return type require checking the linked implementation. |
-| `siteTwitter()` | Confirm in source | `None` | Read site settings and construct site or package URLs. Exact method behavior, visibility and return type require checking the linked implementation. |
-| `siteYoutube()` | Confirm in source | `None` | Read site settings and construct site or package URLs. Exact method behavior, visibility and return type require checking the linked implementation. |
-| `siteHostAddress()` | Confirm in source | `None` | Read site settings and construct site or package URLs. Exact method behavior, visibility and return type require checking the linked implementation. |
-| `isHttps()` | Confirm in source | `None` | Read site settings and construct site or package URLs. Exact method behavior, visibility and return type require checking the linked implementation. |
-| `domain()` | Confirm in source | `None` | Read site settings and construct site or package URLs. Exact method behavior, visibility and return type require checking the linked implementation. |
-| `baseUrl()` | Confirm in source | `None` | Read site settings and construct site or package URLs. Exact method behavior, visibility and return type require checking the linked implementation. |
-| `siteFaviconUrl()` | Confirm in source | `None` | Read site settings and construct site or package URLs. Exact method behavior, visibility and return type require checking the linked implementation. |
-| `siteLogoUrl()` | Confirm in source | `None` | Read site settings and construct site or package URLs. Exact method behavior, visibility and return type require checking the linked implementation. |
-| `siteUrl()` | Confirm in source | `None` | Read site settings and construct site or package URLs. Exact method behavior, visibility and return type require checking the linked implementation. |
-| `themePath()` | Confirm in source | `None` | Read site settings and construct site or package URLs. Exact method behavior, visibility and return type require checking the linked implementation. |
-| `modulePath()` | Confirm in source | `None` | Read site settings and construct site or package URLs. Exact method behavior, visibility and return type require checking the linked implementation. |
-| `pluginPath()` | Confirm in source | `None` | Read site settings and construct site or package URLs. Exact method behavior, visibility and return type require checking the linked implementation. |
+| `getSiteInfo()` | Static | `None` | Read site configuration record. |
+| `dbName()` | Static | `None` | Db name in the service. |
+| `siteName()` | Static | `None` | Site name in the service. |
+| `siteTitle()` | Static | `None` | Site title in the service. |
+| `pageTitle()` | Static | `None` | Page title in the service. |
+| `siteAlias()` | Static | `None` | Site alias in the service. |
+| `siteCopyright()` | Static | `None` | Site copyright in the service. |
+| `siteEmail()` | Static | `None` | Site email in the service. |
+| `siteEmail2()` | Static | `None` | Site email2 in the service. |
+| `sitePhone()` | Static | `None` | Site phone in the service. |
+| `sitePhone2()` | Static | `None` | Site phone2 in the service. |
+| `siteAddress()` | Static | `None` | Site address in the service. |
+| `siteAddress2()` | Static | `None` | Site address2 in the service. |
+| `siteLogo()` | Static | `None` | Site logo in the service. |
+| `siteFavicon()` | Static | `None` | Site favicon in the service. |
+| `siteOpenHour()` | Static | `None` | Site open hour in the service. |
+| `siteClosedHour()` | Static | `None` | Site closed hour in the service. |
+| `siteLinkedln()` | Static | `None` | Site linkedln in the service. |
+| `siteInstagram()` | Static | `None` | Site instagram in the service. |
+| `siteFacebook()` | Static | `None` | Site facebook in the service. |
+| `siteTwitter()` | Static | `None` | Site twitter in the service. |
+| `siteYoutube()` | Static | `None` | Site youtube in the service. |
+| `siteHostAddress()` | Static | `None` | Site host address in the service. |
+| `isHttps()` | Static | `None` | Check https status. |
+| `domain()` | Static | `None` | Domain in the service. |
+| `baseUrl()` | Static | `None` | Base url in the service. |
+| `siteFaviconUrl()` | Static | `None` | Site favicon url in the service. |
+| `siteLogoUrl()` | Static | `None` | Site logo url in the service. |
+| `siteUrl()` | Static | `None` | Site url in the service. |
+| `themePath()` | Static | `None` | Theme path in the service. |
+| `modulePath()` | Static | `None` | Module path in the service. |
+| `pluginPath()` | Static | `None` | Plugin path in the service. |
 
-### `getSiteInfo()` — understanding this method
+## Public methods with examples
 
-**Purpose:** Part of the `LtSiteInfo` service's responsibility: read site settings and construct site or package URLs.
+### `getSiteInfo()` — read site configuration record
 
-**How to study it:** Open the source and find `getSiteInfo(`. Check its visibility (`public`, `protected`, or `private`), whether it is static, how its parameters are used, what it returns, and whether it changes stored data. Do not assume a return type based only on the method name.
+**Call style:** Static. **Parameters:** `none`.
 
-### `dbName()` — understanding this method
+```php
+$result = LtSiteInfo::getSiteInfo();
+```
 
-**Purpose:** Part of the `LtSiteInfo` service's responsibility: read site settings and construct site or package URLs.
+### `dbName()` — db name in the service
 
-**How to study it:** Open the source and find `dbName(`. Check its visibility (`public`, `protected`, or `private`), whether it is static, how its parameters are used, what it returns, and whether it changes stored data. Do not assume a return type based only on the method name.
+**Call style:** Static. **Parameters:** `none`.
 
-### `siteName()` — understanding this method
+```php
+$result = LtSiteInfo::dbName();
+```
 
-**Purpose:** Part of the `LtSiteInfo` service's responsibility: read site settings and construct site or package URLs.
+### `siteName()` — site name in the service
 
-**How to study it:** Open the source and find `siteName(`. Check its visibility (`public`, `protected`, or `private`), whether it is static, how its parameters are used, what it returns, and whether it changes stored data. Do not assume a return type based only on the method name.
+**Call style:** Static. **Parameters:** `none`.
 
-### `siteTitle()` — understanding this method
+```php
+$result = LtSiteInfo::siteName();
+```
 
-**Purpose:** Part of the `LtSiteInfo` service's responsibility: read site settings and construct site or package URLs.
+### `siteTitle()` — site title in the service
 
-**How to study it:** Open the source and find `siteTitle(`. Check its visibility (`public`, `protected`, or `private`), whether it is static, how its parameters are used, what it returns, and whether it changes stored data. Do not assume a return type based only on the method name.
+**Call style:** Static. **Parameters:** `none`.
 
-### `pageTitle()` — understanding this method
+```php
+$result = LtSiteInfo::siteTitle();
+```
 
-**Purpose:** Part of the `LtSiteInfo` service's responsibility: read site settings and construct site or package URLs.
+### `pageTitle()` — page title in the service
 
-**How to study it:** Open the source and find `pageTitle(`. Check its visibility (`public`, `protected`, or `private`), whether it is static, how its parameters are used, what it returns, and whether it changes stored data. Do not assume a return type based only on the method name.
+**Call style:** Static. **Parameters:** `none`.
 
-### `siteAlias()` — understanding this method
+```php
+$result = LtSiteInfo::pageTitle();
+```
 
-**Purpose:** Part of the `LtSiteInfo` service's responsibility: read site settings and construct site or package URLs.
+### `siteAlias()` — site alias in the service
 
-**How to study it:** Open the source and find `siteAlias(`. Check its visibility (`public`, `protected`, or `private`), whether it is static, how its parameters are used, what it returns, and whether it changes stored data. Do not assume a return type based only on the method name.
+**Call style:** Static. **Parameters:** `none`.
 
-### `siteCopyright()` — understanding this method
+```php
+$result = LtSiteInfo::siteAlias();
+```
 
-**Purpose:** Part of the `LtSiteInfo` service's responsibility: read site settings and construct site or package URLs.
+### `siteCopyright()` — site copyright in the service
 
-**How to study it:** Open the source and find `siteCopyright(`. Check its visibility (`public`, `protected`, or `private`), whether it is static, how its parameters are used, what it returns, and whether it changes stored data. Do not assume a return type based only on the method name.
+**Call style:** Static. **Parameters:** `none`.
 
-### `siteEmail()` — understanding this method
+```php
+$result = LtSiteInfo::siteCopyright();
+```
 
-**Purpose:** Part of the `LtSiteInfo` service's responsibility: read site settings and construct site or package URLs.
+### `siteEmail()` — site email in the service
 
-**How to study it:** Open the source and find `siteEmail(`. Check its visibility (`public`, `protected`, or `private`), whether it is static, how its parameters are used, what it returns, and whether it changes stored data. Do not assume a return type based only on the method name.
+**Call style:** Static. **Parameters:** `none`.
 
-### `siteEmail2()` — understanding this method
+```php
+$result = LtSiteInfo::siteEmail();
+```
 
-**Purpose:** Part of the `LtSiteInfo` service's responsibility: read site settings and construct site or package URLs.
+### `siteEmail2()` — site email2 in the service
 
-**How to study it:** Open the source and find `siteEmail2(`. Check its visibility (`public`, `protected`, or `private`), whether it is static, how its parameters are used, what it returns, and whether it changes stored data. Do not assume a return type based only on the method name.
+**Call style:** Static. **Parameters:** `none`.
 
-### `sitePhone()` — understanding this method
+```php
+$result = LtSiteInfo::siteEmail2();
+```
 
-**Purpose:** Part of the `LtSiteInfo` service's responsibility: read site settings and construct site or package URLs.
+### `sitePhone()` — site phone in the service
 
-**How to study it:** Open the source and find `sitePhone(`. Check its visibility (`public`, `protected`, or `private`), whether it is static, how its parameters are used, what it returns, and whether it changes stored data. Do not assume a return type based only on the method name.
+**Call style:** Static. **Parameters:** `none`.
 
-### `sitePhone2()` — understanding this method
+```php
+$result = LtSiteInfo::sitePhone();
+```
 
-**Purpose:** Part of the `LtSiteInfo` service's responsibility: read site settings and construct site or package URLs.
+### `sitePhone2()` — site phone2 in the service
 
-**How to study it:** Open the source and find `sitePhone2(`. Check its visibility (`public`, `protected`, or `private`), whether it is static, how its parameters are used, what it returns, and whether it changes stored data. Do not assume a return type based only on the method name.
+**Call style:** Static. **Parameters:** `none`.
 
-### `siteAddress()` — understanding this method
+```php
+$result = LtSiteInfo::sitePhone2();
+```
 
-**Purpose:** Part of the `LtSiteInfo` service's responsibility: read site settings and construct site or package URLs.
+### `siteAddress()` — site address in the service
 
-**How to study it:** Open the source and find `siteAddress(`. Check its visibility (`public`, `protected`, or `private`), whether it is static, how its parameters are used, what it returns, and whether it changes stored data. Do not assume a return type based only on the method name.
+**Call style:** Static. **Parameters:** `none`.
 
-### `siteAddress2()` — understanding this method
+```php
+$result = LtSiteInfo::siteAddress();
+```
 
-**Purpose:** Part of the `LtSiteInfo` service's responsibility: read site settings and construct site or package URLs.
+### `siteAddress2()` — site address2 in the service
 
-**How to study it:** Open the source and find `siteAddress2(`. Check its visibility (`public`, `protected`, or `private`), whether it is static, how its parameters are used, what it returns, and whether it changes stored data. Do not assume a return type based only on the method name.
+**Call style:** Static. **Parameters:** `none`.
 
-### `siteLogo()` — understanding this method
+```php
+$result = LtSiteInfo::siteAddress2();
+```
 
-**Purpose:** Part of the `LtSiteInfo` service's responsibility: read site settings and construct site or package URLs.
+### `siteLogo()` — site logo in the service
 
-**How to study it:** Open the source and find `siteLogo(`. Check its visibility (`public`, `protected`, or `private`), whether it is static, how its parameters are used, what it returns, and whether it changes stored data. Do not assume a return type based only on the method name.
+**Call style:** Static. **Parameters:** `none`.
 
-### `siteFavicon()` — understanding this method
+```php
+$result = LtSiteInfo::siteLogo();
+```
 
-**Purpose:** Part of the `LtSiteInfo` service's responsibility: read site settings and construct site or package URLs.
+### `siteFavicon()` — site favicon in the service
 
-**How to study it:** Open the source and find `siteFavicon(`. Check its visibility (`public`, `protected`, or `private`), whether it is static, how its parameters are used, what it returns, and whether it changes stored data. Do not assume a return type based only on the method name.
+**Call style:** Static. **Parameters:** `none`.
 
-### `siteOpenHour()` — understanding this method
+```php
+$result = LtSiteInfo::siteFavicon();
+```
 
-**Purpose:** Part of the `LtSiteInfo` service's responsibility: read site settings and construct site or package URLs.
+### `siteOpenHour()` — site open hour in the service
 
-**How to study it:** Open the source and find `siteOpenHour(`. Check its visibility (`public`, `protected`, or `private`), whether it is static, how its parameters are used, what it returns, and whether it changes stored data. Do not assume a return type based only on the method name.
+**Call style:** Static. **Parameters:** `none`.
 
-### `siteClosedHour()` — understanding this method
+```php
+$result = LtSiteInfo::siteOpenHour();
+```
 
-**Purpose:** Part of the `LtSiteInfo` service's responsibility: read site settings and construct site or package URLs.
+### `siteClosedHour()` — site closed hour in the service
 
-**How to study it:** Open the source and find `siteClosedHour(`. Check its visibility (`public`, `protected`, or `private`), whether it is static, how its parameters are used, what it returns, and whether it changes stored data. Do not assume a return type based only on the method name.
+**Call style:** Static. **Parameters:** `none`.
 
-### `siteLinkedln()` — understanding this method
+```php
+$result = LtSiteInfo::siteClosedHour();
+```
 
-**Purpose:** Part of the `LtSiteInfo` service's responsibility: read site settings and construct site or package URLs.
+### `siteLinkedln()` — site linkedln in the service
 
-**How to study it:** Open the source and find `siteLinkedln(`. Check its visibility (`public`, `protected`, or `private`), whether it is static, how its parameters are used, what it returns, and whether it changes stored data. Do not assume a return type based only on the method name.
+**Call style:** Static. **Parameters:** `none`.
 
-### `siteInstagram()` — understanding this method
+```php
+$result = LtSiteInfo::siteLinkedln();
+```
 
-**Purpose:** Part of the `LtSiteInfo` service's responsibility: read site settings and construct site or package URLs.
+### `siteInstagram()` — site instagram in the service
 
-**How to study it:** Open the source and find `siteInstagram(`. Check its visibility (`public`, `protected`, or `private`), whether it is static, how its parameters are used, what it returns, and whether it changes stored data. Do not assume a return type based only on the method name.
+**Call style:** Static. **Parameters:** `none`.
 
-### `siteFacebook()` — understanding this method
+```php
+$result = LtSiteInfo::siteInstagram();
+```
 
-**Purpose:** Part of the `LtSiteInfo` service's responsibility: read site settings and construct site or package URLs.
+### `siteFacebook()` — site facebook in the service
 
-**How to study it:** Open the source and find `siteFacebook(`. Check its visibility (`public`, `protected`, or `private`), whether it is static, how its parameters are used, what it returns, and whether it changes stored data. Do not assume a return type based only on the method name.
+**Call style:** Static. **Parameters:** `none`.
 
-### `siteTwitter()` — understanding this method
+```php
+$result = LtSiteInfo::siteFacebook();
+```
 
-**Purpose:** Part of the `LtSiteInfo` service's responsibility: read site settings and construct site or package URLs.
+### `siteTwitter()` — site twitter in the service
 
-**How to study it:** Open the source and find `siteTwitter(`. Check its visibility (`public`, `protected`, or `private`), whether it is static, how its parameters are used, what it returns, and whether it changes stored data. Do not assume a return type based only on the method name.
+**Call style:** Static. **Parameters:** `none`.
 
-### `siteYoutube()` — understanding this method
+```php
+$result = LtSiteInfo::siteTwitter();
+```
 
-**Purpose:** Part of the `LtSiteInfo` service's responsibility: read site settings and construct site or package URLs.
+### `siteYoutube()` — site youtube in the service
 
-**How to study it:** Open the source and find `siteYoutube(`. Check its visibility (`public`, `protected`, or `private`), whether it is static, how its parameters are used, what it returns, and whether it changes stored data. Do not assume a return type based only on the method name.
+**Call style:** Static. **Parameters:** `none`.
 
-### `siteHostAddress()` — understanding this method
+```php
+$result = LtSiteInfo::siteYoutube();
+```
 
-**Purpose:** Part of the `LtSiteInfo` service's responsibility: read site settings and construct site or package URLs.
+### `siteHostAddress()` — site host address in the service
 
-**How to study it:** Open the source and find `siteHostAddress(`. Check its visibility (`public`, `protected`, or `private`), whether it is static, how its parameters are used, what it returns, and whether it changes stored data. Do not assume a return type based only on the method name.
+**Call style:** Static. **Parameters:** `none`.
 
-### `isHttps()` — understanding this method
+```php
+$result = LtSiteInfo::siteHostAddress();
+```
 
-**Purpose:** Part of the `LtSiteInfo` service's responsibility: read site settings and construct site or package URLs.
+### `isHttps()` — check https status
 
-**How to study it:** Open the source and find `isHttps(`. Check its visibility (`public`, `protected`, or `private`), whether it is static, how its parameters are used, what it returns, and whether it changes stored data. Do not assume a return type based only on the method name.
+**Call style:** Static. **Parameters:** `none`.
 
-### `domain()` — understanding this method
+```php
+$result = LtSiteInfo::isHttps();
+```
 
-**Purpose:** Part of the `LtSiteInfo` service's responsibility: read site settings and construct site or package URLs.
+### `domain()` — domain in the service
 
-**How to study it:** Open the source and find `domain(`. Check its visibility (`public`, `protected`, or `private`), whether it is static, how its parameters are used, what it returns, and whether it changes stored data. Do not assume a return type based only on the method name.
+**Call style:** Static. **Parameters:** `none`.
 
-### `baseUrl()` — understanding this method
+```php
+$result = LtSiteInfo::domain();
+```
 
-**Purpose:** Part of the `LtSiteInfo` service's responsibility: read site settings and construct site or package URLs.
+### `baseUrl()` — base url in the service
 
-**How to study it:** Open the source and find `baseUrl(`. Check its visibility (`public`, `protected`, or `private`), whether it is static, how its parameters are used, what it returns, and whether it changes stored data. Do not assume a return type based only on the method name.
+**Call style:** Static. **Parameters:** `none`.
 
-### `siteFaviconUrl()` — understanding this method
+```php
+$result = LtSiteInfo::baseUrl();
+```
 
-**Purpose:** Part of the `LtSiteInfo` service's responsibility: read site settings and construct site or package URLs.
+### `siteFaviconUrl()` — site favicon url in the service
 
-**How to study it:** Open the source and find `siteFaviconUrl(`. Check its visibility (`public`, `protected`, or `private`), whether it is static, how its parameters are used, what it returns, and whether it changes stored data. Do not assume a return type based only on the method name.
+**Call style:** Static. **Parameters:** `none`.
 
-### `siteLogoUrl()` — understanding this method
+```php
+$result = LtSiteInfo::siteFaviconUrl();
+```
 
-**Purpose:** Part of the `LtSiteInfo` service's responsibility: read site settings and construct site or package URLs.
+### `siteLogoUrl()` — site logo url in the service
 
-**How to study it:** Open the source and find `siteLogoUrl(`. Check its visibility (`public`, `protected`, or `private`), whether it is static, how its parameters are used, what it returns, and whether it changes stored data. Do not assume a return type based only on the method name.
+**Call style:** Static. **Parameters:** `none`.
 
-### `siteUrl()` — understanding this method
+```php
+$result = LtSiteInfo::siteLogoUrl();
+```
 
-**Purpose:** Part of the `LtSiteInfo` service's responsibility: read site settings and construct site or package URLs.
+### `siteUrl()` — site url in the service
 
-**How to study it:** Open the source and find `siteUrl(`. Check its visibility (`public`, `protected`, or `private`), whether it is static, how its parameters are used, what it returns, and whether it changes stored data. Do not assume a return type based only on the method name.
+**Call style:** Static. **Parameters:** `none`.
 
-### `themePath()` — understanding this method
+```php
+$result = LtSiteInfo::siteUrl();
+```
 
-**Purpose:** Part of the `LtSiteInfo` service's responsibility: read site settings and construct site or package URLs.
+### `themePath()` — theme path in the service
 
-**How to study it:** Open the source and find `themePath(`. Check its visibility (`public`, `protected`, or `private`), whether it is static, how its parameters are used, what it returns, and whether it changes stored data. Do not assume a return type based only on the method name.
+**Call style:** Static. **Parameters:** `none`.
 
-### `modulePath()` — understanding this method
+```php
+$result = LtSiteInfo::themePath();
+```
 
-**Purpose:** Part of the `LtSiteInfo` service's responsibility: read site settings and construct site or package URLs.
+### `modulePath()` — module path in the service
 
-**How to study it:** Open the source and find `modulePath(`. Check its visibility (`public`, `protected`, or `private`), whether it is static, how its parameters are used, what it returns, and whether it changes stored data. Do not assume a return type based only on the method name.
+**Call style:** Static. **Parameters:** `none`.
 
-### `pluginPath()` — understanding this method
+```php
+$result = LtSiteInfo::modulePath();
+```
 
-**Purpose:** Part of the `LtSiteInfo` service's responsibility: read site settings and construct site or package URLs.
+### `pluginPath()` — plugin path in the service
 
-**How to study it:** Open the source and find `pluginPath(`. Check its visibility (`public`, `protected`, or `private`), whether it is static, how its parameters are used, what it returns, and whether it changes stored data. Do not assume a return type based only on the method name.
+**Call style:** Static. **Parameters:** `none`.
+
+```php
+$result = LtSiteInfo::pluginPath();
+```
 
 ## Practical LifeTech module example: display the configured site name in a module
 
@@ -288,19 +345,9 @@ class TbExampleController
 
 **What happens:** The `index()` method demonstrates the service's role in a module request. Methods that read or change database records depend on the installed schema, active session, and appropriate authorization. Some service methods return JSON strings; do not double-encode their responses.
 
-## Common mistakes
-
-1. Calling an instance method statically, or creating an object when only a static method is needed.
-2. Guessing method arguments or return values instead of inspecting the implementation.
-3. Running data-changing operations without permissions, validation, and error handling.
-4. Assuming a service method is safe to expose as an unauthenticated endpoint.
-5. Copying an example without adapting it to your module's model and route configuration.
-
-**Source-specific caution:** Some methods require a model, configured database connection or application context. The source method names alone do not establish standalone usage.
-
 ## Summary
 
-Read site settings and construct site or package URLs. Begin with the quick-start section, then use the method reference as a map to the implementation. Where a contract is not verified, treat it as a point to investigate rather than a promise.
+Read site settings and construct site or package URLs. See the method reference and practical module scenario for usage.
 
 ## Source and navigation
 
@@ -308,5 +355,3 @@ Read site settings and construct site or package URLs. Begin with the quick-star
 - [Back to MdLt Services index](README.md)
 - [Previous: LtSession](LtSession.md)
 - [Next: LtValidator](LtValidator.md)
-
-*This guide describes the `v1.x` branch inspected on 25 October 2026. Verify source details again after branch updates.*

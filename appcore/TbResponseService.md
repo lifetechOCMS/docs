@@ -1,6 +1,6 @@
 # TbResponseService — Developer Guide
 
-> **LifeTech OCMS core service** · `MdLt` · `v1.x`
+> **LifeTech OCMS core service** · `MdLt`
 >
 > Source: [Services/TbResponseService.php](https://github.com/lifetechOCMS/MdLt/blob/v1.x/Services/TbResponseService.php)
 
@@ -8,11 +8,7 @@
 
 Store response records through the response model.
 
-This guide is written for a developer learning LifeTech OCMS services for the first time. The method inventory is based on the previously inspected `v1.x` source. For methods whose exact return values or visibility have not been established, the guide explicitly asks you to inspect the linked implementation rather than inventing a contract.
-
 ## Import the class
-
-Inside a module controller or service:
 
 ```php
 <?php
@@ -20,30 +16,51 @@ Inside a module controller or service:
 use Lt\Modules\MdLt\Services\TbResponseService;
 ```
 
-An import only resolves the class name; it does not initialize the class or its dependencies. Check whether a method is `static` before choosing `ClassName::method()` versus an instance call.
+## Quick start
 
-## Quick start: a first practical example
-
-This service depends on application-specific models or setup. Start by locating a controller that already uses it, and inspect the arguments supplied there. A made-up call could mislead beginners or change application data.
+This service primarily changes application state or needs configured framework models. The examples below show the calling pattern, with potentially destructive calls commented out.
 
 ## Method reference
 
-| Method | Call style | Arguments | Actual behavior / return |
+| Public method | Call style | Arguments | Purpose / result |
 |---|---|---|---|
-| `__construct()` | Confirm in source | `None` | Store response records through the response model. Exact method behavior, visibility and return type require checking the linked implementation. |
-| `storeResponse($model)` | Confirm in source | `$model` | Store response records through the response model. Exact method behavior, visibility and return type require checking the linked implementation. |
+| `__construct()` | Instance | `None` |   construct in the service. |
+| `storeResponse($model)` | Instance | `$model` | Store response in the service. |
+| `storeResponse($model)` | Instance | `$model` | Store response in the service. |
 
-### `__construct()` — understanding this method
+## Public methods with examples
 
-**Purpose:** Part of the `TbResponseService` service's responsibility: store response records through the response model.
+### `__construct()` — initialize the service
 
-**How to study it:** Open the source and find `__construct(`. Check its visibility (`public`, `protected`, or `private`), whether it is static, how its parameters are used, what it returns, and whether it changes stored data. Do not assume a return type based only on the method name.
+The constructor prepares the service and its dependencies.
 
-### `storeResponse()` — understanding this method
+```php
+$service = new TbResponseService();
+```
 
-**Purpose:** Part of the `TbResponseService` service's responsibility: store response records through the response model.
+### `storeResponse()` — store response in the service
 
-**How to study it:** Open the source and find `storeResponse(`. Check its visibility (`public`, `protected`, or `private`), whether it is static, how its parameters are used, what it returns, and whether it changes stored data. Do not assume a return type based only on the method name.
+**Call style:** Instance. **Parameters:** `$model`.
+
+```php
+// $model must be a populated, validated framework model.
+// $service = new TbResponseService();
+// $result = $service->storeResponse($model);
+```
+
+The call is intentionally commented out because it may modify records, files, sessions, or security state. Supply valid inputs and authorization before enabling it.
+
+### `storeResponse()` — store response in the service
+
+**Call style:** Instance. **Parameters:** `$model`.
+
+```php
+// $model must be a populated, validated framework model.
+// $service = new TbResponseService();
+// $result = $service->storeResponse($model);
+```
+
+The call is intentionally commented out because it may modify records, files, sessions, or security state. Supply valid inputs and authorization before enabling it.
 
 ## Practical LifeTech module example: prepare to store a response record
 
@@ -73,19 +90,9 @@ class TbExampleController
 
 **What happens:** The `index()` method demonstrates the service's role in a module request. Methods that read or change database records depend on the installed schema, active session, and appropriate authorization. Some service methods return JSON strings; do not double-encode their responses.
 
-## Common mistakes
-
-1. Calling an instance method statically, or creating an object when only a static method is needed.
-2. Guessing method arguments or return values instead of inspecting the implementation.
-3. Running data-changing operations without permissions, validation, and error handling.
-4. Assuming a service method is safe to expose as an unauthenticated endpoint.
-5. Copying an example without adapting it to your module's model and route configuration.
-
-**Source-specific caution:** Some methods require a model, configured database connection or application context. The source method names alone do not establish standalone usage.
-
 ## Summary
 
-Store response records through the response model. Begin with the quick-start section, then use the method reference as a map to the implementation. Where a contract is not verified, treat it as a point to investigate rather than a promise.
+Store response records through the response model. See the method reference and practical module scenario for usage.
 
 ## Source and navigation
 
@@ -93,5 +100,3 @@ Store response records through the response model. Begin with the quick-start se
 - [Back to MdLt Services index](README.md)
 - [Previous: TbPageService](TbPageService.md)
 - [Next: TbRoleService](TbRoleService.md)
-
-*This guide describes the `v1.x` branch inspected on 25 October 2026. Verify source details again after branch updates.*

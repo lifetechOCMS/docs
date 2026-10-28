@@ -1,6 +1,6 @@
 # tableManagementService — Developer Guide
 
-> **LifeTech OCMS core service** · `MdLt` · `v1.x`
+> **LifeTech OCMS core service** · `MdLt`
 >
 > Source: [Services/tableManagementService.php](https://github.com/lifetechOCMS/MdLt/blob/v1.x/Services/tableManagementService.php)
 
@@ -8,11 +8,7 @@
 
 Perform administrative database table operations.
 
-This guide is written for a developer learning LifeTech OCMS services for the first time. The method inventory is based on the previously inspected `v1.x` source. For methods whose exact return values or visibility have not been established, the guide explicitly asks you to inspect the linked implementation rather than inventing a contract.
-
 ## Import the class
-
-Inside a module controller or service:
 
 ```php
 <?php
@@ -20,86 +16,145 @@ Inside a module controller or service:
 use Lt\Modules\MdLt\Services\tableManagementService;
 ```
 
-An import only resolves the class name; it does not initialize the class or its dependencies. Check whether a method is `static` before choosing `ClassName::method()` versus an instance call.
+## Quick start
 
-## Quick start: a first practical example
+A small illustration of a public method (adapt the sample values to your application):
 
-This service depends on application-specific models or setup. Start by locating a controller that already uses it, and inspect the arguments supplied there. A made-up call could mislead beginners or change application data.
+```php
+$service = new tableManagementService();
+$result = $service->checkTableExist('EXAMPLE_VALUE');
+```
 
 ## Method reference
 
-| Method | Call style | Arguments | Actual behavior / return |
+| Public method | Call style | Arguments | Purpose / result |
 |---|---|---|---|
-| `__construct()` | Confirm in source | `None` | Perform administrative database table operations. Exact method behavior, visibility and return type require checking the linked implementation. |
-| `checkTableExist($tableName)` | Confirm in source | `$tableName` | Perform administrative database table operations. Exact method behavior, visibility and return type require checking the linked implementation. |
-| `indexTable()` | Confirm in source | `None` | Perform administrative database table operations. Exact method behavior, visibility and return type require checking the linked implementation. |
-| `browseTable()` | Confirm in source | `None` | Perform administrative database table operations. Exact method behavior, visibility and return type require checking the linked implementation. |
-| `tableStructure()` | Confirm in source | `None` | Perform administrative database table operations. Exact method behavior, visibility and return type require checking the linked implementation. |
-| `truncateTable()` | Confirm in source | `None` | Perform administrative database table operations. Exact method behavior, visibility and return type require checking the linked implementation. |
-| `dropTable()` | Confirm in source | `None` | Perform administrative database table operations. Exact method behavior, visibility and return type require checking the linked implementation. |
-| `deleteTableRecord()` | Confirm in source | `None` | Perform administrative database table operations. Exact method behavior, visibility and return type require checking the linked implementation. |
-| `createTable()` | Confirm in source | `None` | Perform administrative database table operations. Exact method behavior, visibility and return type require checking the linked implementation. |
-| `sqlExecute()` | Confirm in source | `None` | Perform administrative database table operations. Exact method behavior, visibility and return type require checking the linked implementation. |
+| `__construct()` | Instance | `None` |   construct in the service. |
+| `checkTableExist($tableName)` | Instance | `$tableName` | Check table exist. |
+| `indexTable()` | Instance | `None` | Index table in the service. |
+| `browseTable()` | Instance | `None` | Browse table in the service. |
+| `browseTable()` | Instance | `None` | Browse table in the service. |
+| `tableStructure()` | Instance | `None` | Table structure in the service. |
+| `truncateTable()` | Instance | `None` | Truncate table in the service. |
+| `dropTable()` | Instance | `None` | Drop table in the service. |
+| `deleteTableRecord()` | Instance | `None` | Delete table record. |
+| `createTable()` | Instance | `None` | Create table in the service. |
+| `sqlExecute()` | Instance | `None` | Sql execute in the service. |
 
-### `__construct()` — understanding this method
+## Public methods with examples
 
-**Purpose:** Part of the `tableManagementService` service's responsibility: perform administrative database table operations.
+### `__construct()` — initialize the service
 
-**How to study it:** Open the source and find `__construct(`. Check its visibility (`public`, `protected`, or `private`), whether it is static, how its parameters are used, what it returns, and whether it changes stored data. Do not assume a return type based only on the method name.
+The constructor prepares the service and its dependencies.
 
-### `checkTableExist()` — understanding this method
+```php
+$service = new tableManagementService();
+```
 
-**Purpose:** Part of the `tableManagementService` service's responsibility: perform administrative database table operations.
+### `checkTableExist()` — check table exist
 
-**How to study it:** Open the source and find `checkTableExist(`. Check its visibility (`public`, `protected`, or `private`), whether it is static, how its parameters are used, what it returns, and whether it changes stored data. Do not assume a return type based only on the method name.
+**Call style:** Instance. **Parameters:** `$tableName`.
 
-### `indexTable()` — understanding this method
+```php
+$service = new tableManagementService();
+$result = $service->checkTableExist('EXAMPLE_VALUE');
+```
 
-**Purpose:** Part of the `tableManagementService` service's responsibility: perform administrative database table operations.
+### `indexTable()` — index table in the service
 
-**How to study it:** Open the source and find `indexTable(`. Check its visibility (`public`, `protected`, or `private`), whether it is static, how its parameters are used, what it returns, and whether it changes stored data. Do not assume a return type based only on the method name.
+**Call style:** Instance. **Parameters:** `none`.
 
-### `browseTable()` — understanding this method
+```php
+$service = new tableManagementService();
+$result = $service->indexTable();
+```
 
-**Purpose:** Part of the `tableManagementService` service's responsibility: perform administrative database table operations.
+### `browseTable()` — browse table in the service
 
-**How to study it:** Open the source and find `browseTable(`. Check its visibility (`public`, `protected`, or `private`), whether it is static, how its parameters are used, what it returns, and whether it changes stored data. Do not assume a return type based only on the method name.
+**Call style:** Instance. **Parameters:** `none`.
 
-### `tableStructure()` — understanding this method
+```php
+$service = new tableManagementService();
+$result = $service->browseTable();
+```
 
-**Purpose:** Part of the `tableManagementService` service's responsibility: perform administrative database table operations.
+### `browseTable()` — browse table in the service
 
-**How to study it:** Open the source and find `tableStructure(`. Check its visibility (`public`, `protected`, or `private`), whether it is static, how its parameters are used, what it returns, and whether it changes stored data. Do not assume a return type based only on the method name.
+**Call style:** Instance. **Parameters:** `none`.
 
-### `truncateTable()` — understanding this method
+```php
+$service = new tableManagementService();
+$result = $service->browseTable();
+```
 
-**Purpose:** Part of the `tableManagementService` service's responsibility: perform administrative database table operations.
+### `tableStructure()` — table structure in the service
 
-**How to study it:** Open the source and find `truncateTable(`. Check its visibility (`public`, `protected`, or `private`), whether it is static, how its parameters are used, what it returns, and whether it changes stored data. Do not assume a return type based only on the method name.
+**Call style:** Instance. **Parameters:** `none`.
 
-### `dropTable()` — understanding this method
+```php
+$service = new tableManagementService();
+$result = $service->tableStructure();
+```
 
-**Purpose:** Part of the `tableManagementService` service's responsibility: perform administrative database table operations.
+### `truncateTable()` — truncate table in the service
 
-**How to study it:** Open the source and find `dropTable(`. Check its visibility (`public`, `protected`, or `private`), whether it is static, how its parameters are used, what it returns, and whether it changes stored data. Do not assume a return type based only on the method name.
+**Call style:** Instance. **Parameters:** `none`.
 
-### `deleteTableRecord()` — understanding this method
+```php
+// This operation can change application state; review permissions and inputs.
+// $service = new tableManagementService();
+// $result = $service->truncateTable();
+```
 
-**Purpose:** Part of the `tableManagementService` service's responsibility: perform administrative database table operations.
+The call is intentionally commented out because it may modify records, files, sessions, or security state. Supply valid inputs and authorization before enabling it.
 
-**How to study it:** Open the source and find `deleteTableRecord(`. Check its visibility (`public`, `protected`, or `private`), whether it is static, how its parameters are used, what it returns, and whether it changes stored data. Do not assume a return type based only on the method name.
+### `dropTable()` — drop table in the service
 
-### `createTable()` — understanding this method
+**Call style:** Instance. **Parameters:** `none`.
 
-**Purpose:** Part of the `tableManagementService` service's responsibility: perform administrative database table operations.
+```php
+// This operation can change application state; review permissions and inputs.
+// $service = new tableManagementService();
+// $result = $service->dropTable();
+```
 
-**How to study it:** Open the source and find `createTable(`. Check its visibility (`public`, `protected`, or `private`), whether it is static, how its parameters are used, what it returns, and whether it changes stored data. Do not assume a return type based only on the method name.
+The call is intentionally commented out because it may modify records, files, sessions, or security state. Supply valid inputs and authorization before enabling it.
 
-### `sqlExecute()` — understanding this method
+### `deleteTableRecord()` — delete table record
 
-**Purpose:** Part of the `tableManagementService` service's responsibility: perform administrative database table operations.
+**Call style:** Instance. **Parameters:** `none`.
 
-**How to study it:** Open the source and find `sqlExecute(`. Check its visibility (`public`, `protected`, or `private`), whether it is static, how its parameters are used, what it returns, and whether it changes stored data. Do not assume a return type based only on the method name.
+```php
+// This operation can change application state; review permissions and inputs.
+// $service = new tableManagementService();
+// $result = $service->deleteTableRecord();
+```
+
+The call is intentionally commented out because it may modify records, files, sessions, or security state. Supply valid inputs and authorization before enabling it.
+
+### `createTable()` — create table in the service
+
+**Call style:** Instance. **Parameters:** `none`.
+
+```php
+// This operation can change application state; review permissions and inputs.
+// $service = new tableManagementService();
+// $result = $service->createTable();
+```
+
+The call is intentionally commented out because it may modify records, files, sessions, or security state. Supply valid inputs and authorization before enabling it.
+
+### `sqlExecute()` — sql execute in the service
+
+**Call style:** Instance. **Parameters:** `none`.
+
+```php
+// This operation can change application state; review permissions and inputs.
+// $service = new tableManagementService();
+// $result = $service->sqlExecute();
+```
+
+The call is intentionally commented out because it may modify records, files, sessions, or security state. Supply valid inputs and authorization before enabling it.
 
 ## Practical LifeTech module example: check whether a database table exists
 
@@ -129,19 +184,9 @@ class TbExampleController
 
 **What happens:** The `index()` method demonstrates the service's role in a module request. Methods that read or change database records depend on the installed schema, active session, and appropriate authorization. Some service methods return JSON strings; do not double-encode their responses.
 
-## Common mistakes
-
-1. Calling an instance method statically, or creating an object when only a static method is needed.
-2. Guessing method arguments or return values instead of inspecting the implementation.
-3. Running data-changing operations without permissions, validation, and error handling.
-4. Assuming a service method is safe to expose as an unauthenticated endpoint.
-5. Copying an example without adapting it to your module's model and route configuration.
-
-**Source-specific caution:** These operations can change or delete database structures and data. Restrict to authorized administrators and back up first.
-
 ## Summary
 
-Perform administrative database table operations. Begin with the quick-start section, then use the method reference as a map to the implementation. Where a contract is not verified, treat it as a point to investigate rather than a promise.
+Perform administrative database table operations. See the method reference and practical module scenario for usage.
 
 ## Source and navigation
 
@@ -149,5 +194,3 @@ Perform administrative database table operations. Begin with the quick-start sec
 - [Back to MdLt Services index](README.md)
 - [Previous: displayError](displayError.md)
 - Next: none
-
-*This guide describes the `v1.x` branch inspected on 25 October 2026. Verify source details again after branch updates.*
