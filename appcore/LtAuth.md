@@ -1,5 +1,7 @@
 # LtAuth — Developer Guide
 
+**Navigation:** [Previous: LtNavigate](LtNavigate.md) · [Main documentation](../README.md) · [Guide contents](README.md) · [Next: LtLWToken](LtLWToken.md)
+
 > **LifeTech OCMS core service** · `MdLt`
 >
 > Source: [Services/LtAuth.php](https://github.com/lifetechOCMS/MdLt/blob/v1.x/Services/LtAuth.php)
@@ -228,9 +230,10 @@ class TbExampleController
 
 Authenticate users and manage login state. See the method reference and practical module scenario for usage.
 
-## Source and navigation
+## Source
 
 - [View the implementation on GitHub](https://github.com/lifetechOCMS/MdLt/blob/v1.x/Services/LtAuth.php)
-- [Back to MdLt Services index](README.md)
-- [Previous: CaseConverter](CaseConverter.md)
-- [Next: LtComponentMgt](LtComponentMgt.md)
+
+---
+
+**Navigation:** [Previous: LtNavigate](LtNavigate.md) · [Main documentation](../README.md) · [Guide contents](README.md) · [Next: LtLWToken](LtLWToken.md)

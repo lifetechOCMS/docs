@@ -1,5 +1,7 @@
 # tableManagementService — Developer Guide
 
+**Navigation:** [Previous: LtService](LtService.md) · [Main documentation](../README.md) · [Guide contents](README.md) · [Next: LtFile](LtFile.md)
+
 > **LifeTech OCMS core service** · `MdLt`
 >
 > Source: [Services/tableManagementService.php](https://github.com/lifetechOCMS/MdLt/blob/v1.x/Services/tableManagementService.php)
@@ -188,9 +190,10 @@ class TbExampleController
 
 Perform administrative database table operations. See the method reference and practical module scenario for usage.
 
-## Source and navigation
+## Source
 
 - [View the implementation on GitHub](https://github.com/lifetechOCMS/MdLt/blob/v1.x/Services/tableManagementService.php)
-- [Back to MdLt Services index](README.md)
-- [Previous: displayError](displayError.md)
-- Next: none
+
+---
+
+**Navigation:** [Previous: LtService](LtService.md) · [Main documentation](../README.md) · [Guide contents](README.md) · [Next: LtFile](LtFile.md)

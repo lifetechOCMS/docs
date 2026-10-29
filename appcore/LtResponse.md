@@ -1,5 +1,7 @@
 # LtResponse — Developer Guide
 
+**Navigation:** [Previous: LtRequest](LtRequest.md) · [Main documentation](../README.md) · [Guide contents](README.md) · [Next: Response Codes and Response Groups](LtResponse_Codes_and_Response_Groups.md)
+
 > **LifeTech OCMS core service** · `MdLt`
 >
 > Source: [Services/LtResponse.php](https://github.com/lifetechOCMS/MdLt/blob/v1.x/Services/LtResponse.php)
@@ -260,10 +262,10 @@ This example demonstrates the response service; it does not implement the actual
 
 `LtResponse::json()` and `LtResponse::error()` return the **same JSON structure**, with `responseResult`, `responseCode`, `responseCategory`, and optional `responseData`. The distinction is environment-aware error handling: `error()` protects internal details in production, while `json()` returns the values provided to it. Use `writeLog()` for additional diagnostic logging. Always supply a **four-digit response code** from the appropriate group; see the [Response Codes and Response Groups guide](LtResponse_Codes_and_Response_Groups.md).
 
-## Source and navigation
+## Source
 
-- [Response Codes and Response Groups — Developer Guide](LtResponse_Codes_and_Response_Groups.md)
 - [View the implementation on GitHub](https://github.com/lifetechOCMS/MdLt/blob/v1.x/Services/LtResponse.php)
-- [Back to MdLt Services index](README.md)
-- [Previous: LtRequest](LtRequest.md)
-- [Next: LtRoute](LtRoute.md)
+
+---
+
+**Navigation:** [Previous: LtRequest](LtRequest.md) · [Main documentation](../README.md) · [Guide contents](README.md) · [Next: Response Codes and Response Groups](LtResponse_Codes_and_Response_Groups.md)

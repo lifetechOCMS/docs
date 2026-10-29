@@ -1,5 +1,7 @@
 # LtSiteInfo — Developer Guide
 
+**Navigation:** [Previous: displayError](displayError.md) · [Main documentation](../README.md) · [Guide contents](README.md) · [Next: LtSession](LtSession.md)
+
 > **LifeTech OCMS core service** · `MdLt`
 >
 > Source: [Services/LtSiteInfo.php](https://github.com/lifetechOCMS/MdLt/blob/v1.x/Services/LtSiteInfo.php)
@@ -349,9 +351,10 @@ class TbExampleController
 
 Read site settings and construct site or package URLs. See the method reference and practical module scenario for usage.
 
-## Source and navigation
+## Source
 
 - [View the implementation on GitHub](https://github.com/lifetechOCMS/MdLt/blob/v1.x/Services/LtSiteInfo.php)
-- [Back to MdLt Services index](README.md)
-- [Previous: LtSession](LtSession.md)
-- [Next: LtValidator](LtValidator.md)
+
+---
+
+**Navigation:** [Previous: displayError](displayError.md) · [Main documentation](../README.md) · [Guide contents](README.md) · [Next: LtSession](LtSession.md)

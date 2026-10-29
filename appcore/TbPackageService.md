@@ -1,5 +1,7 @@
 # TbPackageService — Developer Guide
 
+**Navigation:** [Previous: TbPageContentService](TbPageContentService.md) · [Main documentation](../README.md) · [Guide contents](README.md) · [Next: TbModuleService](TbModuleService.md)
+
 > **LifeTech OCMS core service** · `MdLt`
 >
 > Source: [Services/TbPackageService.php](https://github.com/lifetechOCMS/MdLt/blob/v1.x/Services/TbPackageService.php)
@@ -258,9 +260,10 @@ class TbExampleController
 
 Manage package registration, marketplace installation, dependencies, imports and exports. See the method reference and practical module scenario for usage.
 
-## Source and navigation
+## Source
 
 - [View the implementation on GitHub](https://github.com/lifetechOCMS/MdLt/blob/v1.x/Services/TbPackageService.php)
-- [Back to MdLt Services index](README.md)
-- [Previous: TbModuleService](TbModuleService.md)
-- [Next: TbPageContentService](TbPageContentService.md)
+
+---
+
+**Navigation:** [Previous: TbPageContentService](TbPageContentService.md) · [Main documentation](../README.md) · [Guide contents](README.md) · [Next: TbModuleService](TbModuleService.md)

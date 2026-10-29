@@ -1,5 +1,7 @@
 # LtDate — Developer Guide
 
+**Navigation:** [Previous: CaseConverter](CaseConverter.md) · [Main documentation](../README.md) · [Guide contents](README.md) · [Next: displayError](displayError.md)
+
 > **LifeTech OCMS core service** · `MdLt`
 >
 > Source: [Services/LtDate.php](https://github.com/lifetechOCMS/MdLt/blob/v1.x/Services/LtDate.php)
@@ -53,9 +55,10 @@ This is an **illustrative fallback**, not a call to `LtDate`. Check the linked s
 
 Reserved or incomplete date-related file; no implemented PHP class or methods. See the method reference and practical module scenario for usage.
 
-## Source and navigation
+## Source
 
 - [View the implementation on GitHub](https://github.com/lifetechOCMS/MdLt/blob/v1.x/Services/LtDate.php)
-- [Back to MdLt Services index](README.md)
-- [Previous: LtComponentMgt](LtComponentMgt.md)
-- [Next: LtFile](LtFile.md)
+
+---
+
+**Navigation:** [Previous: CaseConverter](CaseConverter.md) · [Main documentation](../README.md) · [Guide contents](README.md) · [Next: displayError](displayError.md)

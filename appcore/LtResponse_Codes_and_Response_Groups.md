@@ -1,5 +1,7 @@
 # LtResponse Codes and Response Groups — Developer Guide
 
+**Navigation:** [Previous: LtResponse](LtResponse.md) · [Main documentation](../README.md) · [Guide contents](README.md) · [Next: LtRoute](LtRoute.md)
+
 > **LifeTech OCMS core service** · `MdLt`
 >
 > Related: [LtResponse — Developer Guide](LtResponse.md)
@@ -187,8 +189,10 @@ These records use category `100` even though the message appears to describe suc
 | `3306` | `100` | Module Package created successfully |
 | `3309` | `100` | Table data retrieved successfully for export. |
 
-## Source and navigation
+## Source
 
-- [LtResponse — Developer Guide](LtResponse.md)
-- [Back to MdLt Services index](README.md)
 - [View LtResponse source](https://github.com/lifetechOCMS/MdLt/blob/v1.x/Services/LtResponse.php)
+
+---
+
+**Navigation:** [Previous: LtResponse](LtResponse.md) · [Main documentation](../README.md) · [Guide contents](README.md) · [Next: LtRoute](LtRoute.md)

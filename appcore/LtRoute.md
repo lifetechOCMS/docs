@@ -1,5 +1,7 @@
 # LtRoute — Developer Guide
 
+**Navigation:** [Previous: Response Codes and Response Groups](LtResponse_Codes_and_Response_Groups.md) · [Main documentation](../README.md) · [Guide contents](README.md) · [Next: LtNavigate](LtNavigate.md)
+
 > **LifeTech OCMS core service** · `MdLt`
 >
 > Source: [Services/LtRoute.php](https://github.com/lifetechOCMS/MdLt/blob/v1.x/Services/LtRoute.php)
@@ -98,9 +100,10 @@ A corresponding controller class and method must exist. Adapt the package name, 
 
 Register and handle module HTTP routes. See the method reference and practical module scenario for usage.
 
-## Source and navigation
+## Source
 
 - [View the implementation on GitHub](https://github.com/lifetechOCMS/MdLt/blob/v1.x/Services/LtRoute.php)
-- [Back to MdLt Services index](README.md)
-- [Previous: LtResponse](LtResponse.md)
-- [Next: LtService](LtService.md)
+
+---
+
+**Navigation:** [Previous: Response Codes and Response Groups](LtResponse_Codes_and_Response_Groups.md) · [Main documentation](../README.md) · [Guide contents](README.md) · [Next: LtNavigate](LtNavigate.md)

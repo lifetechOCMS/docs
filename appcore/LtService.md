@@ -1,5 +1,7 @@
 # LtService — Developer Guide
 
+**Navigation:** [Previous: LtModel](LtModel.md) · [Main documentation](../README.md) · [Guide contents](README.md) · [Next: tableManagementService](tableManagementService.md)
+
 > **LifeTech OCMS core service** · `MdLt`
 >
 > Source: [Services/LtService.php](https://github.com/lifetechOCMS/MdLt/blob/v1.x/Services/LtService.php)
@@ -103,9 +105,10 @@ class TbExampleController
 
 Provide shared utilities for IDs, boolean-like values and database columns. See the method reference and practical module scenario for usage.
 
-## Source and navigation
+## Source
 
 - [View the implementation on GitHub](https://github.com/lifetechOCMS/MdLt/blob/v1.x/Services/LtService.php)
-- [Back to MdLt Services index](README.md)
-- [Previous: LtRoute](LtRoute.md)
-- [Next: LtSession](LtSession.md)
+
+---
+
+**Navigation:** [Previous: LtModel](LtModel.md) · [Main documentation](../README.md) · [Guide contents](README.md) · [Next: tableManagementService](tableManagementService.md)

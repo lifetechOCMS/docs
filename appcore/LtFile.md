@@ -1,5 +1,7 @@
 # LtFile — Developer Guide
 
+**Navigation:** [Previous: tableManagementService](tableManagementService.md) · [Main documentation](../README.md) · [Guide contents](README.md) · [Next: LtMail](LtMail.md)
+
 > **LifeTech OCMS core service** · `MdLt`
 >
 > Source: [Services/LtFile.php](https://github.com/lifetechOCMS/MdLt/blob/v1.x/Services/LtFile.php)
@@ -286,9 +288,10 @@ class TbExampleController
 
 Manage files and directories, including uploads, writing, copying and ZIP archives. See the method reference and practical module scenario for usage.
 
-## Source and navigation
+## Source
 
 - [View the implementation on GitHub](https://github.com/lifetechOCMS/MdLt/blob/v1.x/Services/LtFile.php)
-- [Back to MdLt Services index](README.md)
-- [Previous: LtDate](LtDate.md)
-- [Next: LtLWToken](LtLWToken.md)
+
+---
+
+**Navigation:** [Previous: tableManagementService](tableManagementService.md) · [Main documentation](../README.md) · [Guide contents](README.md) · [Next: LtMail](LtMail.md)

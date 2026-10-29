@@ -1,5 +1,7 @@
 # TbContentService — Developer Guide
 
+**Navigation:** [Previous: TbPageSerice](TbPageSerice.md) · [Main documentation](../README.md) · [Guide contents](README.md) · [Next: TbPageContentService](TbPageContentService.md)
+
 > **LifeTech OCMS core service** · `MdLt`
 >
 > Source: [Services/TbContentService.php](https://github.com/lifetechOCMS/MdLt/blob/v1.x/Services/TbContentService.php)
@@ -253,9 +255,10 @@ class TbExampleController
 
 Manage content resources, publishing, file synchronization and layout assignments. See the method reference and practical module scenario for usage.
 
-## Source and navigation
+## Source
 
 - [View the implementation on GitHub](https://github.com/lifetechOCMS/MdLt/blob/v1.x/Services/TbContentService.php)
-- [Back to MdLt Services index](README.md)
-- [Previous: LtValidator](LtValidator.md)
-- [Next: TbLoginAuditService](TbLoginAuditService.md)
+
+---
+
+**Navigation:** [Previous: TbPageSerice](TbPageSerice.md) · [Main documentation](../README.md) · [Guide contents](README.md) · [Next: TbPageContentService](TbPageContentService.md)

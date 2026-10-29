@@ -1,5 +1,7 @@
 # TbModuleService — Developer Guide
 
+**Navigation:** [Previous: TbPackageService](TbPackageService.md) · [Main documentation](../README.md) · [Guide contents](README.md) · [Next: TbThemeService](TbThemeService.md)
+
 > **LifeTech OCMS core service** · `MdLt`
 >
 > Source: [Services/TbModuleService.php](https://github.com/lifetechOCMS/MdLt/blob/v1.x/Services/TbModuleService.php)
@@ -81,9 +83,10 @@ class TbExampleController
 
 Store and manage module records. See the method reference and practical module scenario for usage.
 
-## Source and navigation
+## Source
 
 - [View the implementation on GitHub](https://github.com/lifetechOCMS/MdLt/blob/v1.x/Services/TbModuleService.php)
-- [Back to MdLt Services index](README.md)
-- [Previous: TbMenuService](TbMenuService.md)
-- [Next: TbPackageService](TbPackageService.md)
+
+---
+
+**Navigation:** [Previous: TbPackageService](TbPackageService.md) · [Main documentation](../README.md) · [Guide contents](README.md) · [Next: TbThemeService](TbThemeService.md)

@@ -1,5 +1,7 @@
 # TbUserService — Developer Guide
 
+**Navigation:** [Previous: LtComponentMgt](LtComponentMgt.md) · [Main documentation](../README.md) · [Guide contents](README.md) · [Next: TbRoleService](TbRoleService.md)
+
 > **LifeTech OCMS core service** · `MdLt`
 >
 > Source: [Services/TbUserService.php](https://github.com/lifetechOCMS/MdLt/blob/v1.x/Services/TbUserService.php)
@@ -93,9 +95,10 @@ class TbExampleController
 
 Manage user records and password-reset flows. See the method reference and practical module scenario for usage.
 
-## Source and navigation
+## Source
 
 - [View the implementation on GitHub](https://github.com/lifetechOCMS/MdLt/blob/v1.x/Services/TbUserService.php)
-- [Back to MdLt Services index](README.md)
-- [Previous: TbThemeService](TbThemeService.md)
-- [Next: displayError](displayError.md)
+
+---
+
+**Navigation:** [Previous: LtComponentMgt](LtComponentMgt.md) · [Main documentation](../README.md) · [Guide contents](README.md) · [Next: TbRoleService](TbRoleService.md)

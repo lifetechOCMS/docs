@@ -1,5 +1,7 @@
 # TbPageSerice — Developer Guide
 
+**Navigation:** [Previous: TbPageService](TbPageService.md) · [Main documentation](../README.md) · [Guide contents](README.md) · [Next: TbContentService](TbContentService.md)
+
 > **LifeTech OCMS core service** · `MdLt`
 >
 > Source: [Services/TbPageSerice.php](https://github.com/lifetechOCMS/MdLt/blob/v1.x/Services/TbPageSerice.php)
@@ -121,9 +123,10 @@ class TbExampleController
 
 Legacy or alternate page service with the filename spelling 'Serice'. See the method reference and practical module scenario for usage.
 
-## Source and navigation
+## Source
 
 - [View the implementation on GitHub](https://github.com/lifetechOCMS/MdLt/blob/v1.x/Services/TbPageSerice.php)
-- [Back to MdLt Services index](README.md)
-- [Previous: TbPageContentService](TbPageContentService.md)
-- [Next: TbPageService](TbPageService.md)
+
+---
+
+**Navigation:** [Previous: TbPageService](TbPageService.md) · [Main documentation](../README.md) · [Guide contents](README.md) · [Next: TbContentService](TbContentService.md)

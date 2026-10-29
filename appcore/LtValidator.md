@@ -1,5 +1,7 @@
 # LtValidator — Developer Guide
 
+**Navigation:** [Previous: LtLWToken](LtLWToken.md) · [Main documentation](../README.md) · [Guide contents](README.md) · [Next: LtModel](LtModel.md)
+
 > **LifeTech OCMS core service** · `MdLt`
 >
 > Source: [Services/LtValidator.php](https://github.com/lifetechOCMS/MdLt/blob/v1.x/Services/LtValidator.php)
@@ -93,9 +95,10 @@ class TbExampleController
 
 Validate submitted data and report field errors. See the method reference and practical module scenario for usage.
 
-## Source and navigation
+## Source
 
 - [View the implementation on GitHub](https://github.com/lifetechOCMS/MdLt/blob/v1.x/Services/LtValidator.php)
-- [Back to MdLt Services index](README.md)
-- [Previous: LtSiteInfo](LtSiteInfo.md)
-- [Next: TbContentService](TbContentService.md)
+
+---
+
+**Navigation:** [Previous: LtLWToken](LtLWToken.md) · [Main documentation](../README.md) · [Guide contents](README.md) · [Next: LtModel](LtModel.md)

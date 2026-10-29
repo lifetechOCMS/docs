@@ -1,5 +1,7 @@
 # LtComponentMgt — Developer Guide
 
+**Navigation:** [Previous: LtMail](LtMail.md) · [Main documentation](../README.md) · [Guide contents](README.md) · [Next: TbUserService](TbUserService.md)
+
 > **LifeTech OCMS core service** · `MdLt`
 >
 > Source: [Services/LtComponentMgt.php](https://github.com/lifetechOCMS/MdLt/blob/v1.x/Services/LtComponentMgt.php)
@@ -70,9 +72,10 @@ class TbExampleController
 
 Manage publication of theme components. See the method reference and practical module scenario for usage.
 
-## Source and navigation
+## Source
 
 - [View the implementation on GitHub](https://github.com/lifetechOCMS/MdLt/blob/v1.x/Services/LtComponentMgt.php)
-- [Back to MdLt Services index](README.md)
-- [Previous: LtAuth](LtAuth.md)
-- [Next: LtDate](LtDate.md)
+
+---
+
+**Navigation:** [Previous: LtMail](LtMail.md) · [Main documentation](../README.md) · [Guide contents](README.md) · [Next: TbUserService](TbUserService.md)

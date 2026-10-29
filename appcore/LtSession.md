@@ -1,5 +1,7 @@
 # LtSession — Developer Guide
 
+**Navigation:** [Previous: LtSiteInfo](LtSiteInfo.md) · [Main documentation](../README.md) · [Guide contents](README.md) · [Next: LtRequest](LtRequest.md)
+
 > **LifeTech OCMS core service** · `MdLt`
 >
 > Source: [Services/LtSession.php](https://github.com/lifetechOCMS/MdLt/blob/v1.x/Services/LtSession.php)
@@ -147,9 +149,10 @@ This example **reads a preference**, not a login credential. The exact controlle
 
 For ordinary module development, the most useful calls are `LtSession::set()`, `LtSession::get()`, `LtSession::has()`, and `LtSession::forget()`. Use `all()` sparingly. Leave session initialization and logout to LifeTech OCMS's established lifecycle unless you are working on the framework itself.
 
-## Source and navigation
+## Source
 
 - [View the implementation on GitHub](https://github.com/lifetechOCMS/MdLt/blob/v1.x/Services/LtSession.php)
-- [Back to MdLt Services index](README.md)
-- [Previous: LtService](LtService.md)
-- [Next: LtSiteInfo](LtSiteInfo.md)
+
+---
+
+**Navigation:** [Previous: LtSiteInfo](LtSiteInfo.md) · [Main documentation](../README.md) · [Guide contents](README.md) · [Next: LtRequest](LtRequest.md)

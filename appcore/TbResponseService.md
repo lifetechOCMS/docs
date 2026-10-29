@@ -1,5 +1,7 @@
 # TbResponseService — Developer Guide
 
+**Navigation:** [Previous: TbThemeService](TbThemeService.md) · [Main documentation](../README.md) · [Guide contents](README.md) · Next: None
+
 > **LifeTech OCMS core service** · `MdLt`
 >
 > Source: [Services/TbResponseService.php](https://github.com/lifetechOCMS/MdLt/blob/v1.x/Services/TbResponseService.php)
@@ -94,9 +96,10 @@ class TbExampleController
 
 Store response records through the response model. See the method reference and practical module scenario for usage.
 
-## Source and navigation
+## Source
 
 - [View the implementation on GitHub](https://github.com/lifetechOCMS/MdLt/blob/v1.x/Services/TbResponseService.php)
-- [Back to MdLt Services index](README.md)
-- [Previous: TbPageService](TbPageService.md)
-- [Next: TbRoleService](TbRoleService.md)
+
+---
+
+**Navigation:** [Previous: TbThemeService](TbThemeService.md) · [Main documentation](../README.md) · [Guide contents](README.md) · Next: None

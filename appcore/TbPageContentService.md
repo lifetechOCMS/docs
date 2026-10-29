@@ -1,5 +1,7 @@
 # TbPageContentService — Developer Guide
 
+**Navigation:** [Previous: TbContentService](TbContentService.md) · [Main documentation](../README.md) · [Guide contents](README.md) · [Next: TbPackageService](TbPackageService.md)
+
 > **LifeTech OCMS core service** · `MdLt`
 >
 > Source: [Services/TbPageContentService.php](https://github.com/lifetechOCMS/MdLt/blob/v1.x/Services/TbPageContentService.php)
@@ -146,9 +148,10 @@ class TbExampleController
 
 Connect content to pages and regions, and control publication. See the method reference and practical module scenario for usage.
 
-## Source and navigation
+## Source
 
 - [View the implementation on GitHub](https://github.com/lifetechOCMS/MdLt/blob/v1.x/Services/TbPageContentService.php)
-- [Back to MdLt Services index](README.md)
-- [Previous: TbPackageService](TbPackageService.md)
-- [Next: TbPageSerice](TbPageSerice.md)
+
+---
+
+**Navigation:** [Previous: TbContentService](TbContentService.md) · [Main documentation](../README.md) · [Guide contents](README.md) · [Next: TbPackageService](TbPackageService.md)

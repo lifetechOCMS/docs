@@ -1,5 +1,7 @@
 # LtNavigate — Developer Guide
 
+**Navigation:** [Previous: LtRoute](LtRoute.md) · [Main documentation](../README.md) · [Guide contents](README.md) · [Next: LtAuth](LtAuth.md)
+
 > **LifeTech OCMS core service** · `MdLt`
 >
 > Source: [Services/LtNavigate.php](https://github.com/lifetechOCMS/MdLt/blob/v1.x/Services/LtNavigate.php)
@@ -130,9 +132,10 @@ class TbExampleController
 
 Build navigation URLs and redirects. See the method reference and practical module scenario for usage.
 
-## Source and navigation
+## Source
 
 - [View the implementation on GitHub](https://github.com/lifetechOCMS/MdLt/blob/v1.x/Services/LtNavigate.php)
-- [Back to MdLt Services index](README.md)
-- [Previous: LtModel](LtModel.md)
-- [Next: LtRequest](LtRequest.md)
+
+---
+
+**Navigation:** [Previous: LtRoute](LtRoute.md) · [Main documentation](../README.md) · [Guide contents](README.md) · [Next: LtAuth](LtAuth.md)

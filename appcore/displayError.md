@@ -1,5 +1,7 @@
 # displayError — Developer Guide
 
+**Navigation:** [Previous: LtDate](LtDate.md) · [Main documentation](../README.md) · [Guide contents](README.md) · [Next: LtSiteInfo](LtSiteInfo.md)
+
 > **LifeTech OCMS core service** · `MdLt`
 >
 > Source: [Services/displayError.php](https://github.com/lifetechOCMS/MdLt/blob/v1.x/Services/displayError.php)
@@ -53,9 +55,10 @@ This is an **illustrative fallback**, not a call to `displayError`. Check the li
 
 Development helper that enables PHP error display. See the method reference and practical module scenario for usage.
 
-## Source and navigation
+## Source
 
 - [View the implementation on GitHub](https://github.com/lifetechOCMS/MdLt/blob/v1.x/Services/displayError.php)
-- [Back to MdLt Services index](README.md)
-- [Previous: TbUserService](TbUserService.md)
-- [Next: tableManagementService](tableManagementService.md)
+
+---
+
+**Navigation:** [Previous: LtDate](LtDate.md) · [Main documentation](../README.md) · [Guide contents](README.md) · [Next: LtSiteInfo](LtSiteInfo.md)

@@ -1,5 +1,7 @@
 # CaseConverter — Developer Guide
 
+**Navigation:** Previous: None · [Main documentation](../README.md) · [Guide contents](README.md) · [Next: LtDate](LtDate.md)
+
 > **LifeTech OCMS core service** · `MdLt`
 >
 > Source: [Services/CaseConverter.php](https://github.com/lifetechOCMS/MdLt/blob/v1.x/Services/CaseConverter.php)
@@ -178,9 +180,10 @@ The returned `responseData` contains keys such as `postId` and `postTitle`, inst
 
 Use the six string methods for individual names. Use `toCamelCaseArray()` or `arrayToCamelCaseArray()` for arrays of associative records, and `arrayToCamelCase()` when you need object-style property access. All nine methods are static.
 
-## Source and navigation
+## Source
 
 - [View the implementation on GitHub](https://github.com/lifetechOCMS/MdLt/blob/v1.x/Services/CaseConverter.php)
-- [Back to MdLt Services index](README.md)
-- Previous: none
-- [Next: LtAuth](LtAuth.md)
+
+---
+
+**Navigation:** Previous: None · [Main documentation](../README.md) · [Guide contents](README.md) · [Next: LtDate](LtDate.md)

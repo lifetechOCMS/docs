@@ -1,38 +1,67 @@
-# LifeTech OCMS — MdLt Services Developer Guides
+# Core Services (MdLt) — Developer Guide
 
-A reference for public methods in the `MdLt/Services` PHP files, with short usage examples for each public function. Private and protected methods are excluded.
+The **Core Services (MdLt)** documentation provides a reference to LifeTech OCMS core framework services, their public methods, and practical PHP examples. Follow the sections below in the recommended learning order, or open a service directly.
 
-Examples that would modify data or require initialized models are commented out where appropriate. Confirm source signatures and application context before using them.
+[Main documentation](../README.md)
 
-## Service index
+## Learning path
+
+### 1. Framework fundamentals
 
 - [CaseConverter](CaseConverter.md)
-- [LtAuth](LtAuth.md)
-- [LtComponentMgt](LtComponentMgt.md)
 - [LtDate](LtDate.md)
-- [LtFile](LtFile.md)
-- [LtLWToken](LtLWToken.md)
-- [LtMail](LtMail.md)
-- [LtModel](LtModel.md)
-- [LtNavigate](LtNavigate.md)
+- [displayError](displayError.md)
+- [LtSiteInfo](LtSiteInfo.md)
+- [LtSession](LtSession.md)
 - [LtRequest](LtRequest.md)
 - [LtResponse](LtResponse.md)
+- [Response Codes and Response Groups](LtResponse_Codes_and_Response_Groups.md) — supporting reference for `LtResponse`
 - [LtRoute](LtRoute.md)
-- [LtService](LtService.md)
-- [LtSession](LtSession.md)
-- [LtSiteInfo](LtSiteInfo.md)
+- [LtNavigate](LtNavigate.md)
+
+### 2. Authentication and security
+
+- [LtAuth](LtAuth.md)
+- [LtLWToken](LtLWToken.md)
 - [LtValidator](LtValidator.md)
-- [TbContentService](TbContentService.md)
-- [TbLoginAuditService](TbLoginAuditService.md)
-- [TbMenuService](TbMenuService.md)
-- [TbModuleService](TbModuleService.md)
-- [TbPackageService](TbPackageService.md)
-- [TbPageContentService](TbPageContentService.md)
-- [TbPageSerice](TbPageSerice.md)
-- [TbPageService](TbPageService.md)
-- [TbResponseService](TbResponseService.md)
-- [TbRoleService](TbRoleService.md)
-- [TbThemeService](TbThemeService.md)
-- [TbUserService](TbUserService.md)
-- [displayError](displayError.md)
+
+### 3. Data and application services
+
+- [LtModel](LtModel.md)
+- [LtService](LtService.md)
 - [tableManagementService](tableManagementService.md)
+
+### 4. Files, communication and components
+
+- [LtFile](LtFile.md)
+- [LtMail](LtMail.md)
+- [LtComponentMgt](LtComponentMgt.md)
+
+### 5. User and access management
+
+- [TbUserService](TbUserService.md)
+- [TbRoleService](TbRoleService.md)
+- [TbLoginAuditService](TbLoginAuditService.md)
+
+### 6. Content and page management
+
+- [TbMenuService](TbMenuService.md)
+- [TbPageService](TbPageService.md)
+- [TbPageSerice](TbPageSerice.md)
+- [TbContentService](TbContentService.md)
+- [TbPageContentService](TbPageContentService.md)
+
+### 7. Package and system management
+
+- [TbPackageService](TbPackageService.md)
+- [TbModuleService](TbModuleService.md)
+- [TbThemeService](TbThemeService.md)
+- [TbResponseService](TbResponseService.md)
+
+## Navigation
+
+Each guide includes **Previous · Main documentation · Guide contents · Next** links at the top and bottom. Previous and Next follow the learning path above. The first and last guides show plain text when there is no adjacent guide.
+
+## Source
+
+Core service implementations are maintained in [MdLt/Services](https://github.com/lifetechOCMS/MdLt/tree/v1.x/Services).

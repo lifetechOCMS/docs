@@ -1,5 +1,7 @@
 # TbPageService — Developer Guide
 
+**Navigation:** [Previous: TbMenuService](TbMenuService.md) · [Main documentation](../README.md) · [Guide contents](README.md) · [Next: TbPageSerice](TbPageSerice.md)
+
 > **LifeTech OCMS core service** · `MdLt`
 >
 > Source: [Services/TbPageService.php](https://github.com/lifetechOCMS/MdLt/blob/v1.x/Services/TbPageService.php)
@@ -193,9 +195,10 @@ class TbExampleController
 
 Create and manage pages, publishing, routes and page regions. See the method reference and practical module scenario for usage.
 
-## Source and navigation
+## Source
 
 - [View the implementation on GitHub](https://github.com/lifetechOCMS/MdLt/blob/v1.x/Services/TbPageService.php)
-- [Back to MdLt Services index](README.md)
-- [Previous: TbPageSerice](TbPageSerice.md)
-- [Next: TbResponseService](TbResponseService.md)
+
+---
+
+**Navigation:** [Previous: TbMenuService](TbMenuService.md) · [Main documentation](../README.md) · [Guide contents](README.md) · [Next: TbPageSerice](TbPageSerice.md)

@@ -1,5 +1,7 @@
 # TbMenuService — Developer Guide
 
+**Navigation:** [Previous: TbLoginAuditService](TbLoginAuditService.md) · [Main documentation](../README.md) · [Guide contents](README.md) · [Next: TbPageService](TbPageService.md)
+
 > **LifeTech OCMS core service** · `MdLt`
 >
 > Source: [Services/TbMenuService.php](https://github.com/lifetechOCMS/MdLt/blob/v1.x/Services/TbMenuService.php)
@@ -131,9 +133,10 @@ class TbExampleController
 
 Create, delete and publish navigation menu records. See the method reference and practical module scenario for usage.
 
-## Source and navigation
+## Source
 
 - [View the implementation on GitHub](https://github.com/lifetechOCMS/MdLt/blob/v1.x/Services/TbMenuService.php)
-- [Back to MdLt Services index](README.md)
-- [Previous: TbLoginAuditService](TbLoginAuditService.md)
-- [Next: TbModuleService](TbModuleService.md)
+
+---
+
+**Navigation:** [Previous: TbLoginAuditService](TbLoginAuditService.md) · [Main documentation](../README.md) · [Guide contents](README.md) · [Next: TbPageService](TbPageService.md)

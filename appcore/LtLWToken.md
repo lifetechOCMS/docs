@@ -1,5 +1,7 @@
 # LtLWToken — Developer Guide
 
+**Navigation:** [Previous: LtAuth](LtAuth.md) · [Main documentation](../README.md) · [Guide contents](README.md) · [Next: LtValidator](LtValidator.md)
+
 > **LifeTech OCMS core service** · `MdLt`
 >
 > Source: [Services/LtLWToken.php](https://github.com/lifetechOCMS/MdLt/blob/v1.x/Services/LtLWToken.php)
@@ -105,9 +107,10 @@ class TbExampleController
 
 Issue, validate and revoke lightweight user tokens. See the method reference and practical module scenario for usage.
 
-## Source and navigation
+## Source
 
 - [View the implementation on GitHub](https://github.com/lifetechOCMS/MdLt/blob/v1.x/Services/LtLWToken.php)
-- [Back to MdLt Services index](README.md)
-- [Previous: LtFile](LtFile.md)
-- [Next: LtMail](LtMail.md)
+
+---
+
+**Navigation:** [Previous: LtAuth](LtAuth.md) · [Main documentation](../README.md) · [Guide contents](README.md) · [Next: LtValidator](LtValidator.md)

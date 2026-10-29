@@ -1,5 +1,7 @@
 # TbRoleService — Developer Guide
 
+**Navigation:** [Previous: TbUserService](TbUserService.md) · [Main documentation](../README.md) · [Guide contents](README.md) · [Next: TbLoginAuditService](TbLoginAuditService.md)
+
 > **LifeTech OCMS core service** · `MdLt`
 >
 > Source: [Services/TbRoleService.php](https://github.com/lifetechOCMS/MdLt/blob/v1.x/Services/TbRoleService.php)
@@ -127,9 +129,10 @@ class TbExampleController
 
 Work with user roles and permission checks. See the method reference and practical module scenario for usage.
 
-## Source and navigation
+## Source
 
 - [View the implementation on GitHub](https://github.com/lifetechOCMS/MdLt/blob/v1.x/Services/TbRoleService.php)
-- [Back to MdLt Services index](README.md)
-- [Previous: TbResponseService](TbResponseService.md)
-- [Next: TbThemeService](TbThemeService.md)
+
+---
+
+**Navigation:** [Previous: TbUserService](TbUserService.md) · [Main documentation](../README.md) · [Guide contents](README.md) · [Next: TbLoginAuditService](TbLoginAuditService.md)

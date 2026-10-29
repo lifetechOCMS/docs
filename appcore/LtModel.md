@@ -1,5 +1,7 @@
 # LtModel — Developer Guide
 
+**Navigation:** [Previous: LtValidator](LtValidator.md) · [Main documentation](../README.md) · [Guide contents](README.md) · [Next: LtService](LtService.md)
+
 > **LifeTech OCMS core service** · `MdLt`
 >
 > Source: [Services/LtModel.php](https://github.com/lifetechOCMS/MdLt/blob/v1.x/Services/LtModel.php)
@@ -53,9 +55,10 @@ This is an **illustrative fallback**, not a call to `LtModel`. Check the linked 
 
 Placeholder: this source file is empty. See the method reference and practical module scenario for usage.
 
-## Source and navigation
+## Source
 
 - [View the implementation on GitHub](https://github.com/lifetechOCMS/MdLt/blob/v1.x/Services/LtModel.php)
-- [Back to MdLt Services index](README.md)
-- [Previous: LtMail](LtMail.md)
-- [Next: LtNavigate](LtNavigate.md)
+
+---
+
+**Navigation:** [Previous: LtValidator](LtValidator.md) · [Main documentation](../README.md) · [Guide contents](README.md) · [Next: LtService](LtService.md)

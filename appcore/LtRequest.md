@@ -1,5 +1,7 @@
 # LtRequest — Developer Guide
 
+**Navigation:** [Previous: LtSession](LtSession.md) · [Main documentation](../README.md) · [Guide contents](README.md) · [Next: LtResponse](LtResponse.md)
+
 > **LifeTech OCMS core service** · `MdLt`
 >
 > Source: [Services/LtRequest.php](https://github.com/lifetechOCMS/MdLt/blob/v1.x/Services/LtRequest.php)
@@ -85,9 +87,10 @@ class TbExampleController
 
 Read incoming HTTP request data and validate it. See the method reference and practical module scenario for usage.
 
-## Source and navigation
+## Source
 
 - [View the implementation on GitHub](https://github.com/lifetechOCMS/MdLt/blob/v1.x/Services/LtRequest.php)
-- [Back to MdLt Services index](README.md)
-- [Previous: LtNavigate](LtNavigate.md)
-- [Next: LtResponse](LtResponse.md)
+
+---
+
+**Navigation:** [Previous: LtSession](LtSession.md) · [Main documentation](../README.md) · [Guide contents](README.md) · [Next: LtResponse](LtResponse.md)
