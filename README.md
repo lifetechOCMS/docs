@@ -37,17 +37,20 @@ Before moving a package to another installation, check its dependencies and supp
 - [Module Development](backend-development/module-dev/README.md)
 - [Theme Development Overview](backend-development/theme-dev/README.md)
 
-### FUNCTIONS AND CLASSES
+### CORE SERVICES (MdLt)
 
-[Open contents](functions-and-classes/README.md)
+[Open contents](appcore/README.md)
 
-- [LtImport](functions-and-classes/ltimport/README.md)
-- [LtAuth](functions-and-classes/ltauth/README.md)
-- [Loading Dynamic Menus](functions-and-classes/loading-dynamic-menus/README.md)
-- [CaseConverter](functions-and-classes/caseconverter/README.md)
-- [LtValidator](functions-and-classes/ltvalidator/README.md)
-- [LtSiteInfo and Site Helper Functions](functions-and-classes/ltsiteinfo-and-site-helper-functions/README.md)
-- [LtSession](functions-and-classes/ltsession/README.md)
+Explore the built-in LifeTech OCMS framework services,
+including authentication, sessions, routing, validation,
+HTTP responses, database operations, and file management.
+
+### UTILITIES AND HELPERS
+
+[Open contents](utilities/README.md)
+
+- [Loading Dynamic Menus](utilities/loading-dynamic-menus/README.md)
+- [LtSiteInfo and Site Helper Functions](utilities/ltsiteinfo-and-site-helper-functions/README.md)
 
 ### REQUEST AND RESPOND MANAGEMENT
 
