@@ -3,49 +3,39 @@
 
 [Previous](add-new-module-content.md) · [Main documentation](../../README.md) · [Guide contents](README.md) · [Next](sync-module-files.md)
 
-*Section: Creating module components*
+*Section: Creating module content*
 
 ## What is Auto Create?
 
-**Auto Create** is a LifeTechOCMS module-development feature that helps developers generate a **Model**, **Controller**, and/or **Service** from an existing database table.
+**Auto Create** is a LifeTechOCMS feature that allows developers to generate module content from an existing database table.
 
-Rather than creating each component manually, select a database table and choose the components you need.
+It supports three content types:
 
-The generated files provide a starting point; developers should review and extend them to implement the intended behaviour.
+- **Model** — handles database-related operations.
+- **Controller** — handles incoming requests and coordinates application operations.
+- **Service** — contains the business logic for module operations.
 
-## Open Auto Create
+Developers can generate one, two, or all three content types.
 
-1. Open the **Modules** area in LifeTechOCMS.
-2. Select the module you want to develop, such as `MdStudent`.
-3. On its **Module Content** page, click **Auto Create**.
-4. The **Auto Create Model–Controller–Service** form opens.
+## How to use Auto Create
 
-![Auto Create Model, Controller and Service form](../images/auto-create-module-components.png)
+1. Navigate to **Modules** in LifeTechOCMS.
+2. Select the module you want to work on.
+3. On the **Module Content** page, click **Auto Create**.
+4. Select an existing table under **Database Tables**.
+5. Tick **Create with: Model**, **Create with: Controller**, or **Create with: Service** as required.
+6. Click **Create Content**.
+7. Review the generated content in your module.
 
-## Complete the form
+![Auto Create form](../images/auto-create-module-components.png)
 
-| Field or option | What to do |
-| --- | --- |
-| **Database Tables** | Choose an existing database table. This field is required. |
-| **Create with: Model** | Generate the model component. |
-| **Create with: Controller** | Generate the controller component. |
-| **Create with: Service** | Generate the service component. |
-| **Create Content** | Submit the selected components for creation. |
-| **Close** | Close the form without submitting. |
+## Example: Creating content from a database table
 
-You can select **one, two, or all three** component types according to your needs.
+Suppose your module is named `MdStudent` and your database contains a table named `tb_student`.
 
-## Example: Generate components for a student table
+Select `tb_student` and tick all three content types.
 
-Suppose you already have a database table named `tb_student` and a module named `MdStudent`.
-
-1. Open `MdStudent` and click **Auto Create**.
-2. Choose `tb_student` under **Database Tables**.
-3. Check **Model**, **Controller**, and **Service**.
-4. Click **Create Content**.
-5. Review the generated resources in the module content list.
-
-Following LifeTechOCMS naming conventions, the expected component names are:
+Following LifeTechOCMS naming conventions, the expected content files are:
 
 ```text
 MdStudent/
@@ -57,21 +47,18 @@ MdStudent/
     └── TbStudentService.php
 ```
 
-These names illustrate the project's naming conventions. Check the generated files in your installation to confirm their actual structure.
+These names illustrate the expected naming conventions. Review the actual generated files to confirm their contents.
 
-## What does each component do?
+## Important notes
 
-- **Model (`TbStudent.php`)** — represents and works with the data associated with the `tb_student` table.
-- **Controller (`TbStudentController.php`)** — handles incoming requests and coordinates module operations.
-- **Service (`TbStudentService.php`)** — contains business operations that the controller can call.
+- The database table must already exist before it can be selected.
+- You do not need to generate all three content types.
+- Auto Create provides initial content files that developers can extend.
+- Review generated code before using it in production.
 
-**Auto Create provides a starting structure, not a finished feature.** Review generated classes, methods, table mappings, validation, permissions, and error handling before production use.
+## What next?
 
-## After creating the files
-
-Inspect the generated content. If you have added or modified files directly in module folders, continue to [Sync Module Files](sync-module-files.md).
-
-For component responsibilities, see [Understand the MVC Architecture](understand-the-mvc-architecture.md).
+Continue to [Sync Module Files](sync-module-files.md) to learn how module files can be synchronized with their content records.
 
 ---
 
