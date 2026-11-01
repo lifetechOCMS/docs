@@ -19,6 +19,7 @@ Learn to develop LifeTech OCMS modules in a practical order, from package setup 
 
 - [Add New Module Content](add-new-module-content.md)
 - [Auto-Create Model, Controller and Service](auto-create-model-controller-service.md)
+- [Sync Module Files](sync-module-files.md)
 - [Understand the MVC Architecture](understand-the-mvc-architecture.md)
 - [Create a Database Table and Model](create-database-table-and-model.md)
 - [Create a Module Service](create-a-module-service.md)
@@ -39,7 +40,6 @@ Learn to develop LifeTech OCMS modules in a practical order, from package setup 
 
 - [Using the Module Code Editor](using-the-module-code-editor.md)
 - [Edit or Update Existing Module Content](edit-or-update-existing-module-content.md)
-- [Sync Module Files](sync-module-files.md)
 - [Configure Module Dependencies](configure-module-dependencies.md)
 - [Publishing and Unpublishing a Module](publishing-and-unpublishing-a-module.md)
 
