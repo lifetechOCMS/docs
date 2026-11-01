@@ -1,6 +1,6 @@
 # Accessing Modules Development
 
-[Previous](module-development-overview.md) · [Main documentation](../README.md) · [Guide contents](README.md) · [Next](module-development-conventions.md)
+[Previous](module-development-overview.md) · [Main documentation](../../README.md) · [Guide contents](README.md) · [Next](module-development-conventions.md)
 
 *Section: Getting started*
 
@@ -75,4 +75,4 @@ Continue to [Module Development Conventions](module-development-conventions.md) 
 
 ---
 
-[Previous](module-development-overview.md) · [Main documentation](../README.md) · [Guide contents](README.md) · [Next](module-development-conventions.md)
+[Previous](module-development-overview.md) · [Main documentation](../../README.md) · [Guide contents](README.md) · [Next](module-development-conventions.md)
