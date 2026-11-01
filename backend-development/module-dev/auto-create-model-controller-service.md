@@ -9,7 +9,7 @@
 
 **Auto Create** is a LifeTechOCMS feature that allows developers to generate module content from an existing database table.
 
-It supports three content types:
+It generates three content types:
 
 - **Model** — handles database-related operations.
 - **Controller** — handles incoming requests and coordinates application operations.
