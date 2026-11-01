@@ -1,6 +1,6 @@
 # Edit or Update Existing Module Content
 
-[Previous](using-the-module-code-editor.md) · [Main documentation](../../README.md) · [Guide contents](README.md) · [Next](sync-module-files.md)
+[Previous](using-the-module-code-editor.md) · [Main documentation](../../README.md) · [Guide contents](README.md) · [Next](configure-module-dependecies.md)
 
 *Section: Managing module content*
 
