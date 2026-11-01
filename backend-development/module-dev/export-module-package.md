@@ -1,30 +1,13 @@
 # Export Module Package
 
-[Previous](downloading-content.md) · [Main documentation](../../README.md) · [Guide contents](README.md) · [Next](coding-editor.md)
+[Previous](edit-module-package.md) · [Main documentation](../../README.md) · [Guide contents](README.md) · [Next](install-a-module.md)
 
-Use this to export a complete module for backup or transfer.
+*Section: Deployment and maintenance*
 
-**Step 1: Click Export Module Package**
+MdBlog contains an `Export/` directory with resource JSON files including `content.json`, `menu.json`, `page.json`, `pageContent.json`, and `table.json`. These are useful examples of packaged resources.
 
-A window will open showing a list of database tables.
+Use the existing [Export Module Package guide](https://github.com/lifetechOCMS/docs/tree/master/backend-development/module-dev/export-module-package.md) for the export UI steps. Inspect the exported archive before distribution and avoid including credentials or environment secrets.
 
-**Step 2: Select Tables**
+---
 
-- Choose one or more tables related to your module.
-- You may enable **Source Code** if needed. If source code is disabled the module will be exported without the code file for continuous operation such as editing the code
-
-**Step 3: Click Export**
-
-The system will generate a module package file.
-
-You can now:
-
-- Share it
-- Move it to another system
-- Keep it as backup
-
- ![Export Module Package screenshot](https://www.lifetech.host/hubs/packages/modules/MdDocs/Media/5ad60fe025b827fa0d380af356702023.png)
-
-Source: https://www.lifetech.host/hubs/Docs#export-module-package
-
-[Previous](downloading-content.md) · [Main documentation](../../README.md) · [Guide contents](README.md) · [Next](coding-editor.md)
+[Previous](edit-module-package.md) · [Main documentation](../../README.md) · [Guide contents](README.md) · [Next](install-a-module.md)

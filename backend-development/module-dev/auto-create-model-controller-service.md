@@ -1,31 +1,18 @@
-# Auto Create Model / Controller / Service
+# Auto-Create Model, Controller and Service
 
-[Previous](coding-editor.md) · [Main documentation](../../README.md) · [Guide contents](README.md) · Next
+[Previous](add-new-module-content.md) · [Main documentation](../../README.md) · [Guide contents](README.md) · [Next](understand-the-mvc-architecture.md)
 
-This feature automatically creates system files based on a selected database table.
+*Section: Creating module components*
 
-**Step 1: Open Auto Create Tool**
+LifeTech's **Auto Create** tool generates files from a selected database table.
 
-Click **Auto Create.**
+1. Open **Auto Create**.
+2. Select the database table.
+3. Choose **Create with Model**, **Create with Controller**, and/or **Create with Service**.
+4. Review the generated files before modifying their behavior.
 
-**Step 2: Select Database Table**
+The current guide documents these options and includes a screenshot: [Auto Create Model / Controller / Service](https://github.com/lifetechOCMS/docs/tree/master/backend-development/module-dev/auto-create-model-controller-service.md).
 
-Choose the table you want to generate files for**.**
+---
 
-**Step 3: Select What to Create**
-
-**You can choose:**
-
-- Create with Model
-- Create with Controller
-- Create with Service
-
-You may select one, two, or all.
-
-No manual setup is required from the user
-
- ![Auto Create Model / Controller / Service screenshot](https://www.lifetech.host/hubs/packages/modules/MdDocs/Media/9fb0e4b3ec1654b4ef1c75d560893c05.png)
-
-Source: https://www.lifetech.host/hubs/Docs#auto-create-model-/-controller-/-service
-
-[Previous](coding-editor.md) · [Main documentation](../../README.md) · [Guide contents](README.md) · Next
+[Previous](add-new-module-content.md) · [Main documentation](../../README.md) · [Guide contents](README.md) · [Next](understand-the-mvc-architecture.md)
